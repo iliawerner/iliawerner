@@ -35,6 +35,13 @@
     </script>
     <style>
         /* Custom styles inspired by your previous site */
+        :root {
+            --aurora-primary: rgba(99, 102, 241, 0.75);
+            --aurora-secondary: rgba(14, 165, 233, 0.65);
+            --aurora-amber: rgba(251, 191, 36, 0.45);
+            --aurora-magenta: rgba(236, 72, 153, 0.55);
+        }
+
         body {
             background-color: #000000;
             color: #E5E7EB;
@@ -142,6 +149,105 @@
         .fade-in-delay-6 {
             animation-delay: 0.6s;
         }
+        .aurora-shell {
+            position: absolute;
+            inset: auto 0 -14vh;
+            display: flex;
+            justify-content: center;
+            pointer-events: none;
+        }
+
+        .aurora-spectrum {
+            position: relative;
+            width: min(1100px, 88vw);
+            height: clamp(320px, 48vw, 520px);
+            opacity: 0;
+            transform: translateY(18%) scaleY(0.4);
+            transform-origin: bottom;
+            transition: opacity 1s ease, transform 1.2s cubic-bezier(0.23, 1, 0.32, 1);
+        }
+
+        .aurora-gradient {
+            position: absolute;
+            inset: auto;
+            width: 120%;
+            height: 120%;
+            top: 12%;
+            left: -10%;
+            filter: blur(80px);
+            opacity: 0.85;
+            mix-blend-mode: screen;
+            transform: translate3d(0, 0, 0) scale(1.05);
+            animation: auroraDrift 18s ease-in-out infinite alternate;
+        }
+
+        .aurora-gradient-1 {
+            background: radial-gradient(circle at 20% 30%, var(--aurora-secondary), transparent 60%);
+        }
+
+        .aurora-gradient-2 {
+            background: radial-gradient(circle at 80% 20%, var(--aurora-primary), transparent 62%);
+            animation-delay: 4s;
+        }
+
+        .aurora-gradient-3 {
+            background: radial-gradient(circle at 50% 80%, var(--aurora-magenta), transparent 70%),
+                        radial-gradient(circle at 30% 70%, var(--aurora-amber), transparent 75%);
+            animation-delay: 8s;
+        }
+
+        .aurora-spectrum svg {
+            width: 100%;
+            height: 100%;
+            display: block;
+            transform: scaleY(0.2);
+            transform-origin: bottom;
+            filter: drop-shadow(0 40px 120px rgba(15, 23, 42, 0.45));
+            transition: transform 1.4s cubic-bezier(0.2, 0.9, 0.35, 1), filter 1.4s ease;
+        }
+
+        .aurora-spectrum svg .aurora-stop {
+            transition: stop-color 4s ease;
+        }
+
+        .aurora-spectrum::after {
+            content: "";
+            position: absolute;
+            inset: auto 12% -18% 12%;
+            height: 2px;
+            border-radius: 50%;
+            background: radial-gradient(ellipse at center, rgba(148, 163, 184, 0.25), transparent 70%);
+            opacity: 0;
+            transition: opacity 1.2s ease;
+        }
+
+        .aurora-spectrum.aurora-active {
+            opacity: 1;
+            transform: translateY(0) scaleY(1);
+        }
+
+        .aurora-spectrum.aurora-active svg {
+            transform: scaleY(1);
+            filter: drop-shadow(0 32px 120px rgba(59, 130, 246, 0.45));
+        }
+
+        .aurora-spectrum.aurora-active::after {
+            opacity: 1;
+        }
+
+        .aurora-caption {
+            position: absolute;
+            bottom: 42%;
+            left: 50%;
+            transform: translate(-50%, 50%);
+            font-size: 0.75rem;
+            letter-spacing: 0.28em;
+            text-transform: uppercase;
+            color: rgba(226, 232, 240, 0.7);
+            text-align: center;
+            pointer-events: none;
+        }
+
         @keyframes fadeInUp {
             from {
                 opacity: 0;
@@ -152,13 +258,43 @@
                 transform: translateY(0);
             }
         }
+
+        @keyframes auroraDrift {
+            from {
+                transform: translate3d(-4%, 0, 0) scale(1.05);
+            }
+            to {
+                transform: translate3d(6%, -6%, 0) scale(1.12);
+            }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            .aurora-spectrum,
+            .aurora-spectrum svg,
+            .aurora-gradient {
+                animation: none !important;
+                transition: none !important;
+                transform: none !important;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .aurora-shell {
+                inset: auto -6vw -10vh -6vw;
+            }
+
+            .aurora-caption {
+                font-size: 0.68rem;
+                letter-spacing: 0.24em;
+            }
+        }
     </style>
 </head>
 <body>
     <!-- Main Content -->
     <main>
         <!-- Hero Section -->
-        <section class="relative min-h-screen flex flex-col justify-center items-start text-left p-4 sm:p-6 lg:px-12 fade-in-up" style="background-image: url('https://raw.githubusercontent.com/iliawerner/iliawerner/b01cc7a3589b6ea2d0cac1300d9dcfa8d63bc5c7/podcast.png'); background-size: cover; background-position: center;">
+        <section data-hero class="relative min-h-screen flex flex-col justify-center items-start text-left p-4 sm:p-6 lg:px-12 fade-in-up" style="background-image: url('https://raw.githubusercontent.com/iliawerner/iliawerner/b01cc7a3589b6ea2d0cac1300d9dcfa8d63bc5c7/podcast.png'); background-size: cover; background-position: center;">
             <div class="absolute inset-0 bg-black/70 z-0"></div>
             <div class="relative z-10">
                 <div class="max-w-2xl w-full">
@@ -167,6 +303,77 @@
                     <p class="mt-4 text-lg text-gray-300">
                         I help technology companies achieve market leadership by implementing cutting-edge AI, building user-centric products, and creating compelling digital media.
                     </p>
+                </div>
+            </div>
+            <div class="aurora-shell" aria-hidden="true">
+                <div class="aurora-spectrum" id="hero-aurora">
+                    <div class="aurora-gradient aurora-gradient-1"></div>
+                    <div class="aurora-gradient aurora-gradient-2"></div>
+                    <div class="aurora-gradient aurora-gradient-3"></div>
+                    <svg viewBox="0 0 1567 584" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+                        <defs>
+                            <linearGradient id="aurora-grad-0" x1="1306" y1="584" x2="1306" y2="184" gradientUnits="userSpaceOnUse">
+                                <stop class="aurora-stop" offset="0%" stop-color="#1d4ed8" />
+                                <stop class="aurora-stop" offset="45%" stop-color="#38bdf8" />
+                                <stop class="aurora-stop" offset="100%" stop-color="#fbbf24" />
+                            </linearGradient>
+                            <linearGradient id="aurora-grad-1" x1="1132" y1="584" x2="1132" y2="104" gradientUnits="userSpaceOnUse">
+                                <stop class="aurora-stop" offset="0%" stop-color="#0ea5e9" />
+                                <stop class="aurora-stop" offset="50%" stop-color="#6366f1" />
+                                <stop class="aurora-stop" offset="100%" stop-color="#f472b6" />
+                            </linearGradient>
+                            <linearGradient id="aurora-grad-2" x1="261" y1="584" x2="261" y2="184" gradientUnits="userSpaceOnUse">
+                                <stop class="aurora-stop" offset="0%" stop-color="#fbbf24" />
+                                <stop class="aurora-stop" offset="52%" stop-color="#ec4899" />
+                                <stop class="aurora-stop" offset="100%" stop-color="#312e81" />
+                            </linearGradient>
+                            <linearGradient id="aurora-grad-3" x1="435" y1="584" x2="435" y2="104" gradientUnits="userSpaceOnUse">
+                                <stop class="aurora-stop" offset="0%" stop-color="#38bdf8" />
+                                <stop class="aurora-stop" offset="50%" stop-color="#22d3ee" />
+                                <stop class="aurora-stop" offset="100%" stop-color="#f97316" />
+                            </linearGradient>
+                            <linearGradient id="aurora-grad-4" x1="609.5" y1="584" x2="609.5" y2="54" gradientUnits="userSpaceOnUse">
+                                <stop class="aurora-stop" offset="0%" stop-color="#1e3a8a" />
+                                <stop class="aurora-stop" offset="48%" stop-color="#4338ca" />
+                                <stop class="aurora-stop" offset="100%" stop-color="#a855f7" />
+                            </linearGradient>
+                            <linearGradient id="aurora-grad-5" x1="957.5" y1="584" x2="957.5" y2="54" gradientUnits="userSpaceOnUse">
+                                <stop class="aurora-stop" offset="0%" stop-color="#f97316" />
+                                <stop class="aurora-stop" offset="52%" stop-color="#ef4444" />
+                                <stop class="aurora-stop" offset="100%" stop-color="#8b5cf6" />
+                            </linearGradient>
+                            <linearGradient id="aurora-grad-6" x1="783.5" y1="584" x2="783.5" y2="0" gradientUnits="userSpaceOnUse">
+                                <stop class="aurora-stop" offset="0%" stop-color="#22d3ee" />
+                                <stop class="aurora-stop" offset="50%" stop-color="#a855f7" />
+                                <stop class="aurora-stop" offset="100%" stop-color="#facc15" />
+                            </linearGradient>
+                            <linearGradient id="aurora-grad-7" x1="87" y1="585" x2="87" y2="295" gradientUnits="userSpaceOnUse">
+                                <stop class="aurora-stop" offset="0%" stop-color="#0ea5e9" />
+                                <stop class="aurora-stop" offset="55%" stop-color="#38bdf8" />
+                                <stop class="aurora-stop" offset="100%" stop-color="#ec4899" />
+                            </linearGradient>
+                            <linearGradient id="aurora-grad-8" x1="1480" y1="584" x2="1480" y2="294" gradientUnits="userSpaceOnUse">
+                                <stop class="aurora-stop" offset="0%" stop-color="#a855f7" />
+                                <stop class="aurora-stop" offset="52%" stop-color="#6366f1" />
+                                <stop class="aurora-stop" offset="100%" stop-color="#0ea5e9" />
+                            </linearGradient>
+                            <clipPath id="aurora-clip">
+                                <rect width="1567" height="584" fill="white" />
+                            </clipPath>
+                        </defs>
+                        <g clip-path="url(#aurora-clip)" opacity="0.95">
+                            <path d="M1219 584H1393V184H1219V584Z" fill="url(#aurora-grad-0)" />
+                            <path d="M1045 584H1219V104H1045V584Z" fill="url(#aurora-grad-1)" />
+                            <path d="M348 584H174L174 184H348L348 584Z" fill="url(#aurora-grad-2)" />
+                            <path d="M522 584H348L348 104H522L522 584Z" fill="url(#aurora-grad-3)" />
+                            <path d="M697 584H522L522 54H697L697 584Z" fill="url(#aurora-grad-4)" />
+                            <path d="M870 584H1045V54H870V584Z" fill="url(#aurora-grad-5)" />
+                            <path d="M870 584H697L697 0H870L870 584Z" fill="url(#aurora-grad-6)" />
+                            <path d="M174 585H0L0 295H174L174 585Z" fill="url(#aurora-grad-7)" />
+                            <path d="M1393 584H1567V294H1393V584Z" fill="url(#aurora-grad-8)" />
+                        </g>
+                    </svg>
+                    <div class="aurora-caption">Immersive spectrum lighting the strategy horizon</div>
                 </div>
             </div>
         </section>
@@ -254,5 +461,32 @@
             </div>
         </div>
     </footer>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const hero = document.querySelector('[data-hero]');
+            const aurora = document.querySelector('#hero-aurora');
+
+            if (!hero || !aurora) {
+                return;
+            }
+
+            if (!('IntersectionObserver' in window)) {
+                aurora.classList.add('aurora-active');
+                return;
+            }
+
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach((entry) => {
+                    if (entry.isIntersecting) {
+                        aurora.classList.add('aurora-active');
+                    } else {
+                        aurora.classList.remove('aurora-active');
+                    }
+                });
+            }, { threshold: 0.35 });
+
+            observer.observe(hero);
+        });
+    </script>
 </body>
 </html>
