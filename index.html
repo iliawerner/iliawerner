@@ -74,49 +74,50 @@
         .styled-link:hover svg {
             transform: translateX(4px);
         }
-        .chip {
-            background: linear-gradient(135deg, rgba(20, 20, 20, 0.95), rgba(9, 9, 9, 0.95));
-            border: 1px solid rgba(80, 80, 80, 0.15);
-            border-radius: 9999px;
-            padding: 1.25rem 1.75rem;
-            min-width: 260px;
+        .impact-card {
+            background: linear-gradient(145deg, rgba(17, 17, 17, 0.94), rgba(9, 9, 9, 0.94));
+            border: 1px solid rgba(70, 70, 70, 0.18);
+            border-radius: 20px;
+            padding: 2rem;
             display: flex;
             flex-direction: column;
-            gap: 0.4rem;
+            gap: 0.9rem;
             transition: transform 0.4s ease, border-color 0.4s ease, box-shadow 0.4s ease, background 0.4s ease;
         }
-        .chip:hover {
-            transform: translateY(-6px);
-            border-color: rgba(120, 120, 120, 0.3);
-            box-shadow: 0 22px 55px rgba(0, 0, 0, 0.45);
-            background: linear-gradient(135deg, rgba(30, 30, 30, 0.95), rgba(12, 12, 12, 0.95));
+        .impact-card:hover {
+            transform: translateY(-10px);
+            border-color: rgba(140, 140, 140, 0.28);
+            box-shadow: 0 24px 65px rgba(0, 0, 0, 0.5);
+            background: linear-gradient(145deg, rgba(24, 24, 24, 0.94), rgba(10, 10, 10, 0.94));
         }
-        .chip-title {
+        .impact-card h3 {
             font-family: 'IBM Plex Serif', serif;
+            font-size: 1.6rem;
             font-weight: 500;
-            color: #ffffff;
             letter-spacing: 0.01em;
+            color: #ffffff;
         }
-        .chip-text {
-            font-size: 0.95rem;
-            line-height: 1.5;
+        .impact-card p {
+            font-size: 1.05rem;
+            line-height: 1.65;
             color: #D1D5DB;
         }
         .chip-small {
-            background-color: rgba(24, 24, 24, 0.85);
-            border: 1px solid rgba(80, 80, 80, 0.18);
+            background: linear-gradient(135deg, rgba(27, 58, 38, 0.92), rgba(18, 37, 27, 0.92));
+            border: 1px solid rgba(68, 157, 108, 0.28);
             border-radius: 9999px;
-            padding: 0.85rem 1.4rem;
+            padding: 0.85rem 1.5rem;
             font-size: 0.95rem;
             font-weight: 500;
-            color: #F9FAFB;
+            color: #E9FDF2;
             letter-spacing: 0.04em;
-            transition: transform 0.3s ease, border-color 0.3s ease, background-color 0.3s ease;
+            transition: transform 0.3s ease, border-color 0.3s ease, background-color 0.3s ease, box-shadow 0.3s ease;
         }
         .chip-small:hover {
             transform: translateY(-4px);
-            border-color: rgba(160, 160, 160, 0.35);
-            background-color: rgba(34, 34, 34, 0.95);
+            border-color: rgba(96, 216, 142, 0.45);
+            background: linear-gradient(135deg, rgba(36, 76, 48, 0.95), rgba(20, 44, 32, 0.95));
+            box-shadow: 0 14px 30px rgba(20, 64, 40, 0.35);
         }
         .fade-in-up {
             opacity: 0;
@@ -176,31 +177,31 @@
                     <h2 class="font-serif-header text-4xl md:text-5xl">Highlights & Recognition</h2>
                     <p class="mt-4 text-lg text-gray-400 max-w-3xl">A snapshot of impact across public initiatives, social ventures, and design-led innovation.</p>
                 </div>
-                <div class="space-y-12">
-                    <div class="flex flex-wrap gap-6">
-                        <div class="chip fade-in-up">
-                            <span class="chip-title">Kyrgyz Government Appreciation</span>
-                            <p class="chip-text">Honoured in 2023 for strengthening the High Tech Park infrastructure and the national software association.</p>
+                <div class="space-y-14">
+                    <div class="grid gap-8 md:gap-10 md:grid-cols-2">
+                        <div class="impact-card fade-in-up">
+                            <h3>Kyrgyz Government Commendation</h3>
+                            <p>Appreciated in 2023 for strengthening the High Tech Park infrastructure and the national software developers’ association.</p>
                         </div>
-                        <div class="chip fade-in-up fade-in-delay-1">
-                            <span class="chip-title">UrbanEyes Co-founder</span>
-                            <p class="chip-text">Built a civic-tech non-profit whose platform now supports research at Yale University.</p>
+                        <div class="impact-card fade-in-up fade-in-delay-1">
+                            <h3>UrbanEyes Co-founder</h3>
+                            <p>Launched a civic-tech non-profit whose urban insight platform now underpins research at Yale University.</p>
                         </div>
-                        <div class="chip fade-in-up fade-in-delay-2">
-                            <span class="chip-title">DELO Studio Founder</span>
-                            <p class="chip-text">Led a design studio partnering with Eastern Europe’s leading tech companies for six years.</p>
+                        <div class="impact-card fade-in-up fade-in-delay-2">
+                            <h3>DELO Studio Founder</h3>
+                            <p>Directed a design studio that partnered with Eastern Europe’s leading technology firms for six consecutive years.</p>
                         </div>
-                        <div class="chip fade-in-up fade-in-delay-3">
-                            <span class="chip-title">ZenClass Co-founder</span>
-                            <p class="chip-text">Scaled an edtech platform to a US$3m valuation by exit through seamless onboarding design.</p>
+                        <div class="impact-card fade-in-up fade-in-delay-3">
+                            <h3>ZenClass Co-founder</h3>
+                            <p>Co-led an edtech venture to a US$3m valuation at exit through frictionless onboarding and growth design.</p>
                         </div>
-                        <div class="chip fade-in-up fade-in-delay-4">
-                            <span class="chip-title">Design Lovers Creator</span>
-                            <p class="chip-text">Authored and hosted a design philosophy channel reaching 1.5m views and 150k loyal viewers.</p>
+                        <div class="impact-card fade-in-up fade-in-delay-4">
+                            <h3>‘Design Lovers’ Author & Host</h3>
+                            <p>Built a design philosophy channel reaching 1.5m views with a loyal community of 150k regular viewers.</p>
                         </div>
-                        <div class="chip fade-in-up fade-in-delay-5">
-                            <span class="chip-title">AI Workflow Architect</span>
-                            <p class="chip-text">Designed AI frameworks lifting delivery capacity by 30–70% across enterprise design teams.</p>
+                        <div class="impact-card fade-in-up fade-in-delay-5">
+                            <h3>AI Framework Architect</h3>
+                            <p>Devised AI pipelines and playbooks that lifted delivery capacity by 30–70% across enterprise design teams.</p>
                         </div>
                     </div>
                     <div class="flex flex-wrap gap-4">
