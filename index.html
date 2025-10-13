@@ -49,28 +49,108 @@
             background-color: #0F0F0F;
             border-radius: 16px;
             border: 1px solid #1F1F1F;
-            transition: transform 0.3s ease, border-color 0.3s ease;
+            transition: transform 0.35s ease, border-color 0.35s ease, box-shadow 0.35s ease;
         }
         .card:hover {
             transform: translateY(-8px);
-            border-color: #4A4A4A;
+            border-color: #2F2F2F;
+            box-shadow: 0 18px 45px rgba(0, 0, 0, 0.45);
         }
         .styled-link {
             display: inline-flex;
             align-items: center;
             color: #AEAEAE;
             font-weight: 500;
-            transition: color 0.3s;
+            transition: color 0.3s ease, transform 0.3s ease;
         }
         .styled-link:hover {
             color: #ffffff;
+            transform: translateY(-2px);
         }
         .styled-link svg {
-            transition: transform 0.3s;
+            transition: transform 0.3s ease;
             margin-left: 8px;
         }
         .styled-link:hover svg {
             transform: translateX(4px);
+        }
+        .impact-card {
+            background: linear-gradient(145deg, rgba(17, 17, 17, 0.94), rgba(9, 9, 9, 0.94));
+            border: 1px solid rgba(70, 70, 70, 0.18);
+            border-radius: 20px;
+            padding: 2rem;
+            display: flex;
+            flex-direction: column;
+            gap: 0.9rem;
+            transition: transform 0.4s ease, border-color 0.4s ease, box-shadow 0.4s ease, background 0.4s ease;
+        }
+        .impact-card:hover {
+            transform: translateY(-10px);
+            border-color: rgba(140, 140, 140, 0.28);
+            box-shadow: 0 24px 65px rgba(0, 0, 0, 0.5);
+            background: linear-gradient(145deg, rgba(24, 24, 24, 0.94), rgba(10, 10, 10, 0.94));
+        }
+        .impact-card h3 {
+            font-family: 'IBM Plex Serif', serif;
+            font-size: 1.6rem;
+            font-weight: 500;
+            letter-spacing: 0.01em;
+            color: #ffffff;
+        }
+        .impact-card p {
+            font-size: 1.05rem;
+            line-height: 1.65;
+            color: #D1D5DB;
+        }
+        .chip-small {
+            background: linear-gradient(135deg, rgba(27, 58, 38, 0.92), rgba(18, 37, 27, 0.92));
+            border: 1px solid rgba(68, 157, 108, 0.28);
+            border-radius: 9999px;
+            padding: 0.85rem 1.5rem;
+            font-size: 0.95rem;
+            font-weight: 500;
+            color: #E9FDF2;
+            letter-spacing: 0.04em;
+            transition: transform 0.3s ease, border-color 0.3s ease, background-color 0.3s ease, box-shadow 0.3s ease;
+        }
+        .chip-small:hover {
+            transform: translateY(-4px);
+            border-color: rgba(96, 216, 142, 0.45);
+            background: linear-gradient(135deg, rgba(36, 76, 48, 0.95), rgba(20, 44, 32, 0.95));
+            box-shadow: 0 14px 30px rgba(20, 64, 40, 0.35);
+        }
+        .fade-in-up {
+            opacity: 0;
+            transform: translateY(24px);
+            animation: fadeInUp 0.8s ease forwards;
+        }
+        .fade-in-delay-1 {
+            animation-delay: 0.1s;
+        }
+        .fade-in-delay-2 {
+            animation-delay: 0.2s;
+        }
+        .fade-in-delay-3 {
+            animation-delay: 0.3s;
+        }
+        .fade-in-delay-4 {
+            animation-delay: 0.4s;
+        }
+        .fade-in-delay-5 {
+            animation-delay: 0.5s;
+        }
+        .fade-in-delay-6 {
+            animation-delay: 0.6s;
+        }
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(24px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
     </style>
 </head>
@@ -78,7 +158,7 @@
     <!-- Main Content -->
     <main>
         <!-- Hero Section -->
-        <section class="relative min-h-screen flex flex-col justify-center items-start text-left p-4 sm:p-6 lg:px-12" style="background-image: url('https://raw.githubusercontent.com/iliawerner/iliawerner/b01cc7a3589b6ea2d0cac1300d9dcfa8d63bc5c7/podcast.png'); background-size: cover; background-position: center;">
+        <section class="relative min-h-screen flex flex-col justify-center items-start text-left p-4 sm:p-6 lg:px-12 fade-in-up" style="background-image: url('https://raw.githubusercontent.com/iliawerner/iliawerner/b01cc7a3589b6ea2d0cac1300d9dcfa8d63bc5c7/podcast.png'); background-size: cover; background-position: center;">
             <div class="absolute inset-0 bg-black/70 z-0"></div>
             <div class="relative z-10">
                 <div class="max-w-2xl w-full">
@@ -87,52 +167,53 @@
                     <p class="mt-4 text-lg text-gray-300">
                         I help technology companies achieve market leadership by implementing cutting-edge AI, building user-centric products, and creating compelling digital media.
                     </p>
-                    <div class="mt-8 text-sm text-teal-300 bg-teal-900/50 rounded-lg p-3 inline-block border border-teal-700/60">
-                        Recognised as an Exceptional Talent in Digital Technology by the UK government. 
-                        No visa sponsorship required.
-                    </div>
                 </div>
             </div>
         </section>
-        <!-- Featured Work Section -->
-        <section class="py-20 md:py-32" id="work">
+        <!-- Highlights Section -->
+        <section class="py-20 md:py-32 fade-in-up fade-in-delay-1" id="highlights">
             <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
                 <div class="text-left mb-12 md:mb-16">
-                    <h2 class="font-serif-header text-4xl md:text-5xl">Featured Work</h2>
-                    <p class="mt-4 text-lg text-gray-400 max-w-3xl">A selection of projects where I've driven growth and innovation across AI, SaaS, and Media.</p>
+                    <h2 class="font-serif-header text-4xl md:text-5xl">Highlights & Recognition</h2>
+                    <p class="mt-4 text-lg text-gray-400 max-w-3xl">A snapshot of impact across public initiatives, social ventures, and design-led innovation.</p>
                 </div>
-                
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-                    <!-- Case Study 1: AI Consulting -->
-                    <div class="card p-8">
-                        <h3 class="font-serif-header text-2xl md:text-3xl">AI Implementation Consulting</h3>
-                        <p class="mt-4 text-gray-400">Consulting companies on implementing AI to streamline processes. Key projects include an AI Art Direction system to automate design reviews and a tool for a browser's marketing team to create landing pages 9x faster.</p>
-                        <p class="mt-4 font-sans font-semibold text-2xl text-white">Result: Increased process speeds by 2-3x.</p>
+                <div class="space-y-14">
+                    <div class="grid gap-8 md:gap-10 md:grid-cols-2">
+                        <div class="impact-card fade-in-up">
+                            <h3>Kyrgyz Government Commendation</h3>
+                            <p>Appreciated in 2023 for strengthening the High Tech Park infrastructure and the national software developers’ association.</p>
+                        </div>
+                        <div class="impact-card fade-in-up fade-in-delay-1">
+                            <h3>UrbanEyes Co-founder</h3>
+                            <p>Launched a civic-tech non-profit whose urban insight platform now underpins research at Yale University.</p>
+                        </div>
+                        <div class="impact-card fade-in-up fade-in-delay-2">
+                            <h3>DELO Studio Founder</h3>
+                            <p>Directed a design studio that partnered with Eastern Europe’s leading technology firms for six consecutive years.</p>
+                        </div>
+                        <div class="impact-card fade-in-up fade-in-delay-3">
+                            <h3>ZenClass Co-founder</h3>
+                            <p>Co-led an edtech venture to a US$3m valuation at exit through frictionless onboarding and growth design.</p>
+                        </div>
+                        <div class="impact-card fade-in-up fade-in-delay-4">
+                            <h3>‘Design Lovers’ Author & Host</h3>
+                            <p>Built a design philosophy channel reaching 1.5m views with a loyal community of 150k regular viewers.</p>
+                        </div>
+                        <div class="impact-card fade-in-up fade-in-delay-5">
+                            <h3>AI Framework Architect</h3>
+                            <p>Devised AI pipelines and playbooks that lifted delivery capacity by 30–70% across enterprise design teams.</p>
+                        </div>
                     </div>
-                    <!-- Case Study 2: Zenclass -->
-                    <div class="card p-8">
-                        <h3 class="font-serif-header text-2xl md:text-3xl">Zenclass SaaS Platform</h3>
-                        <p class="mt-4 text-gray-400">As Co-founder & Design Director (2017-2022), I designed a frictionless onboarding system that became a key driver for scaling the platform to over 78,000 active learners.</p>
-                        <p class="mt-4 font-sans font-semibold text-2xl text-white">Result: The company was valued at $3.9M.</p>
-                    </div>
-                    
-                    <!-- Case Study 3: DELO Studio -->
-                    <div class="card p-8">
-                        <h3 class="font-serif-header text-2xl md:text-3xl">DELO Design Studio</h3>
-                        <p class="mt-4 text-gray-400">As a continuation of my freelance career started in 2005, I founded DELO. I guided product design strategy for 300+ clients, including tech leaders like Yandex, and consulted their design departments on workflow automation and AI adoption.</p>
-                        <p class="mt-4 font-sans font-semibold text-2xl text-white">Result: Increased clients' operational efficiency.</p>
-                    </div>
-                    <!-- Case Study 4: Media -->
-                    <div class="card p-8">
-                        <h3 class="font-serif-header text-2xl md:text-3xl">'Design Lovers' YouTube Channel</h3>
-                        <p class="mt-4 text-gray-400">Founded and scaled a channel focused on design philosophy, establishing it as a respected voice in the professional community and gaining a significant audience.</p>
-                        <p class="mt-4 font-sans font-semibold text-2xl text-white">Result: Achieved over 1 million+ views.</p>
+                    <div class="flex flex-wrap gap-4">
+                        <div class="chip-small fade-in-up">Recognised as Exceptional Talent by Tech Nation UK</div>
+                        <div class="chip-small fade-in-up fade-in-delay-1">20 years in design</div>
+                        <div class="chip-small fade-in-up fade-in-delay-2">10 years in leadership</div>
                     </div>
                 </div>
             </div>
         </section>
         <!-- About Section -->
-        <section class="py-20 md:py-32 bg-[#050505]" id="about">
+        <section class="py-20 md:py-32 bg-[#050505] fade-in-up fade-in-delay-2" id="about">
             <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
                 <div class="card p-8 lg:p-12">
                     <h2 class="font-serif-header text-3xl md:text-4xl text-center">About Me</h2>
@@ -142,7 +223,7 @@
             </div>
         </section>
         <!-- Contact Section -->
-        <section class="py-20 md:py-32" id="contact">
+        <section class="py-20 md:py-32 fade-in-up fade-in-delay-3" id="contact">
             <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
                 <h2 class="font-serif-header text-4xl md:text-5xl">Let's work together</h2>
                 <p class="mt-6 text-lg text-gray-400 max-w-2xl mx-auto">
