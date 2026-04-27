@@ -3,164 +3,238 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Ilia Werner — wireframe v3</title>
+  <title>Ilia Werner</title>
+  <meta name="description" content="Ilia Werner — designer, creator of Design Lovers, a YouTube channel about design.">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,400&display=swap" rel="stylesheet">
+
   <style>
+    :root {
+      --bg: #0E0E0C;
+      --text: #E8E2D3;
+      --text-bright: #F5F0E5;
+      --text-soft: #BDB4A0;
+      --text-muted: #8A8275;
+    }
+
+    * { box-sizing: border-box; }
+
+    html, body {
+      margin: 0;
+      padding: 0;
+    }
+
     body {
-      max-width: 640px;
-      margin: 4rem auto 6rem;
-      padding: 0 1.5rem;
-      font-family: Georgia, "Times New Roman", serif;
-      font-size: 18px;
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'Newsreader', Georgia, serif;
+      font-size: 19px;
       line-height: 1.65;
-      color: #111;
-      background: #fff;
+      font-weight: 400;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
     }
+
+    .page {
+      display: grid;
+      grid-template-columns: 100px 1fr;
+      column-gap: 2.5rem;
+      max-width: 780px;
+      margin: 5rem auto 7rem;
+      padding: 0 1.5rem;
+    }
+
+    .page > * {
+      grid-column: 2;
+      margin: 0 0 1.25rem;
+    }
+
     .pretitle {
-      font-family: -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
+      font-family: 'Inter', sans-serif;
       font-size: 0.85rem;
-      color: #888;
-      margin: 0 0 0.4rem;
+      color: var(--text-muted);
+      margin: 0 0 0.5rem;
       letter-spacing: 0.02em;
+      font-weight: 400;
     }
+
     h1 {
-      font-size: 2.4rem;
+      font-family: 'Newsreader', serif;
       font-weight: 500;
+      font-size: 3rem;
+      color: var(--text-bright);
       margin: 0 0 1.5rem;
-      letter-spacing: -0.01em;
+      letter-spacing: -0.015em;
+      line-height: 1.1;
     }
+
     h2 {
-      font-family: Georgia, "Times New Roman", serif;
+      font-family: 'Newsreader', serif;
       font-style: italic;
       font-weight: 400;
-      font-size: 1.2rem;
-      color: #555;
-      margin: 2.75rem 0 0.85rem;
+      font-size: 1.4rem;
+      color: var(--text-soft);
+      margin: 3.25rem 0 1rem;
+      letter-spacing: -0.005em;
     }
+
     p {
       margin: 0 0 1.25rem;
     }
+
     figure {
-      margin: 1.75rem 0;
+      margin: 2rem 0;
     }
+
     figure img {
       display: block;
       width: 100%;
       height: auto;
     }
+
     figcaption {
-      font-family: -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
+      font-family: 'Inter', sans-serif;
       font-size: 0.85rem;
-      color: #777;
-      margin-top: 0.5rem;
-      font-style: italic;
+      color: var(--text-muted);
+      margin-top: 0.7rem;
+      letter-spacing: 0.01em;
+      line-height: 1.5;
     }
+
+    .year {
+      grid-column: 1;
+      text-align: right;
+      font-family: 'Inter', sans-serif;
+      font-size: 0.78rem;
+      color: var(--text-muted);
+      padding-top: 0.6rem;
+      letter-spacing: 0.06em;
+      font-weight: 500;
+      margin: 0 0 1.25rem;
+    }
+
+    a {
+      color: var(--text);
+      text-decoration: underline;
+      text-decoration-color: var(--text-muted);
+      text-underline-offset: 3px;
+      transition: text-decoration-color 0.2s ease;
+    }
+
+    a:hover {
+      text-decoration-color: var(--text);
+    }
+
     .signature {
-      margin-top: 3rem;
-      font-family: -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
+      margin-top: 4.5rem;
+      font-family: 'Inter', sans-serif;
       font-size: 0.92rem;
-      color: #555;
-      line-height: 1.55;
+      color: var(--text-soft);
+      line-height: 1.75;
     }
-    .signature a { color: #222; }
-    .notes {
-      margin-top: 6rem;
-      padding-top: 2rem;
-      border-top: 1px dashed #bbb;
-      font-family: -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
-      font-size: 0.88rem;
-      color: #444;
-      line-height: 1.55;
+
+    .signature a {
+      color: var(--text);
     }
-    .notes h3 {
-      font-family: inherit;
-      font-size: 0.85rem;
-      text-transform: uppercase;
-      letter-spacing: 0.08em;
-      color: #888;
-      font-weight: 600;
-      margin: 1.5rem 0 0.6rem;
+
+    @media (max-width: 720px) {
+      .page {
+        grid-template-columns: 1fr;
+        column-gap: 0;
+        margin: 3rem auto 4.5rem;
+        max-width: 600px;
+      }
+
+      .page > .year {
+        grid-column: 1;
+        text-align: left;
+        margin: 1.75rem 0 0.5rem;
+        padding-top: 0;
+      }
+
+      h1 {
+        font-size: 2.4rem;
+      }
+
+      h2 {
+        font-size: 1.25rem;
+        margin: 2.5rem 0 0.85rem;
+      }
+
+      body {
+        font-size: 18px;
+      }
     }
-    .notes h3:first-child { margin-top: 0; }
-    .notes ul { padding-left: 1.2rem; margin: 0; }
-    .notes li { margin-bottom: 0.5rem; }
   </style>
 </head>
 <body>
 
-  <p class="pretitle">hi — I'm</p>
-  <h1>Ilia Werner</h1>
+  <article class="page">
 
-  <figure>
-    <img src="../public/img/ilia-closeup.jpg" alt="Portrait of Ilia Werner">
-  </figure>
+    <p class="pretitle">hi — I'm</p>
+    <h1>Ilia Werner</h1>
 
-  <p>I've been a designer for over 20 years. My main project is Design Lovers, a YouTube channel about design. Very much a family guy. I love my wife, son, and dog.</p>
+    <figure>
+      <img src="../public/img/ilia-closeup.jpg" alt="Portrait of Ilia Werner">
+    </figure>
 
-  <figure>
-    <img src="../public/img/family.jpg" alt="With my wife, son, and dog">
-  </figure>
+    <p>I've been a designer for over 20 years. My main project is Design Lovers, a YouTube channel about design. Very much a family guy. I love my wife, son, and dog.</p>
 
-  <h2>Where I'm from.</h2>
+    <figure>
+      <img src="../public/img/family.jpg" alt="With my wife, son, and dog">
+    </figure>
 
-  <p>I started out in Angarsk, a small town deep in Siberia. My maternal grandparents sold a cow in the mid-90s to help my father, then a young scientist, buy a computer. My dad taught me the basics of object-oriented programming. Hardly anyone was online back then, and websites, let alone designing them, felt like a strange niche.</p>
+    <h2>Where I'm from.</h2>
 
-  <figure>
-    <img src="../public/img/boris.jpg" alt="My father in his lab">
-  </figure>
+    <span class="year">Mid-90s</span>
+    <p>I started out in Angarsk, a small town deep in Siberia. My maternal grandparents sold a cow in the mid-90s to help my father, then a young scientist, buy a computer. My dad taught me the basics of object-oriented programming. Hardly anyone was online back then, and websites, let alone designing them, felt like a strange niche.</p>
 
-  <p>But I loved it. I taught myself CSS, HTML, Photoshop, and a little later Macromedia Dreamweaver. I went freelance, and my first paid work came around 2005.</p>
+    <figure>
+      <img src="../public/img/boris.jpg" alt="My father in his lab">
+    </figure>
 
-  <figure>
-    <img src="../public/img/ilia-2000.jpg" alt="Me at the computer, 2000">
-  </figure>
+    <span class="year">2005</span>
+    <p>But I loved it. I taught myself CSS, HTML, Photoshop, and a little later Macromedia Dreamweaver. I went freelance, and my first paid work came around 2005.</p>
 
-  <h2>What got me here.</h2>
+    <figure>
+      <img src="../public/img/ilia-2000.jpg" alt="Me at the computer, 2000">
+    </figure>
 
-  <p>In 2019 I founded my design studio, DELO. DELO is short for DEsign LOvers. I poured years into building it.</p>
+    <h2>What got me here.</h2>
 
-  <figure>
-    <img src="../public/img/physic-logo.jpg" alt="Light diffusion experiments while designing the DELO logo">
-    <figcaption>Light diffusion tests while designing the studio logo.</figcaption>
-  </figure>
+    <span class="year">2019</span>
+    <p>In 2019 I founded my design studio, DELO. DELO is short for DEsign LOvers. I poured years into building it.</p>
 
-  <p>In 2025 I fired an employee. She wouldn't go; instead, she fired me — having hired lawyers who specialize in hostile corporate takeovers.</p>
+    <figure>
+      <img src="../public/img/physic-logo.jpg" alt="Light diffusion experiments while designing the DELO logo">
+      <figcaption>Light diffusion tests while designing the studio logo.</figcaption>
+    </figure>
 
-  <p>How is this possible? Easily, when you're sloppy with paperwork and bureaucracy and rely on verbal agreements instead of protecting yourself.</p>
+    <span class="year">2025</span>
+    <p>In 2025 I fired an employee. She wouldn't go; instead, she fired me — having hired lawyers who specialize in hostile corporate takeovers.</p>
 
-  <p>By the end of 2025, I had no business, no money, and personal debts — taken in my own name to fund the studio's cashflow.</p>
+    <p>How is this possible? Easily, when you're sloppy with paperwork and bureaucracy and rely on verbal agreements instead of protecting yourself.</p>
 
-  <h2>Where I am now.</h2>
+    <p>By the end of 2025, I had no business, no money, and personal debts — taken in my own name to fund the studio's cashflow.</p>
 
-  <p>I focused on the YouTube channel and was awarded Tech Nation Exceptional Talent in the UK. What had been a side project became my main work. Design Lovers is now at 3M views · 55K subscribers · 300K monthly audience.</p>
+    <h2>Where I am now.</h2>
 
-  <p>It's a channel about design as part of our lives — an important part of our shared human history and philosophy.</p>
+    <span class="year">Now</span>
+    <p>I focused on the YouTube channel and was awarded Tech Nation Exceptional Talent in the UK. What had been a side project became my main work. Design Lovers is now at 3M views · 55K subscribers · 300K monthly audience.</p>
 
-  <p class="signature">
-    Find me:<br>
-    <a href="mailto:hello@iliawerner.com">hello@iliawerner.com</a><br>
-    <a href="https://www.linkedin.com/in/ilia-werner/">LinkedIn</a> · <a href="https://www.youtube.com/@design_lovers">YouTube</a> · <a href="https://www.behance.net/ilia-kuznetsov">Behance</a><br>
-    <br>
-    DELO STUDIO LTD, UK.
-  </p>
+    <p>It's a channel about design as part of our lives — an important part of our shared human history and philosophy.</p>
 
-  <div class="notes">
+    <p class="signature">
+      Find me:<br>
+      <a href="mailto:hello@iliawerner.com">hello@iliawerner.com</a><br>
+      <a href="https://www.linkedin.com/in/ilia-werner/">LinkedIn</a> · <a href="https://www.youtube.com/@design_lovers">YouTube</a> · <a href="https://www.behance.net/ilia-kuznetsov">Behance</a>
+      <br><br>
+      DELO STUDIO LTD, UK.
+    </p>
 
-    <h3>What's in v3</h3>
-    <ul>
-      <li>Russian version removed. English assembled from your picks (1B, 2B, 3C minus instruments, 5B, 6B, 7C, 8C, 9B, 10A, 11C, 12A).</li>
-      <li>Headers picked to harmonize with "What got me here": <em>Where I'm from / What got me here / Where I am now</em> — all spatial, casual register, no drama.</li>
-      <li>Five photos placed: closeup at top, family selfie after the opening paragraph, boris with the cow story, ilia-2000 with the self-teaching paragraph, physic-logo in the DELO paragraph with caption.</li>
-    </ul>
-
-    <h3>To verify on read-through</h3>
-    <ul>
-      <li><strong>Photo density.</strong> 5 images per ~280 words is borderline dense. Each is tied to a beat. If it feels overcrowded on read, we drop ilia-2000 or family first.</li>
-      <li><strong>YouTube capitalization.</strong> Went with capital Y (standard brand). Lowercase "youtube" if you want to preserve the casual edge from the Russian draft.</li>
-      <li><strong>Tech Nation timing.</strong> Sentence reads as post-raid (logical from sequence). If you got it earlier in the timeline, "I focused on the channel and was awarded..." needs reshuffling.</li>
-      <li><strong>Year of raid as 2025.</strong> Doublecheck — we're writing in early 2026, and "by the end of 2025" reads as recent past. Correct?</li>
-    </ul>
-
-  </div>
+  </article>
 
 </body>
 </html>
