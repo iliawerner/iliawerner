@@ -35,6 +35,19 @@
       --dark-text: #f2efe9;
       --hairline: rgba(40, 30, 20, 0.15);
       --hairline-dashed: rgba(40, 30, 20, 0.25);
+
+      /* Spacing scale — 8-based, modular */
+      --s-1: 8px;
+      --s-2: 16px;
+      --s-3: 24px;
+      --s-4: 32px;
+      --s-5: 48px;
+      --s-6: 64px;
+      --s-7: 96px;
+      --s-8: 128px;
+
+      /* Page horizontal gutter */
+      --gutter: var(--s-6);
     }
 
     * { box-sizing: border-box; }
@@ -48,29 +61,30 @@
       background-attachment: fixed;
       color: var(--ink);
       font-family: 'IBM Plex Sans', -apple-system, BlinkMacSystemFont, sans-serif;
-      font-size: 17px;
+      font-size: 18px;
       line-height: 1.55;
       -webkit-font-smoothing: antialiased;
       -moz-osx-font-smoothing: grayscale;
     }
 
     .page {
-      max-width: 900px;
+      max-width: 920px;
       margin: 0 auto;
       position: relative;
     }
 
     /* ==== Hero placard ==== */
     .hero {
-      padding: 80px 60px 20px;
+      padding: var(--s-7) var(--gutter) var(--s-3);
     }
 
     .hi {
       font-family: 'Caveat', cursive;
       font-size: 32px;
+      line-height: 1;
       color: var(--ink);
       transform: rotate(-1.2deg);
-      margin-bottom: 16px;
+      margin-bottom: var(--s-1);
     }
 
     h1 {
@@ -80,12 +94,12 @@
       line-height: 0.95;
       letter-spacing: -0.03em;
       color: var(--ink);
-      margin: 0 0 24px;
+      margin: 0 0 var(--s-4);
     }
 
     .intro {
-      max-width: 520px;
-      font-size: 17px;
+      max-width: 540px;
+      font-size: 18px;
       line-height: 1.55;
       color: var(--ink);
       text-wrap: pretty;
@@ -96,20 +110,20 @@
 
     /* ==== Hero photos ==== */
     .hero-photos {
-      padding: 60px;
+      padding: var(--s-6) var(--gutter) var(--s-7);
       display: grid;
       grid-template-columns: 1fr 1fr;
-      gap: 40px;
+      gap: var(--s-5);
       align-items: start;
     }
 
-    .hero-photos .offset-down { padding-top: 60px; }
+    .hero-photos .offset-down { padding-top: var(--s-6); }
 
     /* ==== Section heading ==== */
     .section-heading {
-      padding: 120px 60px 96px;
+      padding: var(--s-7) var(--gutter) var(--s-6);
       border-top: 1px solid var(--hairline);
-      margin: 60px 0 0;
+      margin: var(--s-5) 0 0;
       font-family: 'IBM Plex Sans', sans-serif;
       font-weight: 600;
       font-size: 64px;
@@ -122,27 +136,29 @@
     .grid-2 {
       display: grid;
       grid-template-columns: 1fr 1fr;
-      gap: 36px;
-      padding: 0 60px;
+      gap: var(--s-5);
+      padding: 0 var(--gutter);
       align-items: start;
     }
     .grid-2 + .grid-2,
     .grid-2 + .ticket-wrap,
     .ticket-wrap + .grid-2,
-    .ticket-wrap + .ticket-wrap {
-      margin-top: 40px;
+    .ticket-wrap + .ticket-wrap,
+    .grid-2 + .grid-12,
+    .ticket-wrap + .grid-12 {
+      margin-top: var(--s-6);
     }
 
     .grid-12 {
       display: grid;
       grid-template-columns: 1.2fr 1fr;
-      gap: 36px;
-      padding: 0 60px;
+      gap: var(--s-5);
+      padding: 0 var(--gutter);
       align-items: start;
-      margin-top: 40px;
+      margin-top: var(--s-6);
     }
 
-    .ticket-wrap { padding: 0 60px; }
+    .ticket-wrap { padding: 0 var(--gutter); }
 
     /* ==== Photo ==== */
     .photo {
@@ -151,12 +167,12 @@
       margin: 0;
     }
 
-    .photo-wrap.stagger { padding-top: 18px; }
+    .photo-wrap.stagger { padding-top: var(--s-3); }
 
     .photo-card {
       position: relative;
       background: var(--photo-paper);
-      padding: 12px;
+      padding: 12px 12px 14px;
       box-shadow:
         0 1px 0 rgba(0,0,0,0.04),
         0 8px 22px rgba(40,30,20,0.12),
@@ -170,22 +186,22 @@
     }
 
     .photo-caption {
-      margin-top: 14px;
+      margin-top: var(--s-2);
       font-family: 'Caveat', cursive;
       font-size: 26px;
-      line-height: 1.2;
+      line-height: 1.25;
       color: var(--ink);
       transform: rotate(-0.4deg);
       padding: 0 4px;
     }
 
     .photo-divider {
-      margin: 12px 4px 8px;
+      margin: 14px 4px 10px;
       border-top: 1px dashed var(--hairline-dashed);
     }
 
     .photo-year {
-      padding: 0 4px 6px;
+      padding: 0 4px 4px;
       font-family: 'IBM Plex Mono', monospace;
       font-size: 11px;
       letter-spacing: 0.18em;
@@ -235,20 +251,20 @@
       font-size: 12px;
       line-height: 1.6;
       letter-spacing: 0.05em;
-      padding: 20px;
+      padding: var(--s-3);
     }
 
     /* ==== Ticket ==== */
     .ticket {
       background: var(--paper);
       border: 1px solid var(--hairline);
-      padding: 24px 28px;
+      padding: var(--s-4);
       position: relative;
       box-shadow: 0 1px 0 rgba(0,0,0,0.03);
       color: var(--ink);
     }
 
-    .ticket.narrow { padding: 32px 80px; }
+    .ticket.narrow { padding: var(--s-5) 80px; }
 
     .ticket.dark {
       background: var(--dark-bg);
@@ -269,7 +285,7 @@
     .ticket-year.red { color: var(--red); }
 
     .ticket-divider {
-      margin: 12px 0 22px;
+      margin: 14px 0 var(--s-3);
       border-top: 1px dashed var(--hairline-dashed);
     }
 
@@ -281,9 +297,9 @@
       font-family: 'IBM Plex Sans', sans-serif;
       font-weight: 600;
       font-size: 28px;
-      line-height: 1.2;
+      line-height: 1.25;
       letter-spacing: -0.015em;
-      margin: 0 0 18px;
+      margin: 0 0 var(--s-3);
       color: inherit;
     }
 
@@ -291,7 +307,7 @@
     .ticket.narrow .ticket-body { max-width: 620px; }
 
     .ticket-body {
-      font-size: 15px;
+      font-size: 16px;
       line-height: 1.7;
       color: inherit;
       text-wrap: pretty;
@@ -300,20 +316,20 @@
     .ticket.dark .ticket-body { color: rgba(242,239,233,0.85); }
 
     .ticket-body p {
-      margin: 0 0 1em;
+      margin: 0 0 1.05em;
     }
 
     .ticket-body p:last-child { margin-bottom: 0; }
 
     /* ==== Specimen counter ==== */
     .specimen {
-      margin: 40px 60px 0;
+      margin: var(--s-6) var(--gutter) 0;
       background: var(--paper);
       border: 1px solid var(--hairline);
-      padding: 28px 32px;
+      padding: var(--s-5);
       display: grid;
       grid-template-columns: repeat(3, 1fr);
-      gap: 24px;
+      gap: var(--s-4);
     }
 
     .stat-label {
@@ -322,35 +338,37 @@
       letter-spacing: 0.18em;
       text-transform: uppercase;
       color: var(--muted);
-      margin-bottom: 6px;
+      margin-bottom: var(--s-1);
     }
 
     .stat-value {
       font-family: 'IBM Plex Sans', sans-serif;
       font-weight: 600;
       font-size: 36px;
+      line-height: 1.05;
       color: var(--ink);
       letter-spacing: -0.02em;
     }
 
     /* ==== Contact ==== */
-    .contact { padding: 60px 60px 24px; }
+    .contact { padding: var(--s-7) var(--gutter) var(--s-3); }
 
     .contact-hi {
       font-family: 'Caveat', cursive;
       font-size: 28px;
+      line-height: 1;
       color: var(--ink);
       transform: rotate(-1deg);
-      margin-bottom: 14px;
+      margin-bottom: var(--s-2);
     }
 
     .contact-card {
       background: var(--paper);
       border: 1px solid var(--hairline);
-      padding: 24px 28px;
+      padding: var(--s-4);
       display: flex;
       flex-direction: column;
-      gap: 14px;
+      gap: var(--s-2);
     }
 
     .contact-row {
@@ -362,7 +380,7 @@
     .contact-row.elsewhere {
       display: flex;
       flex-wrap: wrap;
-      gap: 8px;
+      gap: var(--s-1);
       align-items: baseline;
     }
 
@@ -392,7 +410,7 @@
     .contact-row a:hover { text-decoration-color: var(--ink); }
 
     /* ==== Signature ==== */
-    .signature { padding: 32px 60px 60px; }
+    .signature { padding: var(--s-5) var(--gutter) var(--s-7); }
 
     .signature-text {
       font-family: 'Caveat', cursive;
@@ -404,54 +422,66 @@
 
     /* ==== Mobile ==== */
     @media (max-width: 720px) {
+      :root { --gutter: var(--s-3); }
+
       body { font-size: 16px; }
 
-      .hero { padding: 56px 24px 16px; }
+      .hero { padding: var(--s-6) var(--gutter) var(--s-3); }
       .hi { font-size: 26px; }
-      h1 { font-size: 52px; letter-spacing: -0.02em; }
+      h1 { font-size: 52px; letter-spacing: -0.02em; margin-bottom: var(--s-3); }
       .intro { font-size: 16px; max-width: none; }
 
       .hero-photos {
-        padding: 40px 24px;
+        padding: var(--s-5) var(--gutter) var(--s-6);
         grid-template-columns: 1fr;
-        gap: 36px;
+        gap: var(--s-5);
       }
       .hero-photos .offset-down { padding-top: 0; }
 
       .section-heading {
-        padding: 72px 24px 48px;
+        padding: var(--s-6) var(--gutter) var(--s-5);
+        margin-top: var(--s-4);
         font-size: 36px;
-        margin-top: 32px;
       }
 
       .grid-2,
       .grid-12 {
         grid-template-columns: 1fr;
-        padding: 0 24px;
-        gap: 28px;
+        padding: 0 var(--gutter);
+        gap: var(--s-4);
       }
 
-      .ticket-wrap { padding: 0 24px; }
+      .grid-2 + .grid-2,
+      .grid-2 + .ticket-wrap,
+      .ticket-wrap + .grid-2,
+      .ticket-wrap + .ticket-wrap,
+      .grid-2 + .grid-12,
+      .ticket-wrap + .grid-12,
+      .grid-12 {
+        margin-top: var(--s-4);
+      }
 
-      .ticket { padding: 20px 22px; }
-      .ticket.narrow { padding: 24px 26px; }
+      .ticket-wrap { padding: 0 var(--gutter); }
 
-      .ticket-title { font-size: 22px; }
+      .ticket { padding: var(--s-3); }
+      .ticket.narrow { padding: var(--s-4); }
+
+      .ticket-title { font-size: 22px; margin-bottom: var(--s-2); }
 
       .ticket.narrow .ticket-title,
       .ticket.narrow .ticket-body { max-width: none; }
 
       .specimen {
-        margin: 28px 24px 0;
-        padding: 22px 24px;
+        margin: var(--s-5) var(--gutter) 0;
+        padding: var(--s-4) var(--s-3);
         grid-template-columns: 1fr;
-        gap: 16px;
+        gap: var(--s-3);
       }
 
       .stat-value { font-size: 28px; }
 
-      .contact { padding: 44px 24px 16px; }
-      .signature { padding: 24px 24px 56px; }
+      .contact { padding: var(--s-6) var(--gutter) var(--s-3); }
+      .signature { padding: var(--s-4) var(--gutter) var(--s-6); }
 
       .photo-wrap.stagger { padding-top: 0; }
       .photo-caption { font-size: 22px; }
@@ -465,7 +495,7 @@
 
     @media (max-width: 480px) {
       h1 { font-size: 40px; }
-      .section-heading { font-size: 30px; padding: 56px 24px 36px; }
+      .section-heading { font-size: 30px; padding: var(--s-5) var(--gutter) var(--s-4); }
       .ticket-title { font-size: 20px; }
     }
   </style>
