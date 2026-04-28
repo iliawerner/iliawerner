@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Ilia Werner</title>
   <meta name="description" content="Ilia Werner — designer, creator of Design Lovers, a YouTube channel about design.">
-  <meta name="theme-color" content="#0E0E0C">
+  <meta name="theme-color" content="#ebe7df">
 
   <link rel="icon" type="image/svg+xml" href="/favicon.svg">
 
@@ -20,233 +20,718 @@
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,400&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
 
   <style>
     :root {
-      --bg: #0E0E0C;
-      --text: #E8E2D3;
-      --text-bright: #F5F0E5;
-      --text-soft: #BDB4A0;
-      --text-muted: #8A8275;
+      --wall: #ebe7df;
+      --paper: #fdfbf4;
+      --photo-paper: #fafaf6;
+      --ink: #252220;
+      --muted: #7a716a;
+      --tape: rgba(220, 200, 140, 0.55);
+      --red: #b8351f;
+      --dark-bg: #1a1714;
+      --dark-text: #f2efe9;
+      --hairline: rgba(40, 30, 20, 0.15);
+      --hairline-dashed: rgba(40, 30, 20, 0.25);
     }
 
     * { box-sizing: border-box; }
-
-    html, body {
-      margin: 0;
-      padding: 0;
-    }
+    html, body { margin: 0; padding: 0; }
 
     body {
-      background: var(--bg);
-      color: var(--text);
-      font-family: 'Newsreader', Georgia, serif;
-      font-size: 19px;
-      line-height: 1.65;
-      font-weight: 400;
+      background: var(--wall);
+      background-image:
+        radial-gradient(ellipse at 20% 10%, rgba(255,255,255,0.5), transparent 60%),
+        radial-gradient(ellipse at 80% 90%, rgba(120,100,80,0.06), transparent 60%);
+      background-attachment: fixed;
+      color: var(--ink);
+      font-family: 'IBM Plex Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+      font-size: 17px;
+      line-height: 1.55;
       -webkit-font-smoothing: antialiased;
       -moz-osx-font-smoothing: grayscale;
     }
 
     .page {
-      display: grid;
-      grid-template-columns: 100px 1fr;
-      column-gap: 2.5rem;
-      max-width: 780px;
-      margin: 5rem auto 7rem;
-      padding: 0 1.5rem;
+      max-width: 900px;
+      margin: 0 auto;
+      position: relative;
     }
 
-    .page > * {
-      grid-column: 2;
-      margin: 0 0 1.25rem;
+    /* ==== Hero placard ==== */
+    .hero {
+      padding: 80px 60px 20px;
     }
 
-    .pretitle {
-      font-family: 'Inter', sans-serif;
-      font-size: 0.85rem;
-      color: var(--text-muted);
-      margin: 0 0 0.5rem;
-      letter-spacing: 0.02em;
-      font-weight: 400;
+    .hi {
+      font-family: 'Caveat', cursive;
+      font-size: 32px;
+      color: var(--ink);
+      transform: rotate(-1.2deg);
+      margin-bottom: 16px;
     }
 
     h1 {
-      font-family: 'Newsreader', serif;
-      font-weight: 500;
-      font-size: 3rem;
-      color: var(--text-bright);
-      margin: 0 0 1.5rem;
-      letter-spacing: -0.015em;
-      line-height: 1.1;
+      font-family: 'IBM Plex Sans', sans-serif;
+      font-weight: 600;
+      font-size: 84px;
+      line-height: 0.95;
+      letter-spacing: -0.03em;
+      color: var(--ink);
+      margin: 0 0 24px;
     }
 
-    h2 {
-      font-family: 'Newsreader', serif;
-      font-style: italic;
-      font-weight: 400;
-      font-size: 1.4rem;
-      color: var(--text-soft);
-      margin: 3.25rem 0 1rem;
-      letter-spacing: -0.005em;
+    .intro {
+      max-width: 520px;
+      font-size: 17px;
+      line-height: 1.55;
+      color: var(--ink);
+      text-wrap: pretty;
+      margin: 0;
     }
 
-    p {
-      margin: 0 0 1.25rem;
+    .intro strong { font-weight: 600; }
+
+    /* ==== Hero photos ==== */
+    .hero-photos {
+      padding: 60px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 40px;
+      align-items: start;
     }
 
-    figure {
-      margin: 2rem 0;
+    .hero-photos .offset-down { padding-top: 60px; }
+
+    /* ==== Section heading ==== */
+    .section-heading {
+      padding: 120px 60px 96px;
+      border-top: 1px solid var(--hairline);
+      margin: 60px 0 0;
+      font-family: 'IBM Plex Sans', sans-serif;
+      font-weight: 600;
+      font-size: 64px;
+      letter-spacing: -0.025em;
+      line-height: 1.05;
+      color: var(--ink);
     }
 
-    figure img {
+    /* ==== Layout grids ==== */
+    .grid-2 {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 36px;
+      padding: 0 60px;
+      align-items: start;
+    }
+    .grid-2 + .grid-2,
+    .grid-2 + .ticket-wrap,
+    .ticket-wrap + .grid-2,
+    .ticket-wrap + .ticket-wrap {
+      margin-top: 40px;
+    }
+
+    .grid-12 {
+      display: grid;
+      grid-template-columns: 1.2fr 1fr;
+      gap: 36px;
+      padding: 0 60px;
+      align-items: start;
+      margin-top: 40px;
+    }
+
+    .ticket-wrap { padding: 0 60px; }
+
+    /* ==== Photo ==== */
+    .photo {
+      position: relative;
       display: block;
+      margin: 0;
+    }
+
+    .photo-wrap.stagger { padding-top: 18px; }
+
+    .photo-card {
+      position: relative;
+      background: var(--photo-paper);
+      padding: 12px;
+      box-shadow:
+        0 1px 0 rgba(0,0,0,0.04),
+        0 8px 22px rgba(40,30,20,0.12),
+        0 24px 50px rgba(40,30,20,0.08);
+    }
+
+    .photo-card img {
       width: 100%;
-      height: auto;
+      display: block;
+      filter: contrast(1.02) saturate(0.95);
     }
 
-    figcaption {
-      font-family: 'Inter', sans-serif;
-      font-size: 0.85rem;
-      color: var(--text-muted);
-      margin-top: 0.7rem;
-      letter-spacing: 0.01em;
-      line-height: 1.5;
+    .photo-caption {
+      margin-top: 14px;
+      font-family: 'Caveat', cursive;
+      font-size: 26px;
+      line-height: 1.2;
+      color: var(--ink);
+      transform: rotate(-0.4deg);
+      padding: 0 4px;
     }
 
-    .year {
-      grid-column: 1;
-      text-align: right;
-      font-family: 'Inter', sans-serif;
-      font-size: 0.78rem;
-      color: var(--text-muted);
-      padding-top: 0.6rem;
-      letter-spacing: 0.06em;
-      font-weight: 500;
-      margin: 0 0 1.25rem;
+    .photo-divider {
+      margin: 12px 4px 8px;
+      border-top: 1px dashed var(--hairline-dashed);
     }
 
-    a {
-      color: var(--text);
+    .photo-year {
+      padding: 0 4px 6px;
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 11px;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+
+    /* Tape */
+    .tape {
+      position: absolute;
+      top: -10px;
+      left: 50%;
+      transform: translateX(-50%) rotate(var(--tape-rot, -4deg));
+      width: 120px;
+      height: 22px;
+      background: var(--tape);
+      background-image: repeating-linear-gradient(
+        90deg,
+        rgba(255,255,255,0.18) 0 6px,
+        transparent 6px 12px
+      );
+      box-shadow: 0 1px 2px rgba(0,0,0,0.06);
+      pointer-events: none;
+      z-index: 1;
+    }
+
+    /* Rotations */
+    .rot-neg-12 { transform: rotate(-1.2deg); }
+    .rot-neg-16 { transform: rotate(-1.6deg); }
+    .rot-neg-22 { transform: rotate(-2.2deg); }
+    .rot-neg-24 { transform: rotate(-2.4deg); }
+    .rot-pos-18 { transform: rotate(1.8deg); }
+    .rot-pos-24 { transform: rotate(2.4deg); }
+    .rot-pos-28 { transform: rotate(2.8deg); }
+
+    /* Placeholder for missing screenshots */
+    .placeholder-img {
+      background: #f4ede0;
+      border: 1px dashed var(--hairline-dashed);
+      aspect-ratio: 16 / 10;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      color: var(--muted);
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 12px;
+      line-height: 1.6;
+      letter-spacing: 0.05em;
+      padding: 20px;
+    }
+
+    /* ==== Ticket ==== */
+    .ticket {
+      background: var(--paper);
+      border: 1px solid var(--hairline);
+      padding: 24px 28px;
+      position: relative;
+      box-shadow: 0 1px 0 rgba(0,0,0,0.03);
+      color: var(--ink);
+    }
+
+    .ticket.narrow { padding: 32px 80px; }
+
+    .ticket.dark {
+      background: var(--dark-bg);
+      border-color: rgba(242,239,233,0.18);
+      color: var(--dark-text);
+    }
+
+    .ticket-year {
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 11px;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+
+    .ticket.dark .ticket-year { color: rgba(242,239,233,0.65); }
+
+    .ticket-year.red { color: var(--red); }
+
+    .ticket-divider {
+      margin: 12px 0 22px;
+      border-top: 1px dashed var(--hairline-dashed);
+    }
+
+    .ticket.dark .ticket-divider {
+      border-top-color: rgba(242,239,233,0.3);
+    }
+
+    .ticket-title {
+      font-family: 'IBM Plex Sans', sans-serif;
+      font-weight: 600;
+      font-size: 28px;
+      line-height: 1.2;
+      letter-spacing: -0.015em;
+      margin: 0 0 18px;
+      color: inherit;
+    }
+
+    .ticket.narrow .ticket-title,
+    .ticket.narrow .ticket-body { max-width: 620px; }
+
+    .ticket-body {
+      font-size: 15px;
+      line-height: 1.7;
+      color: inherit;
+      text-wrap: pretty;
+    }
+
+    .ticket.dark .ticket-body { color: rgba(242,239,233,0.85); }
+
+    .ticket-body p {
+      margin: 0 0 1em;
+    }
+
+    .ticket-body p:last-child { margin-bottom: 0; }
+
+    /* ==== Specimen counter ==== */
+    .specimen {
+      margin: 40px 60px 0;
+      background: var(--paper);
+      border: 1px solid var(--hairline);
+      padding: 28px 32px;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+    }
+
+    .stat-label {
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 11px;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 6px;
+    }
+
+    .stat-value {
+      font-family: 'IBM Plex Sans', sans-serif;
+      font-weight: 600;
+      font-size: 36px;
+      color: var(--ink);
+      letter-spacing: -0.02em;
+    }
+
+    /* ==== Contact ==== */
+    .contact { padding: 60px 60px 24px; }
+
+    .contact-hi {
+      font-family: 'Caveat', cursive;
+      font-size: 28px;
+      color: var(--ink);
+      transform: rotate(-1deg);
+      margin-bottom: 14px;
+    }
+
+    .contact-card {
+      background: var(--paper);
+      border: 1px solid var(--hairline);
+      padding: 24px 28px;
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+
+    .contact-row {
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 14px;
+      color: var(--ink);
+    }
+
+    .contact-row.elsewhere {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      align-items: baseline;
+    }
+
+    .contact-row .meta {
+      color: var(--muted);
+      margin-right: 12px;
+    }
+
+    .contact-row.elsewhere .meta { margin-right: 4px; }
+
+    .contact-row .dot { color: var(--muted); }
+
+    .contact-card hr {
+      height: 1px;
+      border: 0;
+      background: rgba(40,30,20,0.12);
+      margin: 0;
+    }
+
+    .contact-row a {
+      color: var(--ink);
       text-decoration: underline;
-      text-decoration-color: var(--text-muted);
-      text-underline-offset: 3px;
-      transition: text-decoration-color 0.2s ease;
+      text-decoration-color: var(--muted);
+      text-underline-offset: 2px;
     }
 
-    a:hover {
-      text-decoration-color: var(--text);
+    .contact-row a:hover { text-decoration-color: var(--ink); }
+
+    /* ==== Signature ==== */
+    .signature { padding: 32px 60px 60px; }
+
+    .signature-text {
+      font-family: 'Caveat', cursive;
+      font-size: 24px;
+      color: var(--ink);
+      transform: rotate(-0.6deg);
+      line-height: 1.4;
     }
 
-    .signature {
-      margin-top: 4.5rem;
-      font-family: 'Inter', sans-serif;
-      font-size: 0.92rem;
-      color: var(--text-soft);
-      line-height: 1.75;
-    }
-
-    .signature a {
-      color: var(--text);
-    }
-
+    /* ==== Mobile ==== */
     @media (max-width: 720px) {
-      .page {
+      body { font-size: 16px; }
+
+      .hero { padding: 56px 24px 16px; }
+      .hi { font-size: 26px; }
+      h1 { font-size: 52px; letter-spacing: -0.02em; }
+      .intro { font-size: 16px; max-width: none; }
+
+      .hero-photos {
+        padding: 40px 24px;
         grid-template-columns: 1fr;
-        column-gap: 0;
-        margin: 3rem auto 4.5rem;
-        max-width: 600px;
+        gap: 36px;
+      }
+      .hero-photos .offset-down { padding-top: 0; }
+
+      .section-heading {
+        padding: 72px 24px 48px;
+        font-size: 36px;
+        margin-top: 32px;
       }
 
-      .page > .year {
-        grid-column: 1;
-        text-align: left;
-        margin: 1.75rem 0 0.5rem;
-        padding-top: 0;
+      .grid-2,
+      .grid-12 {
+        grid-template-columns: 1fr;
+        padding: 0 24px;
+        gap: 28px;
       }
 
-      h1 {
-        font-size: 2.4rem;
+      .ticket-wrap { padding: 0 24px; }
+
+      .ticket { padding: 20px 22px; }
+      .ticket.narrow { padding: 24px 26px; }
+
+      .ticket-title { font-size: 22px; }
+
+      .ticket.narrow .ticket-title,
+      .ticket.narrow .ticket-body { max-width: none; }
+
+      .specimen {
+        margin: 28px 24px 0;
+        padding: 22px 24px;
+        grid-template-columns: 1fr;
+        gap: 16px;
       }
 
-      h2 {
-        font-size: 1.25rem;
-        margin: 2.5rem 0 0.85rem;
-      }
+      .stat-value { font-size: 28px; }
 
-      body {
-        font-size: 18px;
-      }
+      .contact { padding: 44px 24px 16px; }
+      .signature { padding: 24px 24px 56px; }
+
+      .photo-wrap.stagger { padding-top: 0; }
+      .photo-caption { font-size: 22px; }
+
+      /* Tone down rotations on mobile */
+      .rot-neg-22, .rot-neg-24 { transform: rotate(-1deg); }
+      .rot-pos-24, .rot-pos-28 { transform: rotate(1deg); }
+      .rot-pos-18 { transform: rotate(1deg); }
+      .rot-neg-16 { transform: rotate(-1deg); }
+    }
+
+    @media (max-width: 480px) {
+      h1 { font-size: 40px; }
+      .section-heading { font-size: 30px; padding: 56px 24px 36px; }
+      .ticket-title { font-size: 20px; }
     }
   </style>
 </head>
 <body>
 
-  <article class="page">
+  <main class="page">
 
-    <p class="pretitle">hi — I'm</p>
-    <h1>Ilia Werner</h1>
+    <!-- Hero placard -->
+    <section class="hero">
+      <div class="hi">hi —</div>
+      <h1>I'm Ilia Werner.</h1>
+      <p class="intro">I've been a designer for over 20 years. My main project is <strong>Design Lovers</strong>, a YouTube channel about design. Very much a family guy. I love my wife, son, and dog.</p>
+    </section>
 
-    <figure>
-      <img src="/img/ilia-closeup.jpg" alt="Portrait of Ilia Werner">
-    </figure>
+    <!-- Hero photos -->
+    <div class="hero-photos">
+      <figure class="photo rot-neg-24">
+        <div class="photo-card">
+          <span class="tape" style="--tape-rot: 4deg;"></span>
+          <img src="/img/ilia-closeup.jpg" alt="Ilia in front of camera">
+          <div class="photo-caption">2026, Video Recordings</div>
+        </div>
+      </figure>
+      <figure class="photo rot-pos-28 offset-down">
+        <div class="photo-card">
+          <span class="tape" style="--tape-rot: -4deg;"></span>
+          <img src="/img/family.jpg" alt="With my wife, son, and dog">
+          <div class="photo-caption">2026, Family</div>
+        </div>
+      </figure>
+    </div>
 
-    <p>I've been a designer for over 20 years. My main project is Design Lovers, a YouTube channel about design. Very much a family guy. I love my wife, son, and dog.</p>
+    <!-- Where I'm from -->
+    <h2 class="section-heading">Where I'm from.</h2>
 
-    <figure>
-      <img src="/img/family.jpg" alt="With my wife, son, and dog">
-    </figure>
+    <div class="grid-2">
+      <div class="ticket">
+        <div class="ticket-year">1996</div>
+        <div class="ticket-divider"></div>
+        <h3 class="ticket-title">A computer, paid for in cattle.</h3>
+        <div class="ticket-body">
+          <p>My maternal grandparents sold a cow in the mid-90s to help my father, then a young scientist, buy a computer. He taught me the basics of object-oriented programming. Hardly anyone was online back then.</p>
+        </div>
+      </div>
+      <div class="photo-wrap stagger">
+        <figure class="photo rot-pos-18">
+          <div class="photo-card">
+            <span class="tape" style="--tape-rot: -4deg;"></span>
+            <img src="/img/boris.jpg" alt="My father in the lab" loading="lazy">
+            <div class="photo-caption">dad, in the lab</div>
+            <div class="photo-divider"></div>
+            <div class="photo-year">1984</div>
+          </div>
+        </figure>
+      </div>
+    </div>
 
-    <h2>Where I'm from.</h2>
+    <div class="grid-2">
+      <div class="photo-wrap stagger">
+        <figure class="photo rot-neg-22">
+          <div class="photo-card">
+            <span class="tape" style="--tape-rot: 4deg;"></span>
+            <img src="/img/ilia-2000.jpg" alt="Me at the computer, c. 2000" loading="lazy">
+            <div class="photo-caption">me, at the computer ~</div>
+            <div class="photo-divider"></div>
+            <div class="photo-year">c. 2000</div>
+          </div>
+        </figure>
+      </div>
+      <div class="ticket">
+        <div class="ticket-year">2005</div>
+        <div class="ticket-divider"></div>
+        <h3 class="ticket-title">CSS, HTML, Photoshop, Dreamweaver.</h3>
+        <div class="ticket-body">
+          <p>I taught myself the tools — one tag, one layer, one slice at a time — and went freelance. My first paid work came around 2005. Designing websites still felt like a strange niche.</p>
+        </div>
+      </div>
+    </div>
 
-    <span class="year">Mid-90s</span>
-    <p>I started out in Angarsk, a small town deep in Siberia. My maternal grandparents sold a cow in the mid-90s to help my father, then a young scientist, buy a computer. My dad taught me the basics of object-oriented programming. Hardly anyone was online back then, and websites, let alone designing them, felt like a strange niche.</p>
+    <div class="ticket-wrap">
+      <div class="ticket narrow">
+        <div class="ticket-year">2005 — 2019</div>
+        <div class="ticket-divider"></div>
+        <h3 class="ticket-title">Fourteen years freelance.</h3>
+        <div class="ticket-body">
+          <p>I started small, working with local clients in my home town. Over time the work grew — first regional, then federal.</p>
+          <p>By the end of that stretch I was embedded with leaders in fintech, running projects for major federal companies, and consulting design teams at places like Yandex and Avito. Fourteen years of learning the trade without anyone above me — and slowly, learning how to lead.</p>
+        </div>
+      </div>
+    </div>
 
-    <figure>
-      <img src="/img/boris.jpg" alt="My father in his lab">
-    </figure>
+    <!-- What got me here -->
+    <h2 class="section-heading">What got me here.</h2>
 
-    <span class="year">2005</span>
-    <p>But I loved it. I taught myself CSS, HTML, Photoshop, and a little later Macromedia Dreamweaver. I went freelance, and my first paid work came around 2005.</p>
+    <div class="grid-2">
+      <div class="ticket">
+        <div class="ticket-year">2019</div>
+        <div class="ticket-divider"></div>
+        <h3 class="ticket-title">Founding DELO.</h3>
+        <div class="ticket-body">
+          <p>In 2019 I founded my design studio, DELO. DELO is short for DEsign LOvers. I poured years into building it.</p>
+        </div>
+      </div>
+      <div class="photo-wrap stagger">
+        <figure class="photo rot-pos-24">
+          <div class="photo-card">
+            <span class="tape" style="--tape-rot: -4deg;"></span>
+            <img src="/img/physic-logo.jpg" alt="Light diffusion experiments while designing the DELO logo" loading="lazy">
+            <div class="photo-caption">Light diffusion tests while designing the studio logo.</div>
+            <div class="photo-divider"></div>
+            <div class="photo-year">2019</div>
+          </div>
+        </figure>
+      </div>
+    </div>
 
-    <figure>
-      <img src="/img/ilia-2000.jpg" alt="Me at the computer, 2000">
-    </figure>
+    <div class="grid-2">
+      <div class="photo-wrap stagger">
+        <figure class="photo rot-neg-16">
+          <div class="photo-card">
+            <span class="tape" style="--tape-rot: 4deg;"></span>
+            <img src="/img/delo.jpg" alt="The DELO studio site, in its prime" loading="lazy">
+            <div class="photo-caption">the studio site, in its prime</div>
+            <div class="photo-divider"></div>
+            <div class="photo-year">2022</div>
+          </div>
+        </figure>
+      </div>
+      <div class="ticket">
+        <div class="ticket-year">2019 — 2022</div>
+        <div class="ticket-divider"></div>
+        <h3 class="ticket-title">Two friends to a team of eight.</h3>
+        <div class="ticket-body">
+          <p>In three years we grew from two friends with laptops into a professional team of eight. We started working with international clients. We even managed to set a couple of trends in the field along the way.</p>
+        </div>
+      </div>
+    </div>
 
-    <h2>What got me here.</h2>
+    <div class="ticket-wrap">
+      <div class="ticket narrow">
+        <div class="ticket-year">2022 — 2025</div>
+        <div class="ticket-divider"></div>
+        <h3 class="ticket-title">It worked.</h3>
+        <div class="ticket-body">
+          <p>I made friends with leaders in the industry. I went on podcasts as a guest. I ran special projects as a guest lecturer at universities and design colleges.</p>
+          <p>I picked up a few awards. The studio had a voice.</p>
+        </div>
+      </div>
+    </div>
 
-    <span class="year">2019</span>
-    <p>In 2019 I founded my design studio, DELO. DELO is short for DEsign LOvers. I poured years into building it.</p>
+    <div class="ticket-wrap">
+      <div class="ticket narrow dark">
+        <div class="ticket-year red">2025</div>
+        <div class="ticket-divider"></div>
+        <h3 class="ticket-title">I fired an employee. She wouldn't go.</h3>
+        <div class="ticket-body">
+          <p>Instead, she fired me — having hired lawyers who specialize in hostile corporate takeovers.</p>
+          <p>How is this possible? Easily, when you're sloppy with paperwork and bureaucracy and rely on verbal agreements instead of protecting yourself.</p>
+          <p>By the end of 2025, I had no business, no money, and personal debts — taken in my own name to fund the studio's cashflow.</p>
+        </div>
+      </div>
+    </div>
 
-    <figure>
-      <img src="/img/physic-logo.jpg" alt="Light diffusion experiments while designing the DELO logo">
-      <figcaption>Light diffusion tests while designing the studio logo.</figcaption>
-    </figure>
+    <div class="ticket-wrap">
+      <div class="ticket narrow">
+        <div class="ticket-year">2026</div>
+        <div class="ticket-divider"></div>
+        <h3 class="ticket-title">The studio still runs.</h3>
+        <div class="ticket-body">
+          <p>It still runs under the name I invented and the brand I built. But of the team that made it, only the junior specialists remain. None of the founders, none of the authors of the names and concepts — for the studio or for any client work — are still there.</p>
+        </div>
+      </div>
+    </div>
 
-    <span class="year">2025</span>
-    <p>In 2025 I fired an employee. She wouldn't go; instead, she fired me — having hired lawyers who specialize in hostile corporate takeovers.</p>
+    <!-- Where I am now -->
+    <h2 class="section-heading">Where I am now.</h2>
 
-    <p>How is this possible? Easily, when you're sloppy with paperwork and bureaucracy and rely on verbal agreements instead of protecting yourself.</p>
+    <div class="grid-2">
+      <div class="ticket">
+        <div class="ticket-year">2025</div>
+        <div class="ticket-divider"></div>
+        <h3 class="ticket-title">The side project became the work.</h3>
+        <div class="ticket-body">
+          <p>When the studio was taken from me, the YouTube channel existed only as a side project. In the year since, it has grown by 51,000 subscribers, and total views climbed from 10,000 to 3,000,000. I focused on it. I was awarded Tech Nation Exceptional Talent in the UK. Design Lovers is now a channel about design as part of our shared human history and philosophy.</p>
+        </div>
+      </div>
+      <div class="photo-wrap stagger">
+        <figure class="photo rot-pos-18">
+          <div class="photo-card">
+            <span class="tape" style="--tape-rot: -4deg;"></span>
+            <img src="/img/youtube.jpg" alt="Top 8 videos on Design Lovers" loading="lazy">
+            <div class="photo-caption">top-8 videos</div>
+            <div class="photo-divider"></div>
+            <div class="photo-year">2026</div>
+          </div>
+        </figure>
+      </div>
+    </div>
 
-    <p>By the end of 2025, I had no business, no money, and personal debts — taken in my own name to fund the studio's cashflow.</p>
+    <div class="grid-12">
+      <div class="ticket">
+        <div class="ticket-year">Results</div>
+        <div class="ticket-divider"></div>
+        <h3 class="ticket-title">A channel, a media.</h3>
+        <div class="ticket-body">
+          <p>In less than a year the channel turned into a small media. Publications cite it. Big companies — Meta, Ugreen, Ecovacs — reach out about sponsorships, and small startups ask for consulting.</p>
+          <p>In the comments: senior designers from Apple and Mini, and authors of books that matter to designers — Harry Beringer, Brad Frost. Each of them, leaving a note.</p>
+        </div>
+      </div>
+      <div class="photo-wrap stagger">
+        <figure class="photo rot-neg-22">
+          <div class="photo-card">
+            <span class="tape" style="--tape-rot: 4deg;"></span>
+            <img src="/img/video-shot.jpg" alt="Behind the scenes of recording" loading="lazy">
+            <div class="photo-caption">behind the scenes —</div>
+            <div class="photo-divider"></div>
+            <div class="photo-year">2026</div>
+          </div>
+        </figure>
+      </div>
+    </div>
 
-    <h2>Where I am now.</h2>
+    <!-- Specimen counter -->
+    <section class="specimen">
+      <div class="stat">
+        <div class="stat-label">views · cumulative</div>
+        <div class="stat-value">3,000,000</div>
+      </div>
+      <div class="stat">
+        <div class="stat-label">subscribers</div>
+        <div class="stat-value">55,000</div>
+      </div>
+      <div class="stat">
+        <div class="stat-label">monthly audience</div>
+        <div class="stat-value">300,000</div>
+      </div>
+    </section>
 
-    <span class="year">Now</span>
-    <p>I focused on the YouTube channel and was awarded Tech Nation Exceptional Talent in the UK. What had been a side project became my main work. Design Lovers is now at 3M views · 55K subscribers · 300K monthly audience.</p>
+    <!-- Contact -->
+    <section class="contact">
+      <div class="contact-hi">find me, would you —</div>
+      <div class="contact-card">
+        <div class="contact-row">
+          <span class="meta">EMAIL</span>
+          <a href="mailto:hello@iliawerner.com">hello@iliawerner.com</a>
+        </div>
+        <hr>
+        <div class="contact-row elsewhere">
+          <span class="meta">ELSEWHERE</span>
+          <a href="https://www.linkedin.com/in/ilia-werner/">LinkedIn</a><span class="dot">·</span>
+          <a href="https://www.youtube.com/@design_lovers">YouTube</a><span class="dot">·</span>
+          <a href="https://www.behance.net/ilia-kuznetsov">Behance</a>
+        </div>
+      </div>
+    </section>
 
-    <p>It's a channel about design as part of our lives — an important part of our shared human history and philosophy.</p>
+    <!-- Signature -->
+    <footer class="signature">
+      <div class="signature-text">
+        With love,<br>
+        Ilia · UK · 2026
+      </div>
+    </footer>
 
-    <p class="signature">
-      Find me:<br>
-      <a href="mailto:hello@iliawerner.com">hello@iliawerner.com</a><br>
-      <a href="https://www.linkedin.com/in/ilia-werner/">LinkedIn</a> · <a href="https://www.youtube.com/@design_lovers">YouTube</a> · <a href="https://www.behance.net/ilia-kuznetsov">Behance</a>
-      <br><br>
-      DELO STUDIO LTD, UK.
-    </p>
-
-  </article>
+  </main>
 
 </body>
 </html>
