@@ -258,13 +258,13 @@
     .ticket {
       background: var(--paper);
       border: 1px solid var(--hairline);
-      padding: var(--s-4);
+      padding: var(--s-4) var(--s-4) var(--s-6);
       position: relative;
       box-shadow: 0 1px 0 rgba(0,0,0,0.03);
       color: var(--ink);
     }
 
-    .ticket.narrow { padding: var(--s-5) 80px; }
+    .ticket.narrow { padding: var(--s-5) 80px var(--s-7); }
 
     .ticket.dark {
       background: var(--dark-bg);
@@ -326,11 +326,13 @@
       margin: var(--s-6) var(--gutter) 0;
       background: var(--paper);
       border: 1px solid var(--hairline);
-      padding: var(--s-5);
+      padding: var(--s-5) var(--s-5) var(--s-7);
       display: grid;
       grid-template-columns: repeat(3, 1fr);
       gap: var(--s-4);
     }
+
+    .stat { text-align: center; }
 
     .stat-label {
       font-family: 'IBM Plex Mono', monospace;
@@ -365,33 +367,34 @@
     .contact-card {
       background: var(--paper);
       border: 1px solid var(--hairline);
-      padding: var(--s-4);
+      padding: var(--s-4) var(--s-4) var(--s-6);
       display: flex;
       flex-direction: column;
       gap: var(--s-2);
     }
 
     .contact-row {
+      display: flex;
+      align-items: baseline;
+      gap: var(--s-2);
       font-family: 'IBM Plex Mono', monospace;
       font-size: 14px;
       color: var(--ink);
     }
 
-    .contact-row.elsewhere {
-      display: flex;
-      flex-wrap: wrap;
-      gap: var(--s-1);
-      align-items: baseline;
-    }
-
     .contact-row .meta {
+      flex: 0 0 100px;
       color: var(--muted);
-      margin-right: 12px;
     }
 
-    .contact-row.elsewhere .meta { margin-right: 4px; }
+    .contact-row.elsewhere .links {
+      display: inline;
+    }
 
-    .contact-row .dot { color: var(--muted); }
+    .contact-row .dot {
+      color: var(--muted);
+      margin: 0 6px;
+    }
 
     .contact-card hr {
       height: 1px;
@@ -410,14 +413,17 @@
     .contact-row a:hover { text-decoration-color: var(--ink); }
 
     /* ==== Signature ==== */
-    .signature { padding: var(--s-5) var(--gutter) var(--s-7); }
+    .signature {
+      padding: var(--s-7) var(--gutter) var(--s-7);
+      text-align: center;
+    }
 
     .signature-text {
       font-family: 'Caveat', cursive;
-      font-size: 24px;
+      font-size: 40px;
       color: var(--ink);
-      transform: rotate(-0.6deg);
-      line-height: 1.4;
+      line-height: 1.3;
+      display: inline-block;
     }
 
     /* ==== Mobile ==== */
@@ -463,8 +469,8 @@
 
       .ticket-wrap { padding: 0 var(--gutter); }
 
-      .ticket { padding: var(--s-3); }
-      .ticket.narrow { padding: var(--s-4); }
+      .ticket { padding: var(--s-3) var(--s-3) var(--s-5); }
+      .ticket.narrow { padding: var(--s-4) var(--s-4) var(--s-6); }
 
       .ticket-title { font-size: 22px; margin-bottom: var(--s-2); }
 
@@ -473,7 +479,7 @@
 
       .specimen {
         margin: var(--s-5) var(--gutter) 0;
-        padding: var(--s-4) var(--s-3);
+        padding: var(--s-4) var(--s-3) var(--s-6);
         grid-template-columns: 1fr;
         gap: var(--s-3);
       }
@@ -481,7 +487,9 @@
       .stat-value { font-size: 28px; }
 
       .contact { padding: var(--s-6) var(--gutter) var(--s-3); }
-      .signature { padding: var(--s-4) var(--gutter) var(--s-6); }
+      .signature { padding: var(--s-6) var(--gutter) var(--s-6); }
+      .signature-text { font-size: 32px; }
+      .contact-row .meta { flex: 0 0 80px; }
 
       .photo-wrap.stagger { padding-top: 0; }
       .photo-caption { font-size: 22px; }
@@ -697,15 +705,6 @@
     </div>
 
     <div class="grid-12">
-      <div class="ticket">
-        <div class="ticket-year">2026</div>
-        <div class="ticket-divider"></div>
-        <h3 class="ticket-title">A channel, a media.</h3>
-        <div class="ticket-body">
-          <p>In less than a year the channel turned into a small media. Publications cite it. Big companies — Meta, Ugreen, Ecovacs — reach out about sponsorships, and small startups ask for consulting.</p>
-          <p>In the comments: senior designers from Apple and Mini, and authors of books that matter to designers — Harry Brignull, Brad Frost. Each of them, in the comments.</p>
-        </div>
-      </div>
       <div class="photo-wrap stagger">
         <figure class="photo rot-neg-22">
           <div class="photo-card">
@@ -716,6 +715,15 @@
             <div class="photo-year">2026</div>
           </div>
         </figure>
+      </div>
+      <div class="ticket">
+        <div class="ticket-year">2026</div>
+        <div class="ticket-divider"></div>
+        <h3 class="ticket-title">A channel, a media.</h3>
+        <div class="ticket-body">
+          <p>In less than a year the channel turned into a small media. Publications cite it. Big companies — Meta, Ugreen, Ecovacs — reach out about sponsorships, and small startups ask for consulting.</p>
+          <p>In the comments: senior designers from Apple and Mini, and authors of books that matter to designers — Harry Brignull, Brad Frost. Each of them, in the comments.</p>
+        </div>
       </div>
     </div>
 
@@ -746,9 +754,9 @@
         <hr>
         <div class="contact-row elsewhere">
           <span class="meta">ELSEWHERE</span>
-          <a href="https://www.linkedin.com/in/ilia-werner/">LinkedIn</a><span class="dot">·</span>
-          <a href="https://www.youtube.com/@design_lovers">YouTube</a><span class="dot">·</span>
-          <a href="https://www.behance.net/ilia-kuznetsov">Behance</a>
+          <span class="links">
+            <a href="https://www.linkedin.com/in/ilia-werner/">LinkedIn</a><span class="dot">·</span><a href="https://www.youtube.com/@design_lovers">YouTube</a>
+          </span>
         </div>
       </div>
     </section>
