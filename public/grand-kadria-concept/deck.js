@@ -1,13 +1,25 @@
 (() => {
+  const stage = document.querySelector('.stage');
   const slides = [...document.querySelectorAll('.slide')];
   const currentEl = document.getElementById('current');
   const totalEl = document.getElementById('total');
   const progress = document.querySelector('.progress span');
   const nav = document.querySelector('.deck-nav');
+  const languageLinks = [...document.querySelectorAll('[data-language]')];
+  const isChinese = document.documentElement.lang.toLowerCase().startsWith('zh');
+  const deckTitle = isChinese ? 'Grand Kadria · 投资概念' : 'Grand Kadria — investor concept';
   const clamp = (n) => Math.max(0, Math.min(slides.length - 1, n));
   let index = 0;
   let touchStartX = 0;
   let touchStartY = 0;
+
+  const fitStage = () => {
+    const scale = Math.min(window.innerWidth / 1600, window.innerHeight / 900);
+    stage.style.setProperty('--stage-scale', String(Math.max(0.1, scale)));
+  };
+
+  fitStage();
+  window.addEventListener('resize', fitStage, { passive: true });
 
   const fromHash = () => {
     const parsed = Number.parseInt(location.hash.replace(/\D/g, ''), 10);
@@ -30,8 +42,15 @@
     currentEl.textContent = String(index + 1).padStart(2, '0');
     totalEl.textContent = String(slides.length).padStart(2, '0');
     progress.style.width = `${((index + 1) / slides.length) * 100}%`;
-    document.title = `${String(index + 1).padStart(2, '0')} · Grand Kadria — investor concept`;
-    if (updateHash) history.replaceState(null, '', `#${String(index + 1).padStart(2, '0')}`);
+    const hash = `#${String(index + 1).padStart(2, '0')}`;
+    document.title = `${String(index + 1).padStart(2, '0')} · ${deckTitle}`;
+    languageLinks.forEach((link) => {
+      const chineseLink = link.dataset.language === 'zh';
+      link.setAttribute('href', chineseLink ? `zh.html${hash}` : `./${hash}`);
+      if (chineseLink === isChinese) link.setAttribute('aria-current', 'page');
+      else link.removeAttribute('aria-current');
+    });
+    if (updateHash) history.replaceState(null, '', hash);
   };
 
   const next = () => show(index + 1);
