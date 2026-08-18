@@ -1,0 +1,683 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Private Design Review — Ilia Werner</title>
+  <meta name="description" content="A private investigation into one important interface decision, researched and delivered as a film for your team.">
+  <meta name="author" content="Ilia Werner">
+  <meta name="theme-color" content="#e8e2d7">
+  <link rel="canonical" href="https://www.iliawerner.com/review/">
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Ilia Werner">
+  <meta property="og:url" content="https://www.iliawerner.com/review/">
+  <meta property="og:title" content="Private Design Review — Ilia Werner">
+  <meta property="og:description" content="One important interface decision, independently researched before expensive implementation.">
+  <meta property="og:image" content="https://www.iliawerner.com/img/video-shot.jpg">
+  <meta property="og:image:width" content="2978">
+  <meta property="og:image:height" content="1670">
+  <meta property="og:image:alt" content="Ilia Werner recording a design research film.">
+  <meta property="og:locale" content="en_GB">
+
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Private Design Review — Ilia Werner">
+  <meta name="twitter:description" content="One important interface decision, independently researched before expensive implementation.">
+  <meta name="twitter:image" content="https://www.iliawerner.com/img/video-shot.jpg">
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Service",
+    "name": "Private Design Review",
+    "provider": {
+      "@type": "Person",
+      "name": "Ilia Werner",
+      "url": "https://www.iliawerner.com/"
+    },
+    "url": "https://www.iliawerner.com/review/",
+    "description": "An independent investigation into one important interface decision, delivered as a private research film and decision note.",
+    "offers": {
+      "@type": "Offer",
+      "price": "5000",
+      "priceCurrency": "USD"
+    }
+  }
+  </script>
+
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-JKMJ7J2DSZ"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-JKMJ7J2DSZ');
+  </script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@500&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --wall: #e8e2d7;
+      --paper: #f8f4eb;
+      --paper-deep: #eee7da;
+      --ink: #25221f;
+      --muted: #716a62;
+      --red: #b83c27;
+      --rule: rgba(37, 34, 31, 0.21);
+      --rule-light: rgba(37, 34, 31, 0.11);
+      --green: #32483b;
+      --gutter: clamp(24px, 5vw, 72px);
+      --max: 1180px;
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      color: var(--ink);
+      background: var(--wall);
+      background-image:
+        linear-gradient(rgba(255,255,255,.26), rgba(255,255,255,0) 380px),
+        radial-gradient(circle at 13% 20%, rgba(255,255,255,.45), transparent 34%),
+        radial-gradient(circle at 88% 70%, rgba(71,55,40,.05), transparent 40%);
+      font-family: 'IBM Plex Sans', sans-serif;
+      font-size: 17px;
+      line-height: 1.58;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    a { color: inherit; }
+    a:focus-visible, button:focus-visible {
+      outline: 3px solid var(--red);
+      outline-offset: 4px;
+    }
+
+    .sheet {
+      width: min(calc(100% - 32px), var(--max));
+      margin: 24px auto;
+      background: var(--paper);
+      border: 1px solid var(--rule);
+      box-shadow: 0 18px 55px rgba(56, 44, 31, .12);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .sheet::before {
+      content: '';
+      position: absolute;
+      left: 43px;
+      top: 0;
+      bottom: 0;
+      width: 1px;
+      background: rgba(184, 60, 39, .18);
+      pointer-events: none;
+    }
+
+    .masthead {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      align-items: center;
+      gap: 24px;
+      padding: 24px var(--gutter);
+      border-bottom: 1px solid var(--rule);
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 12px;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+    }
+
+    .masthead a { text-underline-offset: 4px; }
+    .edition { color: var(--muted); text-align: right; }
+
+    .cover {
+      min-height: 690px;
+      display: grid;
+      grid-template-columns: minmax(0, 1.7fr) minmax(240px, .7fr);
+      gap: clamp(42px, 8vw, 110px);
+      padding: clamp(76px, 11vw, 142px) var(--gutter) 72px;
+      border-bottom: 1px solid var(--rule);
+      align-items: end;
+    }
+
+    .kicker, .label {
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 11px;
+      line-height: 1.4;
+      letter-spacing: .15em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+
+    h1 {
+      font-size: clamp(58px, 9.2vw, 124px);
+      line-height: .9;
+      letter-spacing: -.055em;
+      font-weight: 600;
+      margin: 18px 0 34px;
+      max-width: 820px;
+      text-wrap: balance;
+    }
+
+    .cover-copy {
+      max-width: 650px;
+      font-size: clamp(20px, 2vw, 26px);
+      line-height: 1.43;
+      letter-spacing: -.015em;
+      margin: 0;
+      text-wrap: pretty;
+    }
+
+    .margin-note {
+      align-self: start;
+      border-top: 1px solid var(--ink);
+      padding-top: 15px;
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 13px;
+      line-height: 1.65;
+    }
+
+    .margin-note dl { margin: 0; }
+    .margin-note div {
+      display: grid;
+      grid-template-columns: 76px 1fr;
+      gap: 12px;
+      padding: 9px 0;
+      border-bottom: 1px dashed var(--rule);
+    }
+    .margin-note dt { color: var(--muted); }
+    .margin-note dd { margin: 0; }
+
+    .plain-link {
+      display: inline-block;
+      margin-top: 22px;
+      font-weight: 500;
+      text-decoration-thickness: 2px;
+      text-underline-offset: 5px;
+    }
+    .plain-link::after { content: ' ↗'; }
+
+    .spread {
+      display: grid;
+      grid-template-columns: minmax(180px, .58fr) minmax(0, 1.42fr);
+      border-bottom: 1px solid var(--rule);
+    }
+
+    .spread-title {
+      padding: 56px 34px 64px var(--gutter);
+      border-right: 1px solid var(--rule);
+    }
+
+    .spread-title h2 {
+      margin: 14px 0 0;
+      font-size: clamp(27px, 3.4vw, 46px);
+      line-height: 1.06;
+      letter-spacing: -.035em;
+      font-weight: 600;
+      text-wrap: balance;
+    }
+
+    .spread-body {
+      padding: 56px var(--gutter) 72px;
+      max-width: 780px;
+    }
+
+    .spread-body > p:first-child {
+      margin-top: 0;
+      font-size: 21px;
+      line-height: 1.48;
+      letter-spacing: -.01em;
+    }
+
+    .spread-body p:last-child { margin-bottom: 0; }
+
+    .question-pair { margin: 44px 0 10px; }
+    .question {
+      position: relative;
+      padding: 22px 0 22px 48px;
+      border-top: 1px solid var(--rule);
+      font-size: clamp(20px, 2.2vw, 30px);
+      line-height: 1.32;
+      letter-spacing: -.02em;
+      text-wrap: pretty;
+    }
+    .question:last-child { border-bottom: 1px solid var(--rule); }
+    .question::before {
+      position: absolute;
+      left: 0;
+      top: 24px;
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 11px;
+      letter-spacing: .1em;
+    }
+    .question.no { color: var(--muted); }
+    .question.no span { text-decoration: line-through; text-decoration-color: var(--red); text-decoration-thickness: 2px; }
+    .question.no::before { content: 'NO'; color: var(--red); }
+    .question.yes::before { content: 'YES'; color: var(--green); }
+
+    .method {
+      padding: 74px var(--gutter) 90px;
+      border-bottom: 1px solid var(--rule);
+    }
+
+    .method-head {
+      display: grid;
+      grid-template-columns: 1.15fr .85fr;
+      gap: clamp(36px, 8vw, 110px);
+      align-items: end;
+      margin-bottom: 56px;
+    }
+
+    .method h2 {
+      margin: 12px 0 0;
+      font-size: clamp(40px, 6vw, 76px);
+      line-height: 1;
+      letter-spacing: -.045em;
+      font-weight: 600;
+      max-width: 730px;
+    }
+
+    .handwritten {
+      font-family: 'Caveat', cursive;
+      font-size: 30px;
+      line-height: 1.08;
+      color: var(--red);
+      transform: rotate(-2deg);
+      max-width: 310px;
+    }
+
+    .sequence {
+      border-top: 1px solid var(--ink);
+    }
+
+    .sequence-row {
+      display: grid;
+      grid-template-columns: 80px minmax(180px, .52fr) 1fr;
+      gap: 28px;
+      padding: 27px 0 30px;
+      border-bottom: 1px solid var(--rule);
+      align-items: start;
+    }
+
+    .sequence-number {
+      font-family: 'IBM Plex Mono', monospace;
+      color: var(--muted);
+      font-size: 12px;
+      padding-top: 5px;
+    }
+    .sequence-row h3 {
+      margin: 0;
+      font-size: 22px;
+      line-height: 1.25;
+      font-weight: 500;
+    }
+    .sequence-row p { margin: 0; max-width: 570px; }
+
+    .evidence {
+      margin: 0;
+      background: #171512;
+      color: #f6f0e6;
+      border-bottom: 1px solid var(--rule);
+      display: grid;
+      grid-template-columns: 1.5fr .5fr;
+      min-height: 520px;
+    }
+
+    .evidence-image { position: relative; overflow: hidden; min-height: 520px; }
+    .evidence img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center;
+      display: block;
+      filter: saturate(.76) contrast(1.06);
+    }
+    .evidence-image::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(90deg, transparent 65%, rgba(23,21,18,.55));
+    }
+
+    .evidence figcaption {
+      padding: 48px 34px;
+      align-self: end;
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 13px;
+      line-height: 1.65;
+    }
+    .evidence figcaption strong {
+      display: block;
+      font-family: 'IBM Plex Sans', sans-serif;
+      font-size: 24px;
+      line-height: 1.25;
+      letter-spacing: -.02em;
+      margin: 12px 0 18px;
+    }
+
+    .return {
+      display: grid;
+      grid-template-columns: repeat(12, 1fr);
+      padding: 80px var(--gutter) 92px;
+      border-bottom: 1px solid var(--rule);
+      gap: 24px;
+    }
+    .return-intro { grid-column: 1 / 6; }
+    .return-intro h2 {
+      margin: 14px 0 24px;
+      font-size: clamp(40px, 5.6vw, 72px);
+      line-height: 1;
+      letter-spacing: -.045em;
+      font-weight: 600;
+    }
+    .return-intro p { max-width: 430px; font-size: 19px; }
+
+    .return-list {
+      grid-column: 7 / 13;
+      border-top: 1px solid var(--ink);
+    }
+    .return-item {
+      display: grid;
+      grid-template-columns: 46px 1fr;
+      gap: 16px;
+      padding: 24px 0 27px;
+      border-bottom: 1px solid var(--rule);
+    }
+    .return-item .num {
+      font-family: 'IBM Plex Mono', monospace;
+      color: var(--red);
+      font-size: 12px;
+      padding-top: 4px;
+    }
+    .return-item h3 { margin: 0 0 5px; font-size: 21px; font-weight: 500; }
+    .return-item p { margin: 0; color: var(--muted); }
+
+    .limits {
+      background: var(--paper-deep);
+      padding: 78px var(--gutter) 88px;
+      border-bottom: 1px solid var(--rule);
+      display: grid;
+      grid-template-columns: .72fr 1.28fr;
+      gap: clamp(40px, 8vw, 110px);
+    }
+    .limits h2 {
+      margin: 14px 0 0;
+      font-size: clamp(36px, 5vw, 66px);
+      line-height: 1;
+      letter-spacing: -.04em;
+      font-weight: 600;
+    }
+    .limits-copy { max-width: 650px; }
+    .limits-copy p:first-child { margin-top: 0; font-size: 22px; line-height: 1.45; }
+    .limits-copy ul { margin: 28px 0 0; padding: 0; list-style: none; }
+    .limits-copy li {
+      padding: 13px 0 13px 28px;
+      border-top: 1px solid var(--rule);
+      position: relative;
+    }
+    .limits-copy li:last-child { border-bottom: 1px solid var(--rule); }
+    .limits-copy li::before { content: '×'; position: absolute; left: 0; color: var(--red); }
+
+    .terms {
+      padding: 80px var(--gutter) 96px;
+      border-bottom: 1px solid var(--rule);
+    }
+    .terms h2 {
+      margin: 14px 0 48px;
+      font-size: clamp(40px, 6vw, 78px);
+      line-height: 1;
+      letter-spacing: -.045em;
+      font-weight: 600;
+    }
+    .ledger { border-top: 1px solid var(--ink); }
+    .ledger-row {
+      display: grid;
+      grid-template-columns: minmax(130px, .45fr) 1.55fr;
+      gap: 30px;
+      padding: 21px 0 24px;
+      border-bottom: 1px solid var(--rule);
+    }
+    .ledger-row dt {
+      margin: 0;
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 11px;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+    .ledger-row dd { margin: 0; font-size: 19px; }
+
+    .closing {
+      min-height: 530px;
+      padding: 90px var(--gutter) 72px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      background: var(--green);
+      color: #f6f0e6;
+    }
+    .closing h2 {
+      margin: 10px 0 28px;
+      max-width: 860px;
+      font-size: clamp(46px, 7vw, 94px);
+      line-height: .98;
+      letter-spacing: -.05em;
+      font-weight: 600;
+      text-wrap: balance;
+    }
+    .closing p { max-width: 640px; font-size: 20px; }
+    .closing .action {
+      display: inline-block;
+      margin-top: 18px;
+      font-size: 21px;
+      font-weight: 500;
+      text-underline-offset: 7px;
+      text-decoration-thickness: 2px;
+    }
+    .closing-meta {
+      display: flex;
+      justify-content: space-between;
+      gap: 24px;
+      margin-top: 90px;
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 11px;
+      line-height: 1.5;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      color: rgba(246,240,230,.65);
+    }
+
+    @media (max-width: 820px) {
+      .sheet { width: min(calc(100% - 16px), var(--max)); margin: 8px auto; }
+      .sheet::before { left: 20px; }
+      .cover { min-height: 0; grid-template-columns: 1fr; align-items: start; }
+      .margin-note { max-width: 420px; }
+      .spread { grid-template-columns: 1fr; }
+      .spread-title { border-right: 0; border-bottom: 1px solid var(--rule); padding-bottom: 38px; }
+      .method-head { grid-template-columns: 1fr; }
+      .sequence-row { grid-template-columns: 52px 1fr; gap: 18px; }
+      .sequence-row p { grid-column: 2; }
+      .evidence { grid-template-columns: 1fr; }
+      .evidence-image { min-height: 340px; }
+      .evidence figcaption { align-self: start; }
+      .return-intro { grid-column: 1 / 13; margin-bottom: 30px; }
+      .return-list { grid-column: 1 / 13; }
+      .limits { grid-template-columns: 1fr; }
+    }
+
+    @media (max-width: 560px) {
+      body { font-size: 16px; }
+      .masthead { grid-template-columns: 1fr; gap: 8px; }
+      .edition { text-align: left; }
+      .cover { padding-top: 64px; }
+      h1 { font-size: 57px; }
+      .cover-copy { font-size: 19px; }
+      .margin-note div { grid-template-columns: 68px 1fr; }
+      .question { padding-left: 38px; font-size: 21px; }
+      .sequence-row { grid-template-columns: 36px 1fr; }
+      .method, .return, .limits, .terms { padding-top: 58px; padding-bottom: 66px; }
+      .evidence-image { min-height: 260px; }
+      .evidence figcaption { padding: 34px var(--gutter) 44px; }
+      .ledger-row { grid-template-columns: 1fr; gap: 6px; }
+      .closing { min-height: 560px; padding-top: 66px; }
+      .closing-meta { flex-direction: column; margin-top: 70px; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+    }
+  </style>
+</head>
+<body>
+  <main class="sheet">
+    <header class="masthead">
+      <a href="/">← Ilia Werner</a>
+      <div class="edition">Private work · one question at a time</div>
+    </header>
+
+    <section class="cover">
+      <div>
+        <div class="kicker">Private design review</div>
+        <h1>One question, researched properly.</h1>
+        <p class="cover-copy">If your team is about to make an important interface decision, I will investigate it independently and make a private film with my conclusion, the evidence behind it, and what still needs testing.</p>
+      </div>
+      <aside class="margin-note" aria-label="Service summary">
+        <dl>
+          <div><dt>Question</dt><dd>one</dd></div>
+          <div><dt>Format</dt><dd>private research film</dd></div>
+          <div><dt>Meetings</dt><dd>none</dd></div>
+          <div><dt>Fee</dt><dd>US $5,000</dd></div>
+          <div><dt>Capacity</dt><dd>one project a month</dd></div>
+        </dl>
+        <a class="plain-link" href="mailto:hello@iliawerner.com?subject=Private%20design%20review%20%E2%80%94%20one%20question">Send me the question</a>
+      </aside>
+    </section>
+
+    <section class="spread">
+      <div class="spread-title">
+        <div class="label">The brief</div>
+        <h2>A useful question has consequences.</h2>
+      </div>
+      <div class="spread-body">
+        <p>I am not offering a general audit of your product. The review starts with one decision your team has not made yet, and one that will be expensive to reverse after development begins.</p>
+        <div class="question-pair" aria-label="Examples of unsuitable and suitable questions">
+          <div class="question no"><span>What do you think of our app?</span></div>
+          <div class="question yes">We are replacing a familiar professional workflow. What are we in danger of removing before we understand why it exists?</div>
+        </div>
+        <p>The question may concern navigation, interaction models, AI and user control, a mature workflow, or the character of a product being redesigned. It should not secretly contain five different projects.</p>
+      </div>
+    </section>
+
+    <section class="method">
+      <div class="method-head">
+        <div>
+          <div class="label">How I work</div>
+          <h2>I do not start with best practices.</h2>
+        </div>
+        <div class="handwritten">Best for whom? In which product? At what point in history?</div>
+      </div>
+      <div class="sequence">
+        <div class="sequence-row">
+          <div class="sequence-number">01</div>
+          <h3>I read your materials.</h3>
+          <p>The current product, the proposed change, its constraints, and the arguments already made inside the team. If the question is too broad, I ask you to narrow it in writing.</p>
+        </div>
+        <div class="sequence-row">
+          <div class="sequence-number">02</div>
+          <h3>I look outside the product.</h3>
+          <p>I search for historical precedents, related interaction models, research, failed attempts and useful contradictions. An analogy earns its place only if the mechanism is relevant, not because two screens look alike.</p>
+        </div>
+        <div class="sequence-row">
+          <div class="sequence-number">03</div>
+          <h3>I make an argument.</h3>
+          <p>The result is my independent view: what I think the team should preserve, change, test first, or abandon. Facts, interpretation and uncertainty remain visibly separate.</p>
+        </div>
+      </div>
+    </section>
+
+    <figure class="evidence">
+      <div class="evidence-image">
+        <img src="/img/video-shot.jpg" width="2978" height="1670" alt="Ilia Werner recording at the Design Lovers set">
+      </div>
+      <figcaption>
+        <div class="label" style="color: rgba(246,240,230,.55)">The format</div>
+        <strong>A film made for one team, not an audit template with your logo added.</strong>
+        I use the same research and visual explanation practice behind Design Lovers, but the question and the material stay yours.
+      </figcaption>
+    </figure>
+
+    <section class="return">
+      <div class="return-intro">
+        <div class="label">What comes back</div>
+        <h2>Something your team can use without me in the room.</h2>
+        <p>The film is the main work. The written material exists so nobody has to search through forty minutes of video for the conclusion.</p>
+      </div>
+      <div class="return-list">
+        <div class="return-item">
+          <div class="num">01</div>
+          <div><h3>A private research film</h3><p>Usually 30–45 minutes, with chapters and the evidence shown on screen.</p></div>
+        </div>
+        <div class="return-item">
+          <div class="num">02</div>
+          <div><h3>A short decision note</h3><p>The conclusion, the important risks, and the next action in a form that can enter a memo or product document.</p></div>
+        </div>
+        <div class="return-item">
+          <div class="num">03</div>
+          <div><h3>The source map</h3><p>Research, historical examples, what each one contributes, and where the analogy stops being useful.</p></div>
+        </div>
+        <div class="return-item">
+          <div class="num">04</div>
+          <div><h3>What remains unknown</h3><p>The claims that still require your analytics, user research, technical work or a small experiment.</p></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="limits">
+      <div>
+        <div class="label">A necessary boundary</div>
+        <h2>I will not pretend to know what the evidence cannot tell me.</h2>
+      </div>
+      <div class="limits-copy">
+        <p>This is design analysis and desk research. It can expose assumptions and improve a decision. It cannot observe users I have not met or data I have not seen.</p>
+        <p>I will decline the project if the question is better answered by:</p>
+        <ul>
+          <li>user interviews or usability testing</li>
+          <li>product analytics or conversion analysis</li>
+          <li>technical, legal or accessibility compliance work</li>
+          <li>a complete redesign or an implementation specification</li>
+          <li>an outside voice hired only to validate a decision already made</li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="terms">
+      <div class="label">Working terms · first edition</div>
+      <h2>Kept deliberately small.</h2>
+      <dl class="ledger">
+        <div class="ledger-row"><dt>Scope</dt><dd>One product, one decision, one research film.</dd></div>
+        <div class="ledger-row"><dt>Fee</dt><dd>US $5,000. Each review is a separate project, not a subscription.</dd></div>
+        <div class="ledger-row"><dt>Timing</dt><dd>Usually ten working days after I accept the question and receive the materials.</dd></div>
+        <div class="ledger-row"><dt>Communication</dt><dd>Written and asynchronous. There is no sales call, discovery call, workshop or team management.</dd></div>
+        <div class="ledger-row"><dt>Acceptance</dt><dd>I read the brief before payment. I may ask you to narrow it, refer you to another kind of research, or decline it.</dd></div>
+        <div class="ledger-row"><dt>Confidentiality</dt><dd>The film is private and may be shared inside your company. I do not publish the client, question or findings without explicit permission.</dd></div>
+        <div class="ledger-row"><dt>Corrections</dt><dd>I correct factual mistakes. A new question or a changed brief is a new review.</dd></div>
+      </dl>
+    </section>
+
+    <section class="closing">
+      <div>
+        <div class="label" style="color: rgba(246,240,230,.6)">Start with the question</div>
+        <h2>Tell me what your team is about to decide.</h2>
+        <p>In the email, include the decision, the alternatives you are considering, when it must be made, and what becomes expensive if the team gets it wrong.</p>
+        <a class="action" href="mailto:hello@iliawerner.com?subject=Private%20design%20review%20%E2%80%94%20one%20question&body=The%20decision%20we%20need%20to%20make%3A%0A%0AThe%20alternatives%20we%20are%20considering%3A%0A%0AWhen%20it%20must%20be%20decided%3A%0A%0AWhat%20becomes%20expensive%20if%20we%20get%20it%20wrong%3A%0A%0AMaterials%20we%20can%20provide%3A%0A">hello@iliawerner.com ↗</a>
+      </div>
+      <div class="closing-meta">
+        <span>Private Design Review · 2026</span>
+        <span>Ilia Werner · Design Lovers</span>
+      </div>
+    </section>
+  </main>
+</body>
+</html>
