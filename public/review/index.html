@@ -116,30 +116,13 @@
       pointer-events: none;
     }
 
-    .masthead {
-      display: grid;
-      grid-template-columns: 1fr auto;
-      align-items: center;
-      gap: 24px;
-      padding: 24px var(--gutter);
-      border-bottom: 1px solid var(--rule);
-      font-family: 'IBM Plex Mono', monospace;
-      font-size: 12px;
-      letter-spacing: .08em;
-      text-transform: uppercase;
-    }
-
-    .masthead a { text-underline-offset: 4px; }
-    .edition { color: var(--muted); text-align: right; }
-
     .cover {
-      min-height: 690px;
-      display: grid;
-      grid-template-columns: minmax(0, 1.7fr) minmax(240px, .7fr);
-      gap: clamp(42px, 8vw, 110px);
-      padding: clamp(76px, 11vw, 142px) var(--gutter) 72px;
+      min-height: 680px;
+      padding: clamp(100px, 14vw, 180px) var(--gutter) 80px;
       border-bottom: 1px solid var(--rule);
-      align-items: end;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
     }
 
     .kicker, .label {
@@ -170,25 +153,13 @@
       text-wrap: pretty;
     }
 
-    .margin-note {
-      align-self: start;
-      border-top: 1px solid var(--ink);
-      padding-top: 15px;
+    .cover-details {
+      margin: 32px 0 0;
       font-family: 'IBM Plex Mono', monospace;
       font-size: 13px;
       line-height: 1.65;
+      color: var(--muted);
     }
-
-    .margin-note dl { margin: 0; }
-    .margin-note div {
-      display: grid;
-      grid-template-columns: 76px 1fr;
-      gap: 12px;
-      padding: 9px 0;
-      border-bottom: 1px dashed var(--rule);
-    }
-    .margin-note dt { color: var(--muted); }
-    .margin-note dd { margin: 0; }
 
     .plain-link {
       display: inline-block;
@@ -233,10 +204,10 @@
 
     .spread-body p:last-child { margin-bottom: 0; }
 
-    .question-pair { margin: 44px 0 10px; }
+    .question-pair { margin: 38px 0 10px; }
     .question {
       position: relative;
-      padding: 22px 0 22px 48px;
+      padding: 22px 0;
       border-top: 1px solid var(--rule);
       font-size: clamp(20px, 2.2vw, 30px);
       line-height: 1.32;
@@ -244,18 +215,6 @@
       text-wrap: pretty;
     }
     .question:last-child { border-bottom: 1px solid var(--rule); }
-    .question::before {
-      position: absolute;
-      left: 0;
-      top: 24px;
-      font-family: 'IBM Plex Mono', monospace;
-      font-size: 11px;
-      letter-spacing: .1em;
-    }
-    .question.no { color: var(--muted); }
-    .question.no span { text-decoration: line-through; text-decoration-color: var(--red); text-decoration-thickness: 2px; }
-    .question.no::before { content: 'NO'; color: var(--red); }
-    .question.yes::before { content: 'YES'; color: var(--green); }
 
     .method {
       padding: 74px var(--gutter) 90px;
@@ -413,12 +372,11 @@
     .limits-copy p:first-child { margin-top: 0; font-size: 22px; line-height: 1.45; }
     .limits-copy ul { margin: 28px 0 0; padding: 0; list-style: none; }
     .limits-copy li {
-      padding: 13px 0 13px 28px;
+      padding: 13px 0;
       border-top: 1px solid var(--rule);
       position: relative;
     }
     .limits-copy li:last-child { border-bottom: 1px solid var(--rule); }
-    .limits-copy li::before { content: '×'; position: absolute; left: 0; color: var(--red); }
 
     .terms {
       padding: 80px var(--gutter) 96px;
@@ -492,8 +450,7 @@
     @media (max-width: 820px) {
       .sheet { width: min(calc(100% - 16px), var(--max)); margin: 8px auto; }
       .sheet::before { left: 20px; }
-      .cover { min-height: 0; grid-template-columns: 1fr; align-items: start; }
-      .margin-note { max-width: 420px; }
+      .cover { min-height: 620px; }
       .spread { grid-template-columns: 1fr; }
       .spread-title { border-right: 0; border-bottom: 1px solid var(--rule); padding-bottom: 38px; }
       .method-head { grid-template-columns: 1fr; }
@@ -509,13 +466,10 @@
 
     @media (max-width: 560px) {
       body { font-size: 16px; }
-      .masthead { grid-template-columns: 1fr; gap: 8px; }
-      .edition { text-align: left; }
       .cover { padding-top: 64px; }
       h1 { font-size: 57px; }
       .cover-copy { font-size: 19px; }
-      .margin-note div { grid-template-columns: 68px 1fr; }
-      .question { padding-left: 38px; font-size: 21px; }
+      .question { font-size: 21px; }
       .sequence-row { grid-template-columns: 36px 1fr; }
       .method, .return, .limits, .terms { padding-top: 58px; padding-bottom: 66px; }
       .evidence-image { min-height: 260px; }
@@ -532,49 +486,33 @@
 </head>
 <body>
   <main class="sheet">
-    <header class="masthead">
-      <a href="/">← Ilia Werner</a>
-      <div class="edition">Private work · one question at a time</div>
-    </header>
-
     <section class="cover">
       <div>
-        <div class="kicker">Private design review</div>
         <h1>One question, researched properly.</h1>
         <p class="cover-copy">If your team is about to make an important interface decision, I will investigate it independently and make a private film with my conclusion, the evidence behind it, and what still needs testing.</p>
-      </div>
-      <aside class="margin-note" aria-label="Service summary">
-        <dl>
-          <div><dt>Question</dt><dd>one</dd></div>
-          <div><dt>Format</dt><dd>private research film</dd></div>
-          <div><dt>Meetings</dt><dd>none</dd></div>
-          <div><dt>Fee</dt><dd>US $5,000</dd></div>
-          <div><dt>Capacity</dt><dd>one project a month</dd></div>
-        </dl>
+        <p class="cover-details">I take on one project a month. The fee is US $5,000.</p>
         <a class="plain-link" href="mailto:hello@iliawerner.com?subject=Private%20design%20review%20%E2%80%94%20one%20question">Send me the question</a>
-      </aside>
+      </div>
     </section>
 
     <section class="spread">
       <div class="spread-title">
-        <div class="label">The brief</div>
-        <h2>A useful question has consequences.</h2>
+        <h2>Start with the decision.</h2>
       </div>
       <div class="spread-body">
-        <p>I am not offering a general audit of your product. The review starts with one decision your team has not made yet, and one that will be expensive to reverse after development begins.</p>
-        <div class="question-pair" aria-label="Examples of unsuitable and suitable questions">
-          <div class="question no"><span>What do you think of our app?</span></div>
-          <div class="question yes">We are replacing a familiar professional workflow. What are we in danger of removing before we understand why it exists?</div>
+        <p>Send me the decision your team is preparing to make, the alternatives you are considering, and the materials that explain the product and its constraints.</p>
+        <div class="question-pair" aria-label="Example of a suitable question">
+          <div class="label">For example</div>
+          <div class="question">We are replacing a familiar professional workflow. Which parts carry value that may not be obvious from the interface alone, and what should the new model preserve?</div>
         </div>
-        <p>The question may concern navigation, interaction models, AI and user control, a mature workflow, or the character of a product being redesigned. It should not secretly contain five different projects.</p>
+        <p>The question may concern navigation, interaction models, AI and user control, a mature workflow, or the character of a product being redesigned.</p>
       </div>
     </section>
 
     <section class="method">
       <div class="method-head">
         <div>
-          <div class="label">How I work</div>
-          <h2>I do not start with best practices.</h2>
+          <h2>How I approach the question.</h2>
         </div>
         <div class="handwritten">Best for whom? In which product? At what point in history?</div>
       </div>
@@ -602,79 +540,73 @@
         <img src="/img/video-shot.jpg" width="2978" height="1670" alt="Ilia Werner recording at the Design Lovers set">
       </div>
       <figcaption>
-        <div class="label" style="color: rgba(246,240,230,.55)">The format</div>
-        <strong>A film made for one team, not an audit template with your logo added.</strong>
+        <strong>A film made for your team.</strong>
         I use the same research and visual explanation practice behind Design Lovers, but the question and the material stay yours.
       </figcaption>
     </figure>
 
     <section class="return">
       <div class="return-intro">
-        <div class="label">What comes back</div>
-        <h2>Something your team can use without me in the room.</h2>
-        <p>The film is the main work. The written material exists so nobody has to search through forty minutes of video for the conclusion.</p>
+        <h2>What you receive.</h2>
+        <p>The film is the main work. It comes with a searchable text version and a short written summary, making the argument easy to navigate, quote and share.</p>
       </div>
       <div class="return-list">
         <div class="return-item">
           <div class="num">01</div>
-          <div><h3>A private research film</h3><p>Usually 30–45 minutes, with chapters and the evidence shown on screen.</p></div>
+          <div><h3>A private research film</h3><p>Usually 20–30 minutes, with chapters and the evidence shown on screen.</p></div>
         </div>
         <div class="return-item">
           <div class="num">02</div>
-          <div><h3>A short decision note</h3><p>The conclusion, the important risks, and the next action in a form that can enter a memo or product document.</p></div>
+          <div><h3>A navigable text version</h3><p>A searchable transcript, edited for reading and organised with the same chapters as the film.</p></div>
         </div>
         <div class="return-item">
           <div class="num">03</div>
-          <div><h3>The source map</h3><p>Research, historical examples, what each one contributes, and where the analogy stops being useful.</p></div>
+          <div><h3>A short decision note</h3><p>The conclusion, the important risks, and the next action in a form that can enter a memo or product document.</p></div>
         </div>
         <div class="return-item">
           <div class="num">04</div>
-          <div><h3>What remains unknown</h3><p>The claims that still require your analytics, user research, technical work or a small experiment.</p></div>
+          <div><h3>Source notes</h3><p>The research and historical examples behind the argument, with links for the team to continue reading.</p></div>
         </div>
       </div>
     </section>
 
     <section class="limits">
       <div>
-        <div class="label">A necessary boundary</div>
-        <h2>I will not pretend to know what the evidence cannot tell me.</h2>
+        <h2>When another kind of research would help more.</h2>
       </div>
       <div class="limits-copy">
-        <p>This is design analysis and desk research. It can expose assumptions and improve a decision. It cannot observe users I have not met or data I have not seen.</p>
-        <p>I will decline the project if the question is better answered by:</p>
+        <p>This format works best when a decision can be examined through design analysis, historical precedents and desk research. It cannot observe users I have not met or data I have not seen.</p>
+        <p>I may not be the best choice when the main task is:</p>
         <ul>
           <li>user interviews or usability testing</li>
           <li>product analytics or conversion analysis</li>
           <li>technical, legal or accessibility compliance work</li>
           <li>a complete redesign or an implementation specification</li>
-          <li>an outside voice hired only to validate a decision already made</li>
         </ul>
       </div>
     </section>
 
     <section class="terms">
-      <div class="label">Working terms · first edition</div>
-      <h2>Kept deliberately small.</h2>
+      <h2>How it works.</h2>
       <dl class="ledger">
-        <div class="ledger-row"><dt>Scope</dt><dd>One product, one decision, one research film.</dd></div>
-        <div class="ledger-row"><dt>Fee</dt><dd>US $5,000. Each review is a separate project, not a subscription.</dd></div>
+        <div class="ledger-row"><dt>Scope</dt><dd>We agree on one specific decision concerning one product before the work begins.</dd></div>
+        <div class="ledger-row"><dt>Fee</dt><dd>US $5,000.</dd></div>
         <div class="ledger-row"><dt>Timing</dt><dd>Usually ten working days after I accept the question and receive the materials.</dd></div>
-        <div class="ledger-row"><dt>Communication</dt><dd>Written and asynchronous. There is no sales call, discovery call, workshop or team management.</dd></div>
-        <div class="ledger-row"><dt>Acceptance</dt><dd>I read the brief before payment. I may ask you to narrow it, refer you to another kind of research, or decline it.</dd></div>
-        <div class="ledger-row"><dt>Confidentiality</dt><dd>The film is private and may be shared inside your company. I do not publish the client, question or findings without explicit permission.</dd></div>
+        <div class="ledger-row"><dt>Communication</dt><dd>You send the question and materials in writing. If I need more context, I ask by email.</dd></div>
+        <div class="ledger-row"><dt>Before payment</dt><dd>I read the brief first and confirm that the question fits this format. I may suggest narrowing it or recommend a more suitable kind of research.</dd></div>
+        <div class="ledger-row"><dt>Confidentiality</dt><dd>I can sign an NDA covering the information you share and the finished video. You may use and show the video in any non-commercial context, internally or publicly. It may not be sold or included in a paid product or service.</dd></div>
         <div class="ledger-row"><dt>Corrections</dt><dd>I correct factual mistakes. A new question or a changed brief is a new review.</dd></div>
       </dl>
     </section>
 
     <section class="closing">
       <div>
-        <div class="label" style="color: rgba(246,240,230,.6)">Start with the question</div>
         <h2>Tell me what your team is about to decide.</h2>
         <p>In the email, include the decision, the alternatives you are considering, when it must be made, and what becomes expensive if the team gets it wrong.</p>
         <a class="action" href="mailto:hello@iliawerner.com?subject=Private%20design%20review%20%E2%80%94%20one%20question&body=The%20decision%20we%20need%20to%20make%3A%0A%0AThe%20alternatives%20we%20are%20considering%3A%0A%0AWhen%20it%20must%20be%20decided%3A%0A%0AWhat%20becomes%20expensive%20if%20we%20get%20it%20wrong%3A%0A%0AMaterials%20we%20can%20provide%3A%0A">hello@iliawerner.com ↗</a>
       </div>
       <div class="closing-meta">
-        <span>Private Design Review · 2026</span>
+        <span>iliawerner.com · 2026</span>
         <span>Ilia Werner · Design Lovers</span>
       </div>
     </section>
