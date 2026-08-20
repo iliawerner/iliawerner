@@ -3,7 +3,6 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <base href="/qadria-direction/">
   <meta name="description" content="Qadria — выбранное архитектурное направление и детали гостиничного опыта.">
   <meta name="theme-color" content="#15120e">
   <title>Qadria — направление</title>
@@ -14,10 +13,12 @@
 <body>
   <main id="top">
     <section class="hero" aria-labelledby="hero-title">
-      <a class="hero__media" href="assets/01-hero.webp" data-lightbox>
-        <img src="assets/01-hero.webp" width="1486" height="1059" alt="Рекомендуемый гибрид Qadria со светлыми крыльями, бронзово-стеклянным шарниром и открытой верандой" loading="eager">
-      </a>
-      <h1 id="hero-title">Qadria</h1>
+      <div class="hero__card">
+        <a class="hero__media" href="assets/01-hero.webp" data-lightbox>
+          <img src="assets/01-hero.webp" width="1486" height="1059" alt="Рекомендуемый гибрид Qadria со светлыми крыльями, бронзово-стеклянным шарниром и открытой верандой" loading="eager">
+        </a>
+        <h1 id="hero-title">Qadria</h1>
+      </div>
     </section>
 
     <section class="selection" data-selection aria-labelledby="selection-title">
@@ -117,9 +118,9 @@
       <div class="page">
         <div class="section-head">
           <h2 class="section-title" id="representation-title">Проверка идеи</h2>
-          <p>Скетч и условная модель помогают проверить, остаётся ли архитектурный принцип узнаваемым без фотографического света и декора.</p>
+          <p>Один архитектурный принцип в разных способах изображения и в зимнем режиме.</p>
         </div>
-        <div class="pair-grid">
+        <div class="representation-grid">
           <figure>
             <a href="assets/09-sketch.webp" data-lightbox><img src="assets/09-sketch.webp" width="1492" height="1054" alt="Графитовый архитектурный скетч выбранного гибрида Qadria"></a>
             <figcaption><strong>Архитектурный скетч</strong></figcaption>
@@ -127,6 +128,18 @@
           <figure>
             <a href="assets/10-clay-model.webp" data-lightbox><img src="assets/10-clay-model.webp" width="1484" height="1060" alt="Белая условная архитектурная модель выбранного гибрида Qadria"></a>
             <figcaption><strong>Условная модель</strong></figcaption>
+          </figure>
+          <figure class="representation__postcard">
+            <a href="assets/11-postcard.webp" data-lightbox><img src="assets/11-postcard.webp" width="1484" height="1060" alt="Акварельная открытка с выбранным гибридом Qadria"></a>
+            <figcaption><strong>Открытка</strong></figcaption>
+          </figure>
+          <figure class="representation__phone">
+            <a href="assets/12-old-phone.webp" data-lightbox><img src="assets/12-old-phone.webp" width="1484" height="1060" alt="Повседневное фото выбранного гибрида Qadria со старого телефона"></a>
+            <figcaption><strong>Фото с телефона</strong></figcaption>
+          </figure>
+          <figure class="representation__winter">
+            <a href="assets/13-winter-closed.webp" data-lightbox><img src="assets/13-winter-closed.webp" width="1486" height="1058" alt="Qadria зимой с ресторанной верандой, закрытой прозрачным стеклянным контуром"></a>
+            <figcaption><strong>Зимний режим</strong></figcaption>
           </figure>
         </div>
       </div>

@@ -52,29 +52,50 @@ figure { min-width: 0; margin: 0; }
   display: grid;
   min-height: 100svh;
   place-items: center;
-  overflow: hidden;
-  background: #100e0b;
+  padding: clamp(18px, 3vw, 48px);
+  background: var(--mineral);
   color: var(--light);
+}
+.hero__card {
+  position: relative;
+  width: min(92vw, calc((100svh - 64px) * 1.4032), 1800px);
+  aspect-ratio: 1486 / 1059;
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, .42);
+  border-radius: clamp(18px, 2vw, 34px);
+  background: #100e0b;
+  box-shadow: 0 22px 80px rgba(39, 31, 21, .22);
+}
+.hero__card::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border: 1px solid rgba(16, 14, 11, .12);
+  border-radius: inherit;
+  pointer-events: none;
 }
 .hero__media { position: absolute; inset: 0; display: grid; place-items: center; }
 .hero__media::after {
   content: "";
   position: absolute;
   inset: 0;
-  background: linear-gradient(rgba(10, 8, 5, .18), rgba(10, 8, 5, .28));
+  background: linear-gradient(rgba(10, 8, 5, .08), rgba(10, 8, 5, .2));
   pointer-events: none;
 }
 .hero__media img { width: 100%; height: 100%; object-fit: contain; object-position: center; }
 .hero h1 {
-  position: relative;
+  position: absolute;
   z-index: 2;
+  inset: 50% auto auto 50%;
+  transform: translate(-50%, -50%);
   margin: 0;
   color: #fff;
   font-family: Iowan Old Style, Baskerville, "Times New Roman", serif;
-  font-size: clamp(92px, 19vw, 300px);
+  font-size: clamp(54px, 9vw, 165px);
   font-weight: 400;
-  letter-spacing: -.07em;
+  letter-spacing: -.06em;
   line-height: .8;
+  white-space: nowrap;
   text-shadow: 0 3px 36px rgba(0, 0, 0, .32);
 }
 
@@ -174,7 +195,25 @@ figcaption p { max-width: 590px; margin: 0; }
 .caveat { max-width: 800px; margin: clamp(68px, 9vw, 126px) 0 0; padding-top: 20px; border-top: 1px solid rgba(244, 239, 230, .18); color: rgba(244, 239, 230, .48); font-size: 14px; }
 
 .representation { background: var(--paper); }
-.representation .pair-grid figure:nth-child(2) { margin-top: 9vw; }
+.representation-grid {
+  display: grid;
+  grid-template-columns: repeat(12, minmax(0, 1fr));
+  align-items: start;
+  gap: clamp(30px, 5vw, 76px) 24px;
+}
+.representation-grid > figure:nth-child(1) { grid-column: 1 / span 6; }
+.representation-grid > figure:nth-child(2) { grid-column: 7 / span 6; margin-top: 8vw; }
+.representation__postcard { grid-column: 1 / span 5; margin-top: 4vw; }
+.representation__postcard a {
+  padding: clamp(14px, 2vw, 28px);
+  border-radius: 7px;
+  background: #eee6d8;
+  box-shadow: 0 18px 50px rgba(48, 38, 26, .18);
+  transform: rotate(-1.2deg);
+}
+.representation__postcard a::after { border-color: rgba(61, 45, 27, .15); border-radius: 7px; }
+.representation__phone { grid-column: 6 / span 7; margin-top: 12vw; }
+.representation__winter { grid-column: 2 / span 10; margin-top: 6vw; }
 
 footer { padding: 40px 0 52px; background: #0d0b08; color: rgba(244, 239, 230, .72); font-size: 13px; }
 .footer__links { display: flex; flex-wrap: wrap; gap: 14px 34px; }
@@ -207,7 +246,9 @@ footer { padding: 40px 0 52px; background: #0d0b08; color: rgba(244, 239, 230, .
 @media (max-width: 700px) {
   body { font-size: 17px; }
   .page, .page--wide { width: min(calc(100% - 28px), var(--page)); }
-  .hero h1 { font-size: clamp(84px, 28vw, 132px); }
+  .hero { padding: 14px; }
+  .hero__card { width: min(100%, calc((100svh - 28px) * 1.4032)); border-radius: 18px; }
+  .hero h1 { font-size: clamp(54px, 18vw, 78px); }
   .selection__all, .selection__pair { padding-block: 30px; }
   .selection__all h2 { margin-bottom: 24px; font-size: 43px; }
   .selection__grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; }
@@ -227,8 +268,10 @@ footer { padding: 40px 0 52px; background: #0d0b08; color: rgba(244, 239, 230, .
   .arrival-grid, .pair-grid { grid-template-columns: 1fr; gap: 58px; }
   .arrival-grid figure:nth-child(3),
   .arrival-grid__entrance,
-  .pair-grid figure:nth-child(n),
-  .representation .pair-grid figure:nth-child(2) { grid-column: auto; grid-row: auto; margin-top: 0; }
+  .pair-grid figure:nth-child(n) { grid-column: auto; grid-row: auto; margin-top: 0; }
+  .representation-grid { grid-template-columns: 1fr; gap: 66px; }
+  .representation-grid > figure:nth-child(n) { grid-column: 1; margin-top: 0; }
+  .representation__postcard { width: 94%; margin-inline: auto; }
   .arrival-grid__entrance a { aspect-ratio: .78; }
   .pair-grid--corridors { margin-bottom: 90px; }
   .footer__links { display: grid; gap: 16px; }
