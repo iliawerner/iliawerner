@@ -1,6 +1,33 @@
+document.documentElement.classList.add('js');
+
+const selection = document.querySelector('[data-selection]');
+let selectionFrame = 0;
+
+function updateSelection() {
+  selectionFrame = 0;
+  if (!selection) return;
+
+  const rect = selection.getBoundingClientRect();
+  const travel = Math.max(1, selection.offsetHeight - innerHeight);
+  const progress = Math.min(1, Math.max(0, -rect.top / travel));
+
+  selection.classList.toggle('is-focus', progress >= .22);
+  selection.classList.toggle('is-pair', progress >= .58);
+}
+
+function requestSelectionUpdate() {
+  if (selectionFrame) return;
+  selectionFrame = requestAnimationFrame(updateSelection);
+}
+
+addEventListener('scroll', requestSelectionUpdate, { passive: true });
+addEventListener('resize', requestSelectionUpdate);
+updateSelection();
+
 const dialog = document.querySelector('.lightbox');
 const dialogImage = dialog.querySelector('img');
 const closeButton = dialog.querySelector('.lightbox__close');
+const main = document.querySelector('main');
 let opener = null;
 
 function closeLightbox() {
@@ -9,7 +36,7 @@ function closeLightbox() {
   dialogImage.removeAttribute('src');
   dialogImage.alt = '';
   document.body.classList.remove('has-lightbox');
-  document.querySelector('main').removeAttribute('inert');
+  main.removeAttribute('inert');
   opener?.focus();
   opener = null;
 }
@@ -21,7 +48,7 @@ function openLightbox(link) {
   dialogImage.alt = source?.alt || '';
   dialog.hidden = false;
   document.body.classList.add('has-lightbox');
-  document.querySelector('main').setAttribute('inert', '');
+  main.setAttribute('inert', '');
   closeButton.focus();
 }
 
