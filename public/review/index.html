@@ -1,707 +1,96 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Private Design Review — Ilia Werner</title>
-  <meta name="description" content="One consequential product decision. One independent verdict before the expensive implementation.">
-  <meta name="author" content="Ilia Werner">
-  <meta name="theme-color" content="#f2f1ec">
-  <link rel="canonical" href="https://www.iliawerner.com/review/">
-  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
-
-  <meta property="og:type" content="website">
-  <meta property="og:site_name" content="Ilia Werner">
-  <meta property="og:url" content="https://www.iliawerner.com/review/">
-  <meta property="og:title" content="Private Design Review — Ilia Werner">
-  <meta property="og:description" content="One product decision. One independent verdict. Before the build.">
-  <meta property="og:image" content="https://www.iliawerner.com/img/video-shot.jpg">
-  <meta property="og:image:width" content="2978">
-  <meta property="og:image:height" content="1670">
-  <meta property="og:image:alt" content="Ilia Werner recording a design research film.">
-  <meta property="og:locale" content="en_GB">
-
-  <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Private Design Review — Ilia Werner">
-  <meta name="twitter:description" content="One product decision. One independent verdict. Before the build.">
-  <meta name="twitter:image" content="https://www.iliawerner.com/img/video-shot.jpg">
-
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "Service",
-    "name": "Private Design Review",
-    "provider": {
-      "@type": "Person",
-      "name": "Ilia Werner",
-      "url": "https://www.iliawerner.com/"
-    },
-    "url": "https://www.iliawerner.com/review/",
-    "description": "An independent investigation and verdict on one consequential product or interface decision."
-  }
-  </script>
-
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-JKMJ7J2DSZ"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-    gtag('config', 'G-JKMJ7J2DSZ');
-  </script>
-
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
-
-  <style>
-    :root {
-      --paper: #f2f1ec;
-      --white: #fffef8;
-      --ink: #101010;
-      --muted: #696963;
-      --line: rgba(16, 16, 16, .2);
-      --blue: #2448ff;
-      --blue-dark: #142fc9;
-      --blue-pale: #dfe4ff;
-      --gutter: clamp(22px, 4vw, 64px);
-      --max: 1320px;
-    }
-
-    * { box-sizing: border-box; }
-    html { scroll-behavior: auto; }
-    body {
-      margin: 0;
-      color: var(--ink);
-      background: var(--paper);
-      font-family: 'IBM Plex Sans', Arial, sans-serif;
-      font-size: 17px;
-      line-height: 1.5;
-      -webkit-font-smoothing: antialiased;
-    }
-
-    a { color: inherit; }
-    a:focus-visible,
-    button:focus-visible,
-    input:focus-visible + span {
-      outline: 3px solid #ff5c35;
-      outline-offset: 4px;
-    }
-
-    .skip-link {
-      position: fixed;
-      top: 8px;
-      left: 8px;
-      z-index: 20;
-      padding: 10px 14px;
-      color: var(--white);
-      background: var(--ink);
-      transform: translateY(-150%);
-    }
-    .skip-link:focus { transform: translateY(0); }
-
-    .draft-bar {
-      color: var(--white);
-      background: var(--ink);
-      font-family: 'IBM Plex Mono', monospace;
-      font-size: 11px;
-      line-height: 1.4;
-      letter-spacing: .08em;
-      text-transform: uppercase;
-    }
-    .draft-bar div {
-      width: min(100%, var(--max));
-      margin: 0 auto;
-      padding: 11px var(--gutter);
-    }
-
-    .site-head {
-      width: min(100%, var(--max));
-      min-height: 82px;
-      margin: 0 auto;
-      padding: 0 var(--gutter);
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 24px;
-      border-left: 1px solid var(--line);
-      border-right: 1px solid var(--line);
-    }
-    .wordmark { font-weight: 600; }
-    .site-head span:last-child {
-      color: var(--muted);
-      font-family: 'IBM Plex Mono', monospace;
-      font-size: 11px;
-      letter-spacing: .08em;
-      text-transform: uppercase;
-    }
-
-    .frame {
-      width: min(100%, var(--max));
-      margin: 0 auto;
-      border-left: 1px solid var(--line);
-      border-right: 1px solid var(--line);
-    }
-
-    .eyebrow {
-      margin: 0;
-      font-family: 'IBM Plex Mono', monospace;
-      font-size: 11px;
-      line-height: 1.4;
-      letter-spacing: .12em;
-      text-transform: uppercase;
-    }
-
-    .hero {
-      min-height: min(820px, calc(100vh - 120px));
-      display: grid;
-      grid-template-columns: minmax(0, 2fr) minmax(300px, .82fr);
-      border-top: 1px solid var(--line);
-      border-bottom: 1px solid var(--line);
-    }
-    .hero-main {
-      padding: clamp(46px, 7vw, 96px) var(--gutter) 54px;
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-      gap: 42px;
-    }
-    h1 {
-      max-width: 950px;
-      margin: 22px 0 30px;
-      font-size: clamp(64px, 9vw, 128px);
-      font-weight: 600;
-      line-height: .84;
-      letter-spacing: -.07em;
-    }
-    h1 span { display: block; }
-    h1 .blue { color: var(--blue); }
-    .hero-intro {
-      max-width: 700px;
-      margin: 0;
-      font-size: clamp(20px, 2vw, 27px);
-      line-height: 1.38;
-      letter-spacing: -.02em;
-      text-wrap: pretty;
-    }
-    .primary-link {
-      display: inline-flex;
-      align-items: center;
-      min-height: 54px;
-      margin-top: 28px;
-      padding: 0 20px;
-      color: var(--white);
-      background: var(--ink);
-      font-weight: 600;
-      text-decoration: none;
-    }
-    .primary-link::after { content: ' ↓'; margin-left: 16px; }
-
-    .hero-offer {
-      padding: 32px;
-      color: var(--white);
-      background: var(--blue);
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-      gap: 44px;
-    }
-    .offer-price {
-      margin: 12px 0 0;
-      font-size: clamp(52px, 5vw, 74px);
-      line-height: .95;
-      letter-spacing: -.055em;
-      font-weight: 600;
-    }
-    .offer-facts { margin: 0; }
-    .offer-facts div {
-      display: grid;
-      grid-template-columns: 82px 1fr;
-      gap: 12px;
-      padding: 15px 0;
-      border-top: 1px solid rgba(255,255,255,.42);
-    }
-    .offer-facts dt {
-      font-family: 'IBM Plex Mono', monospace;
-      font-size: 10px;
-      letter-spacing: .08em;
-      text-transform: uppercase;
-      opacity: .72;
-    }
-    .offer-facts dd { margin: 0; }
-    .offer-note { margin: 18px 0 0; font-size: 14px; opacity: .78; }
-
-    .section {
-      padding: clamp(70px, 9vw, 124px) var(--gutter);
-      border-bottom: 1px solid var(--line);
-    }
-    .section-head {
-      display: grid;
-      grid-template-columns: .62fr 1.38fr;
-      gap: 48px;
-      margin-bottom: 58px;
-    }
-    h2 {
-      max-width: 850px;
-      margin: 0;
-      font-size: clamp(46px, 6vw, 84px);
-      font-weight: 600;
-      line-height: .96;
-      letter-spacing: -.055em;
-      text-wrap: balance;
-    }
-
-    .situation-list {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      border-top: 1px solid var(--ink);
-    }
-    .situation {
-      min-height: 290px;
-      padding: 24px 28px 28px 0;
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-      gap: 42px;
-      border-bottom: 1px solid var(--ink);
-    }
-    .situation + .situation { padding-left: 28px; border-left: 1px solid var(--line); }
-    .situation-num {
-      color: var(--blue);
-      font-family: 'IBM Plex Mono', monospace;
-      font-size: 12px;
-    }
-    .situation p { margin: 0; font-size: 21px; line-height: 1.4; }
-
-    .proof {
-      color: var(--white);
-      background: var(--ink);
-    }
-    .proof .section-head { align-items: end; }
-    .proof .eyebrow { color: rgba(255,255,255,.58); }
-    .proof-intro { margin: 0; max-width: 650px; font-size: 20px; color: rgba(255,255,255,.75); }
-    .proof-card { border-top: 1px solid rgba(255,255,255,.5); }
-    .proof-title {
-      padding: 26px 0 34px;
-      display: flex;
-      justify-content: space-between;
-      gap: 28px;
-      align-items: flex-start;
-      border-bottom: 1px solid rgba(255,255,255,.24);
-    }
-    .proof-title h3 { max-width: 760px; margin: 0; font-size: clamp(30px, 4vw, 52px); line-height: 1.05; letter-spacing: -.04em; }
-    .proof-title a { text-underline-offset: 5px; white-space: nowrap; }
-    .proof-row {
-      display: grid;
-      grid-template-columns: 180px 1fr;
-      gap: 40px;
-      padding: 24px 0 28px;
-      border-bottom: 1px solid rgba(255,255,255,.24);
-    }
-    .proof-row dt {
-      color: #92a4ff;
-      font-family: 'IBM Plex Mono', monospace;
-      font-size: 11px;
-      letter-spacing: .1em;
-      text-transform: uppercase;
-    }
-    .proof-row dd { max-width: 820px; margin: 0; font-size: 20px; line-height: 1.48; }
-    .proof-disclaimer { margin: 20px 0 0; color: rgba(255,255,255,.55); font-size: 14px; }
-
-    .output-lead {
-      display: grid;
-      grid-template-columns: 1.15fr .85fr;
-      gap: 60px;
-      padding: 34px 0 42px;
-      border-top: 1px solid var(--ink);
-      border-bottom: 1px solid var(--ink);
-    }
-    .output-lead h3 { margin: 0; font-size: clamp(34px, 4vw, 56px); line-height: 1; letter-spacing: -.045em; }
-    .output-lead p { max-width: 600px; margin: 0; font-size: 20px; }
-    .output-formats {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-    }
-    .format {
-      padding: 24px 24px 0 0;
-    }
-    .format + .format { padding-left: 24px; border-left: 1px solid var(--line); }
-    .format h3 { margin: 0 0 8px; font-size: 19px; font-weight: 600; }
-    .format p { margin: 0; color: var(--muted); }
-
-    .intake { background: var(--blue-pale); }
-    .intake-grid {
-      display: grid;
-      grid-template-columns: .7fr 1.3fr;
-      gap: clamp(50px, 8vw, 110px);
-      align-items: start;
-    }
-    .intake-copy h2 { margin: 16px 0 24px; }
-    .intake-copy > p { max-width: 470px; font-size: 20px; }
-    .intake-rule {
-      margin-top: 36px;
-      padding: 22px;
-      color: var(--white);
-      background: var(--ink);
-      font-size: 15px;
-    }
-    .intake-preview { counter-reset: intake; border-top: 1px solid var(--ink); }
-    .intake-field {
-      counter-increment: intake;
-      display: grid;
-      grid-template-columns: 38px minmax(150px, .72fr) 1.28fr;
-      gap: 18px;
-      padding: 20px 0 22px;
-      border-bottom: 1px solid rgba(16,16,16,.34);
-    }
-    .intake-field::before {
-      content: counter(intake, decimal-leading-zero);
-      color: var(--blue);
-      font-family: 'IBM Plex Mono', monospace;
-      font-size: 11px;
-    }
-    .intake-field strong { font-weight: 600; }
-    .intake-field span { color: #565762; }
-
-    .fit { color: var(--white); background: var(--blue); }
-    .fit .section-head { margin-bottom: 44px; }
-    .fit .eyebrow { color: rgba(255,255,255,.68); }
-    .fit-grid {
-      display: grid;
-      grid-template-columns: minmax(0, 1.25fr) minmax(300px, .75fr);
-      gap: clamp(44px, 8vw, 100px);
-      align-items: start;
-    }
-    .checks { margin: 0; padding: 0; border: 0; }
-    .checks legend { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); }
-    .check {
-      min-height: 66px;
-      padding: 18px 0;
-      display: grid;
-      grid-template-columns: 26px 1fr;
-      gap: 15px;
-      align-items: start;
-      border-top: 1px solid rgba(255,255,255,.45);
-      cursor: pointer;
-    }
-    .check:last-child { border-bottom: 1px solid rgba(255,255,255,.45); }
-    .check input { width: 20px; height: 20px; margin: 3px 0 0; accent-color: var(--ink); }
-    .booking {
-      padding: 30px;
-      color: var(--ink);
-      background: var(--white);
-    }
-    .booking-price { margin: 12px 0 22px; font-size: 54px; font-weight: 600; line-height: .95; letter-spacing: -.055em; }
-    .booking dl { margin: 0 0 26px; }
-    .booking dl div { display: grid; grid-template-columns: 90px 1fr; gap: 12px; padding: 10px 0; border-top: 1px solid var(--line); }
-    .booking dt { color: var(--muted); font-family: 'IBM Plex Mono', monospace; font-size: 10px; text-transform: uppercase; }
-    .booking dd { margin: 0; font-size: 14px; }
-    .booking button {
-      width: 100%;
-      min-height: 52px;
-      border: 0;
-      color: rgba(255,255,255,.62);
-      background: var(--ink);
-      font: inherit;
-      font-weight: 600;
-      cursor: not-allowed;
-    }
-    .booking-status { min-height: 42px; margin: 14px 0 0; color: var(--muted); font-family: 'IBM Plex Mono', monospace; font-size: 11px; line-height: 1.5; }
-
-    .terms-grid { margin: 52px 0 0; border-top: 1px solid var(--ink); }
-    .term {
-      display: grid;
-      grid-template-columns: minmax(130px, .45fr) 1.55fr;
-      gap: 34px;
-      padding: 20px 0 23px;
-      border-bottom: 1px solid var(--line);
-    }
-    .term dt { color: var(--muted); font-family: 'IBM Plex Mono', monospace; font-size: 11px; letter-spacing: .08em; text-transform: uppercase; }
-    .term dd { max-width: 800px; margin: 0; font-size: 18px; }
-
-    .footer {
-      padding: 42px var(--gutter);
-      display: flex;
-      justify-content: space-between;
-      gap: 24px;
-      color: rgba(255,255,255,.62);
-      background: var(--ink);
-      font-family: 'IBM Plex Mono', monospace;
-      font-size: 11px;
-      letter-spacing: .06em;
-      text-transform: uppercase;
-    }
-
-    @media (max-width: 900px) {
-      .hero { min-height: 0; grid-template-columns: 1fr; }
-      .hero-offer { min-height: 420px; }
-      .section-head, .intake-grid { grid-template-columns: 1fr; }
-      .situation-list { grid-template-columns: 1fr; }
-      .situation { min-height: 0; padding: 22px 0; flex-direction: row; justify-content: flex-start; }
-      .situation + .situation { padding-left: 0; border-left: 0; }
-      .situation-num { min-width: 36px; padding-top: 5px; }
-      .output-lead { grid-template-columns: 1fr; }
-      .fit-grid { grid-template-columns: 1fr; }
-      .booking { max-width: 560px; }
-    }
-
-    @media (max-width: 600px) {
-      body { font-size: 16px; }
-      .site-head { min-height: 68px; }
-      .site-head span:last-child { display: none; }
-      .hero-main { padding-top: 50px; }
-      h1 { font-size: clamp(58px, 20vw, 84px); }
-      .hero-intro { font-size: 19px; }
-      .hero-offer { min-height: 380px; padding: 26px 22px; }
-      .section { padding-top: 64px; padding-bottom: 72px; }
-      .section-head { gap: 18px; margin-bottom: 38px; }
-      h2 { font-size: clamp(42px, 13vw, 60px); }
-      .proof-title { display: block; }
-      .proof-title a { display: inline-block; margin-top: 22px; white-space: normal; }
-      .proof-row { grid-template-columns: 1fr; gap: 8px; }
-      .proof-row dd { font-size: 17px; }
-      .output-formats { grid-template-columns: 1fr; }
-      .format { padding: 20px 0; border-bottom: 1px solid var(--line); }
-      .format + .format { padding-left: 0; border-left: 0; }
-      .intake-field { grid-template-columns: 32px 1fr; gap: 10px; }
-      .intake-field span { grid-column: 2; }
-      .booking { padding: 24px 20px; }
-      .term { grid-template-columns: 1fr; gap: 6px; }
-      .footer { flex-direction: column; }
-    }
-
-  </style>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="color-scheme" content="light">
+<title>Private Design Decision Stress-Test — Ilia Werner</title>
+<meta name="description" content="A private, asynchronous stress-test of one directional interface decision, based on the evidence, constraints and alternatives your team already has.">
+<meta name="author" content="Ilia Werner">
+<meta name="theme-color" content="#f2f0e8">
+<link rel="canonical" href="https://www.iliawerner.com/review/">
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Ilia Werner">
+<meta property="og:url" content="https://www.iliawerner.com/review/">
+<meta property="og:title" content="Private Design Decision Stress-Test — Ilia Werner">
+<meta property="og:description" content="Stress-test one directional interface decision before the expensive commitment.">
+<meta property="og:image" content="https://www.iliawerner.com/review/apple-three-buttons-thumbnail.jpg">
+<meta property="og:image:width" content="1280">
+<meta property="og:image:height" content="720">
+<meta property="og:image:alt" content="Mac window controls in 2001 and 2026.">
+<meta property="og:locale" content="en_GB">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Private Design Decision Stress-Test — Ilia Werner">
+<meta name="twitter:description" content="Stress-test one directional interface decision before the expensive commitment.">
+<meta name="twitter:image" content="https://www.iliawerner.com/review/apple-three-buttons-thumbnail.jpg">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Service",
+  "name": "Private Design Decision Stress-Test",
+  "provider": {
+    "@type": "Person",
+    "name": "Ilia Werner",
+    "url": "https://www.iliawerner.com/"
+  },
+  "url": "https://www.iliawerner.com/review/",
+  "description": "A private, asynchronous stress-test of one directional interface decision based on evidence and alternatives already held by the team."
+}
+</script>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-JKMJ7J2DSZ"></script>
+<script>
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'G-JKMJ7J2DSZ');
+</script>
+<style>
+:root{--paper:#f2f0e8;--ink:#111;--blue:#3150ff;--pale:#dfe5ff;--line:rgba(17,17,17,.22);--muted:#62615c;--g:clamp(20px,4vw,58px)}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--paper);color:var(--ink);font:17px/1.45 Arial,Helvetica,sans-serif}button,a{font:inherit}a:focus-visible,button:focus-visible{outline:3px solid #ff5c35;outline-offset:4px}.skip-link{position:fixed;left:8px;top:8px;z-index:20;padding:10px 14px;color:#fff;background:var(--ink);transform:translateY(-160%)}.skip-link:focus{transform:none}.shell{margin:0 auto;max-width:1600px;border-inline:1px solid var(--line)}
+.top{height:70px;padding:0 var(--g);display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid var(--line);font-size:13px}.brand{font-weight:700}.status{color:var(--muted)}
+.hero{display:grid;grid-template-columns:1.02fr .98fr;min-height:calc(100svh - 70px);border-bottom:1px solid var(--line)}.hero-copy{padding:clamp(54px,6.5vw,88px) var(--g) 30px;display:flex;flex-direction:column;justify-content:space-between;gap:46px}.kicker,.label{margin:0 0 18px;color:var(--blue);font:700 11px/1.3 ui-monospace,SFMono-Regular,Consolas,monospace;letter-spacing:.11em;text-transform:uppercase}h1{max-width:820px;margin:0;font-size:clamp(56px,6.4vw,96px);line-height:.89;letter-spacing:-.068em}h2{margin:0;font-size:clamp(42px,5.5vw,80px);line-height:.94;letter-spacing:-.055em}.intro{max-width:720px;margin:26px 0 0;font-size:clamp(20px,2vw,28px);line-height:1.28}.actions{display:flex;gap:10px;flex-wrap:wrap}.button{min-height:52px;padding:0 18px;display:inline-flex;align-items:center;border:1px solid var(--ink);color:#fff;background:var(--ink);text-decoration:none;font-weight:700}.button.alt{color:var(--ink);background:transparent}.meta{display:grid;grid-template-columns:repeat(3,1fr);border-top:1px solid var(--line)}.meta div{padding:14px 0}.meta div+div{padding-left:18px;border-left:1px solid var(--line)}.meta small{display:block;color:var(--muted);font:10px ui-monospace,monospace;text-transform:uppercase}.meta strong{display:block;margin-top:5px;font-size:15px}
+.object-zone{padding:clamp(70px,8vw,130px) var(--g);display:grid;place-items:center;background:var(--pale);background-image:linear-gradient(var(--line) 1px,transparent 1px),linear-gradient(90deg,var(--line) 1px,transparent 1px);background-size:38px 38px}.object{width:min(100%,570px);background:var(--paper);border:1px solid var(--ink);box-shadow:10px 10px 0 var(--blue)}.object-head{padding:12px 15px;display:flex;justify-content:space-between;border-bottom:1px solid var(--ink);font:10px ui-monospace,monospace;text-transform:uppercase}.tabs{display:grid;grid-template-columns:repeat(3,1fr);border-bottom:1px solid var(--ink)}.tab{min-height:44px;border:0;border-right:1px solid var(--ink);background:transparent;cursor:pointer}.tab:last-child{border:0}.tab[aria-selected=true]{color:#fff;background:var(--blue)}.object-body{padding:28px}.index{display:block;color:var(--blue);font:11px ui-monospace,monospace}.object-body h3{margin:70px 0 12px;font-size:clamp(32px,4vw,58px);line-height:.96;letter-spacing:-.05em}.object-body p{max-width:470px;margin:0;color:var(--muted)}.rows{margin-top:34px;border-top:1px solid var(--ink)}.row{padding:10px 0;display:flex;justify-content:space-between;gap:20px;border-bottom:1px solid var(--line);font:11px ui-monospace,monospace;text-transform:uppercase}.row span:last-child{color:var(--blue);text-align:right}
+.section{padding:clamp(78px,10vw,145px) var(--g);border-bottom:1px solid var(--line)}.split{display:grid;grid-template-columns:minmax(220px,.55fr) 1.45fr;gap:clamp(42px,8vw,120px)}.copy{max-width:820px}.copy>p{font-size:20px}.situations{margin-top:54px;border-top:1px solid var(--ink)}.situation{padding:18px 0;display:grid;grid-template-columns:150px 1fr;gap:28px;border-bottom:1px solid var(--line)}.situation strong{color:var(--blue);font:11px ui-monospace,monospace;text-transform:uppercase}.situation p{margin:0;font-size:19px}.boundary{margin-top:28px;color:var(--muted)}
+.proof{color:#fff;background:#101010}.proof .label{color:#90a0ff}.proof-head{display:flex;justify-content:space-between;gap:40px;align-items:end;margin-bottom:52px}.proof-head h2{max-width:850px}.proof-head p{max-width:430px;color:#bbb}.sample{display:grid;grid-template-columns:1.25fr .75fr;border:1px solid #777}.media{min-height:480px;position:relative;overflow:hidden;background:#222}.media img{width:100%;height:100%;object-fit:cover;display:block;filter:saturate(.9) contrast(1.05)}.marker{position:absolute;left:24px;bottom:24px;max-width:360px;padding:12px 14px;color:#111;background:#fff;font-weight:700}.sample-copy{padding:28px;display:flex;flex-direction:column;justify-content:space-between;border-left:1px solid #777}.proof-tabs{display:flex;border-bottom:1px solid #777}.proof-tab{flex:1;padding:12px 6px;border:0;border-right:1px solid #777;color:#aaa;background:transparent;cursor:pointer}.proof-tab[aria-selected=true]{color:#fff;background:var(--blue)}.sample-copy h3{margin:70px 0 14px;font-size:clamp(30px,3vw,48px);line-height:1;letter-spacing:-.04em}.sample-copy p{color:#bbb}.sample-note{margin-top:24px!important;font-size:13px}.sample-note a{color:#fff}
+.return-head{max-width:940px}.return-list{margin-top:60px;border-top:1px solid var(--ink)}.return-row{padding:24px 0;display:grid;grid-template-columns:80px .5fr 1fr;gap:32px;border-bottom:1px solid var(--line)}.num{color:var(--blue);font:11px ui-monospace,monospace}.return-row h3,.return-row p{margin:0}.return-row h3{font-size:25px}.return-row p{max-width:650px;color:var(--muted)}
+.offer{color:#fff;background:var(--blue)}.offer .label{color:#cad2ff}.offer-grid{display:grid;grid-template-columns:1fr minmax(320px,.62fr);gap:clamp(50px,8vw,120px)}.conditions{margin-top:36px;border-top:1px solid rgba(255,255,255,.6)}.condition{padding:15px 0;display:grid;grid-template-columns:32px 1fr;border-bottom:1px solid rgba(255,255,255,.35)}.price-card{padding:30px;color:var(--ink);background:var(--paper);align-self:start}.price-card strong{display:block;margin:12px 0 24px;font-size:clamp(56px,6vw,84px);line-height:.9;letter-spacing:-.06em}.price-card dl{margin:0 0 24px}.price-card dl div{padding:9px 0;display:grid;grid-template-columns:90px 1fr;border-top:1px solid var(--line)}.price-card dt{color:var(--muted);font:10px ui-monospace,monospace;text-transform:uppercase}.price-card dd{margin:0;font-size:14px}.preview{width:100%;min-height:50px;border:1px solid var(--ink);color:#fff;background:var(--ink);cursor:pointer;font-weight:700}.booking-note{margin:18px 0 0;color:var(--muted);font-size:13px}.booking-note strong{color:var(--ink)}
+.terms{padding:28px var(--g)}details{border-top:1px solid var(--line)}details:last-child{border-bottom:1px solid var(--line)}summary{padding:17px 0;cursor:pointer;font-weight:700}details p{max-width:850px;margin:0 0 18px;color:var(--muted)}footer{padding:28px var(--g);display:flex;justify-content:space-between;gap:20px;font-size:12px}
+dialog{width:min(680px,calc(100% - 32px));padding:0;border:1px solid var(--ink);background:var(--paper)}dialog::backdrop{background:rgba(0,0,0,.55)}.dialog-head{padding:18px;display:flex;justify-content:space-between;border-bottom:1px solid var(--ink)}.close{border:0;background:none;cursor:pointer}.dialog-body{padding:24px}.dialog-body ol{padding-left:22px}.dialog-body li{margin:13px 0}
+@media(max-width:900px){.hero{grid-template-columns:1fr}.hero-copy{min-height:auto;gap:56px}.object-zone{min-height:700px}.split{grid-template-columns:1fr}.sample{grid-template-columns:1fr}.sample-copy{border-left:0;border-top:1px solid #777}.offer-grid{grid-template-columns:1fr}.price-card{max-width:570px}}
+@media(max-width:600px){.top{height:60px}.status{display:none}.hero{min-height:0}.hero-copy{padding-top:64px}.actions{gap:8px;flex-wrap:nowrap}.button{padding-inline:13px;font-size:15px;white-space:nowrap}.object-zone{min-height:570px}.object-body h3{margin-top:48px}.meta{grid-template-columns:repeat(3,1fr)}.meta div{padding:12px 4px}.meta div+div{padding-left:8px;border-left:1px solid var(--line)}.meta strong{font-size:12px;line-height:1.25}h1{font-size:clamp(50px,16vw,72px)}.section{padding-block:72px}.proof-head{display:block}.sample .media{min-height:280px}.proof-tabs{display:grid;grid-template-columns:1fr}.proof-tab{border-right:0;border-bottom:1px solid #777}.return-row{grid-template-columns:48px 1fr}.return-row p{grid-column:2}.situation{grid-template-columns:1fr;gap:6px}footer{flex-direction:column}}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+</style>
 </head>
 <body>
-  <a class="skip-link" href="#offer">Skip to the offer</a>
-
-  <aside class="draft-bar" role="status">
-    <div>Draft — booking is not open</div>
-  </aside>
-
-  <header class="site-head">
-    <span class="wordmark">Ilia Werner</span>
-    <span>Private Design Review · 2026</span>
-  </header>
-
-  <main>
-    <section class="hero frame" id="offer">
-      <div class="hero-main">
-        <div>
-          <p class="eyebrow">Private Design Review</p>
-          <h1><span>One decision.</span><span class="blue">One verdict.</span><span>Before the build.</span></h1>
-          <p class="hero-intro">Bring one consequential product or interface decision. I investigate it independently and tell you what I think you should do, what should stop, and why.</p>
-          <a class="primary-link" href="#fit" data-event="review_cta_click">Check whether it fits</a>
-        </div>
-        <p>The purchase, intake, research and delivery are designed to work without a sales call.</p>
-      </div>
-
-      <aside class="hero-offer" aria-label="Offer summary">
-        <div>
-          <p class="eyebrow">Full fee</p>
-          <p class="offer-price">US $5,000</p>
-        </div>
-        <div>
-          <dl class="offer-facts">
-            <div><dt>Scope</dt><dd>one product decision</dd></div>
-            <div><dt>Delivery</dt><dd>ten working days</dd></div>
-            <div><dt>Capacity</dt><dd>one review at a time</dd></div>
-            <div><dt>Format</dt><dd>private and asynchronous</dd></div>
-          </dl>
-          <p class="offer-note">One slot. Full payment before the written intake opens.</p>
-        </div>
-      </aside>
-    </section>
-
-    <section class="section frame" id="situations">
-      <div class="section-head">
-        <p class="eyebrow">When it earns its fee</p>
-        <h2>Before a decision becomes expensive to reverse.</h2>
-      </div>
-      <div class="situation-list">
-        <article class="situation">
-          <span class="situation-num">01</span>
-          <p>You are replacing a familiar professional workflow and need to know what the new model must preserve.</p>
-        </article>
-        <article class="situation">
-          <span class="situation-num">02</span>
-          <p>You are adding AI or automation and need to decide where the user should keep control.</p>
-        </article>
-        <article class="situation">
-          <span class="situation-num">03</span>
-          <p>You are simplifying a mature product and need to separate accidental complexity from expertise encoded in the interface.</p>
-        </article>
-      </div>
-    </section>
-
-    <section class="section frame proof" id="proof">
-      <div class="section-head">
-        <p class="eyebrow">Proof of method</p>
-        <div>
-          <h2>See the reasoning before buying.</h2>
-          <p class="proof-intro">My public Design Lovers investigations show how I move from a small interface detail through history and comparison to a position a product team can use.</p>
-        </div>
-      </div>
-
-      <div class="proof-card">
-        <div class="proof-title">
-          <h3>The Three Buttons Apple Never Had the Guts to Remove</h3>
-          <a href="https://www.youtube.com/watch?v=z1ZrserYjZo" target="_blank" rel="noopener noreferrer">Watch the public investigation ↗</a>
-        </div>
-        <dl>
-          <div class="proof-row">
-            <dt>Public question</dt>
-            <dd>Why did the three coloured window controls survive every macOS redesign while equally bold Windows interfaces disappeared?</dd>
-          </div>
-          <div class="proof-row">
-            <dt>Evidence</dt>
-            <dd>The origins of Aqua, criticism of early Mac OS X, the competing histories of Windows Luna and Metro, twenty-five years of design continuity, and the controls' later move to iPadOS.</dd>
-          </div>
-          <div class="proof-row">
-            <dt>Verdict</dt>
-            <dd>A detail becomes durable not simply because it is usable or attractive, but because a company repeatedly protects it as a marker of product identity.</dd>
-          </div>
-          <div class="proof-row">
-            <dt>Product implication</dt>
-            <dd>When replacing an established interface, distinguish obsolete mechanics from the details that carry continuity and recognition. Removing both is not simplification.</dd>
-          </div>
-        </dl>
-        <p class="proof-disclaimer">Public example, not a client result.</p>
-      </div>
-    </section>
-
-    <section class="section frame" id="output">
-      <div class="section-head">
-        <p class="eyebrow">What comes back</p>
-        <h2>The answer first. The files make it usable.</h2>
-      </div>
-      <div class="output-lead">
-        <h3>A direct recommendation</h3>
-        <p>The decision I believe you should make, what I would reject, the main risk, and the next action. Your team should be able to use the conclusion without bringing me into the room.</p>
-      </div>
-      <div class="output-formats">
-        <article class="format"><h3>A private research film</h3><p>Usually 20–30 minutes, chaptered, with the relevant evidence shown on screen.</p></article>
-        <article class="format"><h3>A searchable text version</h3><p>Edited for reading and matched to the film chapters for quoting and navigation.</p></article>
-        <article class="format"><h3>Source notes</h3><p>The references behind the argument and the questions that still require testing.</p></article>
-      </div>
-    </section>
-
-    <section class="section frame intake" id="intake">
-      <div class="intake-grid">
-        <div class="intake-copy">
-          <p class="eyebrow">Intake preview</p>
-          <h2>Know what you must provide before paying.</h2>
-          <p>The intake is written. It should be possible to finish it without a meeting or follow-up explanation.</p>
-          <p class="intake-rule">After booking opens, complete the intake within 24 hours of payment. If it remains incomplete, the payment is refunded and the slot reopens.</p>
-        </div>
-
-        <div class="intake-preview" aria-label="Required intake information">
-          <div class="intake-field"><strong>The decision in one sentence</strong><span>One decision about one product—not a list of issues.</span></div>
-          <div class="intake-field"><strong>The alternatives being considered</strong><span>The real options currently available to the team.</span></div>
-          <div class="intake-field"><strong>The date the decision must be made</strong><span>A date within the next 30 days.</span></div>
-          <div class="intake-field"><strong>The product context and constraints</strong><span>Audience, business model, technology, history, and constraints that shape the decision.</span></div>
-          <div class="intake-field"><strong>Your estimate of what a wrong decision would cost</strong><span>Rework, delayed launch, migration, lost trust, or another concrete consequence.</span></div>
-          <div class="intake-field"><strong>The materials your team is ready to share</strong><span>Screens, prototypes, research, analytics, internal arguments, and relevant data or documents.</span></div>
-        </div>
-      </div>
-    </section>
-
-    <section class="section frame fit" id="fit">
-      <div class="section-head">
-        <p class="eyebrow">Self-qualification</p>
-        <h2>All five must be true.</h2>
-      </div>
-      <form class="fit-grid" id="fit-form">
-        <fieldset class="checks">
-          <legend>Review fit conditions</legend>
-          <label class="check"><input type="checkbox" name="fit" value="owner"><span>I own or co-own this decision and its budget</span></label>
-          <label class="check"><input type="checkbox" name="fit" value="deadline"><span>The decision must be made within 30 days</span></label>
-          <label class="check"><input type="checkbox" name="fit" value="cost"><span>The estimated cost of getting it wrong is at least $25,000</span></label>
-          <label class="check"><input type="checkbox" name="fit" value="scope"><span>I can state one decision about one product</span></label>
-          <label class="check"><input type="checkbox" name="fit" value="materials"><span>All required materials are ready for the written intake</span></label>
-        </fieldset>
-
-        <aside class="booking" aria-label="Booking summary">
-          <p class="eyebrow">One private review</p>
-          <p class="booking-price">$5,000</p>
-          <dl>
-            <div><dt>Payment</dt><dd>in full</dd></div>
-            <div><dt>Start</dt><dd>after complete intake</dd></div>
-            <div><dt>Delivery</dt><dd>within ten working days</dd></div>
-          </dl>
-          <button type="button" data-checkout disabled>Checkout not connected</button>
-          <p class="booking-status" id="booking-status" aria-live="polite">Checkout and intake are not connected in this draft.</p>
-        </aside>
-      </form>
-    </section>
-
-    <section class="section frame" id="terms">
-      <div class="section-head">
-        <p class="eyebrow">Working terms</p>
-        <h2>Small, private and asynchronous.</h2>
-      </div>
-      <dl class="terms-grid">
-        <div class="term"><dt>Scope</dt><dd>One product, one consequential decision, and one independent verdict.</dd></div>
-        <div class="term"><dt>Fee</dt><dd>US $5,000, paid in full before the intake opens.</dd></div>
-        <div class="term"><dt>Timing</dt><dd>Ten working days from the completed intake and receipt of all materials.</dd></div>
-        <div class="term"><dt>Process</dt><dd>The purchase, intake, and delivery are written and asynchronous. No call, proposal, or negotiation is required.</dd></div>
-        <div class="term"><dt>Confidentiality</dt><dd>Your question, materials, and finished review remain private. NDA availability and internal sharing rights are stated before payment. The work cannot be resold, licensed, paywalled, or included in a paid product.</dd></div>
-        <div class="term"><dt>Boundary</dt><dd>User interviews, usability testing, analytics work, legal review, accessibility compliance, and implementation are outside this review.</dd></div>
-        <div class="term"><dt>Corrections</dt><dd>I correct factual mistakes. A new question or changed brief is a new review.</dd></div>
-      </dl>
-    </section>
-  </main>
-
-  <footer class="footer frame">
-    <span>Ilia Werner · Design Lovers</span>
-    <span>Private Design Review · Draft 2026</span>
-  </footer>
-
-  <script>
-    const form = document.getElementById('fit-form');
-    const checks = Array.from(form.querySelectorAll('input[name="fit"]'));
-    const checkoutButton = form.querySelector('[data-checkout]');
-    const status = document.getElementById('booking-status');
-    let fitStarted = false;
-    let fitPassed = false;
-    let unavailableRecorded = false;
-
-    function track(eventName, parameters = {}) {
-      if (typeof window.gtag === 'function') {
-        window.gtag('event', eventName, parameters);
-      }
-    }
-
-    document.querySelectorAll('[data-event="review_cta_click"]').forEach((link) => {
-      link.addEventListener('click', () => track('review_cta_click', { location: 'hero' }));
-    });
-
-    function updateFit() {
-      const checked = checks.filter((input) => input.checked).length;
-      const complete = checked === checks.length;
-
-      if (!fitStarted && checked > 0) {
-        fitStarted = true;
-        track('review_fit_started');
-      }
-
-      if (complete && !fitPassed) {
-        fitPassed = true;
-        track('review_fit_passed');
-      }
-
-      if (complete && !unavailableRecorded) {
-        unavailableRecorded = true;
-        track('review_checkout_unavailable');
-      }
-
-      status.textContent = complete
-        ? 'All five conditions fit. Checkout and intake are not connected in this draft.'
-        : `${checked} of ${checks.length} conditions confirmed. Checkout remains closed in this draft.`;
-    }
-
-    checks.forEach((input) => input.addEventListener('change', updateFit));
-    checkoutButton.setAttribute('aria-describedby', 'booking-status');
-    updateFit();
-  </script>
+<a class="skip-link" href="#overview">Skip to the offer</a>
+<div class="shell">
+<header class="top"><span class="brand">Ilia Werner</span><span class="status">Private Design Decision Stress-Test · 2026</span></header>
+<main>
+<section class="hero" id="overview" aria-labelledby="hero-title">
+  <div class="hero-copy">
+    <div><p class="kicker">Private Design Decision Stress-Test</p><h1 id="hero-title">When the evidence is in, but the direction is still open.</h1><p class="intro">I stress-test one directional interface decision against the evidence, constraints and alternatives your team already has. You receive the position that evidence supports, its limits, a research film and a decision record.</p></div>
+    <div><div class="actions"><a class="button" href="#sample" data-event="review_sample_click">See a public example</a><a class="button alt" href="#fit" data-event="review_fit_click">Check the fit</a></div><div class="meta"><div><small>Scope</small><strong>one interface decision</strong></div><div><small>Delivery</small><strong>ten working days</strong></div><div><small>Fee</small><strong>US $5,000</strong></div></div></div>
+  </div>
+  <div class="object-zone"><article class="object"><div class="object-head"><span>PDI / 001</span><span>Decision record</span></div><div class="tabs" role="tablist" aria-label="Decision stress-test stages"><button class="tab" role="tab" aria-selected="true" data-state="input">Input</button><button class="tab" role="tab" aria-selected="false" data-state="investigation">Stress-test</button><button class="tab" role="tab" aria-selected="false" data-state="position">Position</button></div><div class="object-body" aria-live="polite"><span class="index" id="object-index">01</span><h3 id="object-title">The decision in one sentence.</h3><p id="object-text">Send the live alternatives, constraints and evidence your team already holds.</p><div class="rows" id="object-rows"><div class="row"><span>Decision</span><span>one sentence</span></div><div class="row"><span>Alternatives</span><span>two or three</span></div><div class="row"><span>Evidence</span><span>ready to share</span></div></div></div></article></div>
+</section>
+<section class="section" id="fit"><div class="split"><p class="label">The purchase moment</p><div class="copy"><h2>The facts already exist. What remains is a design interpretation.</h2><p>This is for a capable team choosing between real paths before an expensive commitment.</p><div class="situations"><div class="situation"><strong>Workflow</strong><p>Replace a familiar professional flow while preserving the expertise encoded in it.</p></div><div class="situation"><strong>Automation</strong><p>Introduce AI while deciding where agency should remain with the user.</p></div><div class="situation"><strong>Mature product</strong><p>Simplify an established interface without discarding the details that carry continuity.</p></div></div><p class="boundary">When the central unknown is what people need or do, primary research comes first.</p></div></div></section>
+<section class="section proof" id="sample"><div class="proof-head"><div><p class="label">Public proof of method</p><h2>Inspect the reasoning before buying.</h2></div><p>The public example shows how evidence becomes a bounded product position. It demonstrates the method, not a client outcome.</p></div><article class="sample"><div class="media"><img src="apple-three-buttons-thumbnail.jpg" alt="Mac window controls in 2001 and 2026" width="1280" height="720"><div class="marker" id="proof-marker">A tiny detail survived twenty-five years of redesign. Why?</div></div><div class="sample-copy"><div><div class="proof-tabs" role="tablist" aria-label="Public example stages"><button class="proof-tab" role="tab" aria-selected="true" data-proof="question">Question</button><button class="proof-tab" role="tab" aria-selected="false" data-proof="evidence">Evidence</button><button class="proof-tab" role="tab" aria-selected="false" data-proof="position">Position</button></div><h3 id="proof-title">Start with a tension worth investigating.</h3><p id="proof-text">The coloured controls are visually minor but unusually durable. That makes them useful for asking what a mature interface should preserve.</p></div><p class="sample-note">Self-initiated public demonstration; no client and no observed outcome. <a href="specimen/">Open the specimen record →</a> · <a href="https://www.youtube.com/watch?v=z1ZrserYjZo" target="_blank" rel="noopener noreferrer" data-event="review_film_click">Watch the public film ↗</a></p></div></article></section>
+<section class="section" id="return"><div class="return-head"><p class="label">What returns</p><h2>The decision record is accountable. The film carries the argument.</h2></div><div class="return-list"><article class="return-row"><span class="num">01</span><h3>Decision memo</h3><p>The supported position, rejected alternative, evidence map, assumptions, confidence, strongest objection and next test.</p></article><article class="return-row"><span class="num">02</span><h3>Research film</h3><p>A chaptered 20–30 minute film that carries the reasoning from your evidence to the conclusion.</p></article><article class="return-row"><span class="num">03</span><h3>Evidence record</h3><p>A searchable text version and source notes that separate observations, interpretations and unknowns.</p></article></div></section>
+<section class="section offer" id="offer"><div class="offer-grid"><div><p class="label">Fit before work begins</p><h2>Approve the framing before the stress-test begins.</h2><div class="conditions"><div class="condition"><span>✓</span><span>one directional interface decision</span></div><div class="condition"><span>✓</span><span>two or three live alternatives</span></div><div class="condition"><span>✓</span><span>existing user and product evidence ready to share</span></div><div class="condition"><span>✓</span><span>a real decision date within 30 days</span></div></div></div><aside class="price-card"><p class="label">One private stress-test</p><strong>$5,000</strong><dl><div><dt>First</dt><dd>a written framing of the decision and research path</dd></div><div><dt>Approval</dt><dd>you confirm it before the stress-test</dd></div><div><dt>Delivery</dt><dd>ten working days after approval</dd></div><div><dt>Fallback</dt><dd>full refund if the framing is not approved</dd></div></dl><button class="preview" id="intake-open" type="button" data-event="review_intake_preview">Preview the written intake</button><p class="booking-note" role="status"><strong>Public booking is not yet open.</strong> The first private pilot will establish the process record before checkout opens.</p></aside></div></section>
+<section class="terms"><details><summary>Privacy and internal sharing</summary><p>Your materials and finished review stay private. NDA availability and internal sharing rights are stated before payment.</p></details><details><summary>Scope boundary</summary><p>Questions whose responsible answer requires new interviews, usability testing, analytics work, legal, accessibility, business or technical validation do not fit this stress-test and are rejected during framing.</p></details><details><summary>Written challenge and corrections</summary><p>One bounded written challenge round is included within five working days of delivery. Factual mistakes are corrected. New evidence, a changed question or a new brief is a new review.</p></details></section>
+</main>
+<footer><span>Ilia Werner · Design Lovers</span><span>Private stress-test · public booking not yet open</span></footer>
+</div>
+<dialog id="intake-dialog"><div class="dialog-head"><strong>Written intake preview</strong><button class="close" type="button" aria-label="Close">×</button></div><div class="dialog-body"><p>The decision should be understandable without a meeting.</p><ol><li>State the interface decision in one sentence.</li><li>Name the two or three live alternatives.</li><li>Define the user group, operating context, decision date and practical constraint.</li><li>Attach the evidence and internal arguments already available.</li></ol><p>I return a short written framing of the decision, evidence sufficiency, evaluation criteria and planned research path. You approve it before the ten-day stress-test begins or receive a full refund.</p></div></dialog>
+<script>
+const states={input:{i:'01',t:'The decision in one sentence.',p:'Send the live alternatives, constraints and evidence your team already holds.',r:[['Decision','one sentence'],['Alternatives','two or three'],['Evidence','ready to share']]},investigation:{i:'02',t:'The decision stress-tested from outside.',p:'I trace the product history, compare relevant models and test the assumptions and trade-offs in each path.',r:[['Read','client evidence'],['Compare','precedents + history'],['Test','assumptions + trade-offs']]},position:{i:'03',t:'The position the evidence supports, with its limits.',p:'The conclusion names one path, what it sacrifices, its confidence, the strongest objection and the next test.',r:[['Support','one direction'],['Declare','confidence + objection'],['Return','memo + film']]}};
+const tabs=[...document.querySelectorAll('.tab')],oi=document.querySelector('#object-index'),ot=document.querySelector('#object-title'),op=document.querySelector('#object-text'),orows=document.querySelector('#object-rows');
+tabs.forEach(tab=>tab.addEventListener('click',()=>{const s=states[tab.dataset.state];tabs.forEach(x=>x.setAttribute('aria-selected',String(x===tab)));oi.textContent=s.i;ot.textContent=s.t;op.textContent=s.p;orows.replaceChildren(...s.r.map(([a,b])=>{const row=document.createElement('div');row.className='row';row.innerHTML=`<span>${a}</span><span>${b}</span>`;return row}))}));
+const proof={question:{t:'Start with a tension worth investigating.',p:'The coloured controls are visually minor but unusually durable. That makes them useful for asking what a mature interface should preserve.',m:'A tiny detail survived twenty-five years of redesign. Why?'},evidence:{t:'Make the comparison visible.',p:'Aqua, early criticism, Windows Luna and Metro, twenty-five years of continuity and the move to iPadOS show repeated protection while the system changed.',m:'2001 → 2026: continuity was a choice.'},position:{t:'End with a supported position and a test.',p:'The historical evidence supports preserving identity-bearing cues, but does not prove user value. Modernise the mechanics and test the cue before removing it.',m:'Position: preserve the cue. Confidence: medium.'}};
+const ptabs=[...document.querySelectorAll('.proof-tab')],pt=document.querySelector('#proof-title'),pp=document.querySelector('#proof-text'),pm=document.querySelector('#proof-marker');ptabs.forEach(tab=>tab.addEventListener('click',()=>{const s=proof[tab.dataset.proof];ptabs.forEach(x=>x.setAttribute('aria-selected',String(x===tab)));pt.textContent=s.t;pp.textContent=s.p;pm.textContent=s.m}));
+const dialog=document.querySelector('#intake-dialog');document.querySelector('#intake-open').addEventListener('click',()=>dialog.showModal());document.querySelector('.close').addEventListener('click',()=>dialog.close());dialog.addEventListener('click',e=>{if(e.target===dialog)dialog.close()});
+document.querySelectorAll('[data-event]').forEach(element=>element.addEventListener('click',()=>{if(typeof window.gtag==='function')window.gtag('event',element.dataset.event)}));
+</script>
 </body>
 </html>
