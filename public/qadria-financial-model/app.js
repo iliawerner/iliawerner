@@ -235,6 +235,14 @@
   function calculateOperating(values) {
     const input = model.inputs;
     const year = 3;
+    const valid = [values.standardAdr, values.improvedAdr, values.occupancy, values.rentOccupancy].every(Number.isFinite)
+      && values.standardAdr >= 0
+      && values.improvedAdr >= 0
+      && values.occupancy >= 0
+      && values.occupancy <= 100
+      && values.rentOccupancy >= 0
+      && values.rentOccupancy <= 100;
+    if (!valid) return { valid: false };
     const occupancy = values.occupancy / 100;
     const rentOccupancy = values.rentOccupancy / 100;
     const standardNights = input.standardRooms * 365 * occupancy;
@@ -272,6 +280,7 @@
       / (input.standardRooms + input.improvedRooms);
 
     return {
+      valid: true,
       revpar: weightedAdr * occupancy,
       netRevenue,
       ebitda,
@@ -299,10 +308,12 @@
     function render() {
       const selected = values();
       const result = calculateOperating(selected);
-      setText('op-standard-output', money(selected.standardAdr));
-      setText('op-improved-output', money(selected.improvedAdr));
-      setText('op-occupancy-output', `${integer.format(selected.occupancy)}%`);
-      setText('op-rent-output', `${integer.format(selected.rentOccupancy)}%`);
+      if (!result.valid) {
+        ['op-dscr', 'op-revpar', 'op-net-revenue', 'op-ebitda', 'op-cash-after'].forEach((id) => setText(id, '—'));
+        setText('op-dscr-note', 'Тарифы не могут быть отрицательными, а загрузка должна быть от 0% до 100%.');
+        document.getElementById('op-bars').replaceChildren();
+        return;
+      }
       setText('op-dscr', ratio(result.dscr));
       setText('op-revpar', money(result.revpar));
       setText('op-net-revenue', moneyCompact(result.netRevenue));
@@ -314,7 +325,6 @@
         : `денежный поток покрывает выплаты банку в ${decimal.format(result.dscr)} раза`;
       setText('op-dscr-note', note);
       renderResultBars(result);
-      Object.values(controls).forEach(updateRangeProgress);
     }
 
     function renderResultBars(result) {
@@ -343,14 +353,6 @@
       });
       container.replaceChildren(...bars);
       container.setAttribute('aria-label', items.map(([label, value]) => `${label}: ${money(value)}`).join('; '));
-    }
-
-    function updateRangeProgress(input) {
-      const min = Number(input.min);
-      const max = Number(input.max);
-      const value = Number(input.value);
-      const progress = ((value - min) / (max - min)) * 100;
-      input.style.setProperty('--progress', `${progress}%`);
     }
 
     form.addEventListener('input', render);

@@ -148,10 +148,10 @@
           <article class="calculator" aria-labelledby="operating-calc-title">
             <header><span>Калькулятор 1</span><h3 id="operating-calc-title">Хватает ли денежного потока на выплаты банку</h3><p>Базовый сценарий — третий год модели, когда начинается погашение тела кредита: загрузка 65%, тарифы $120 / $140 и аренда заполнена на 100%.</p></header>
             <form id="operating-form">
-              <label><span>ADR стандартного номера</span><output id="op-standard-output" for="op-standard">$120</output><input id="op-standard" name="standardAdr" type="range" min="80" max="180" step="5" value="120"></label>
-              <label><span>ADR улучшенного номера</span><output id="op-improved-output" for="op-improved">$140</output><input id="op-improved" name="improvedAdr" type="range" min="100" max="220" step="5" value="140"></label>
-              <label><span>Средняя загрузка номеров</span><output id="op-occupancy-output" for="op-occupancy">65%</output><input id="op-occupancy" name="occupancy" type="range" min="40" max="85" step="1" value="65"></label>
-              <label><span>Заполняемость аренды</span><output id="op-rent-output" for="op-rent">100%</output><input id="op-rent" name="rentOccupancy" type="range" min="70" max="100" step="1" value="100"></label>
+              <label><span>ADR стандартного номера, долл.</span><input id="op-standard" name="standardAdr" type="number" min="0" step="5" value="120" inputmode="decimal"></label>
+              <label><span>ADR улучшенного номера, долл.</span><input id="op-improved" name="improvedAdr" type="number" min="0" step="5" value="140" inputmode="decimal"></label>
+              <label><span>Средняя загрузка номеров, %</span><input id="op-occupancy" name="occupancy" type="number" min="0" max="100" step="1" value="65" inputmode="decimal"></label>
+              <label><span>Заполняемость аренды, %</span><input id="op-rent" name="rentOccupancy" type="number" min="0" max="100" step="1" value="100" inputmode="decimal"></label>
               <button type="reset">Вернуть базовый сценарий</button>
             </form>
             <div class="calculator-result" id="operating-result" aria-live="polite">
