@@ -1,0 +1,216 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <base href="/qadria-financial-model/">
+  <meta name="robots" content="noindex, nofollow, noarchive, nosnippet">
+  <meta name="description" content="Рабочая финансовая модель Qadria: выручка, операционные расходы, кредит, DSCR и два калькулятора сценариев.">
+  <meta name="theme-color" content="#17130f">
+  <title>Qadria — финансовая модель</title>
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="styles.css">
+  <script src="data.js" defer></script>
+  <script src="app.js" defer></script>
+</head>
+<body>
+  <header class="topbar">
+    <a class="topbar__brand" href="#top" aria-label="Qadria — к началу страницы">Qadria</a>
+    <nav aria-label="Разделы страницы">
+      <a href="#model">Модель</a>
+      <a href="#calculators">Калькуляторы</a>
+      <a href="#assumptions">Допущения</a>
+    </nav>
+  </header>
+
+  <main id="top">
+    <section class="hero shell" aria-labelledby="page-title">
+      <div class="hero__copy">
+        <p class="eyebrow">Рабочий базовый сценарий</p>
+        <h1 id="page-title">Что показывает финансовая модель Qadria</h1>
+        <p class="hero__lead">При текущих вводных объект получает доход из двух потоков: гостиницы и аренды. Модель показывает, как эти деньги покрывают операционные расходы и кредит, а также какие цифры пока нельзя считать подтверждёнными.</p>
+        <div class="hero__status" role="note">
+          <span>10 лет</span>
+          <span>доллары США</span>
+          <span>без стоимости существующего здания</span>
+        </div>
+      </div>
+      <figure class="hero__image">
+        <img src="assets/hero.webp" width="2400" height="1440" alt="Концептуальный вечерний вид городского отеля Qadria" loading="eager">
+        <figcaption>Архитектурная визуализация показывает концепт. Финансовые расчёты основаны на отдельной модели.</figcaption>
+      </figure>
+    </section>
+
+    <section class="section section--baseline" id="model" aria-labelledby="baseline-title">
+      <div class="shell">
+        <div class="section-heading">
+          <p class="eyebrow">Исходные данные</p>
+          <h2 id="baseline-title">С чего начинается расчёт</h2>
+          <p>Это не прогноз рынка. Это прямой расчёт по данным Гаухар и явно отмеченным допущениям из прежней таблицы.</p>
+        </div>
+        <dl class="baseline-grid">
+          <div><dt>Номерной фонд</dt><dd>83</dd><small>53 стандартных + 30 улучшенных</small></div>
+          <div><dt>Арендная площадь</dt><dd>2 221 м²</dd><small>офисы, два ресторана, магазин и турфирма</small></div>
+          <div><dt>Бюджет реконструкции</dt><dd>$5,0 млн</dd><small>$4 млн кредит + $1 млн собственных средств</small></div>
+          <div><dt>Кредит</dt><dd>12,6%</dd><small>10 лет; 24 месяца отсрочки по телу нужно подтвердить</small></div>
+        </dl>
+      </div>
+    </section>
+
+    <section class="section" id="revenue" aria-labelledby="revenue-title">
+      <div class="shell">
+        <div class="section-heading section-heading--split">
+          <div>
+            <p class="eyebrow">Доход</p>
+            <h2 id="revenue-title">Из чего складывается выручка</h2>
+          </div>
+          <p>Гостиница остаётся главным источником дохода, а аренда даёт фиксированный второй поток. Все суммы ниже показаны без НДС.</p>
+        </div>
+
+        <div class="revenue-mix" aria-label="Структура выручки по годам">
+          <article>
+            <div class="mix-title"><strong>Год 1</strong><span id="mix-y1-total">$2,52 млн</span></div>
+            <div class="mix-bar" id="mix-y1-bar" role="img" aria-label="Год 1: номера и аренда"></div>
+            <div class="mix-legend"><span><i class="legend-room"></i>Номера <b id="mix-y1-room">$1,83 млн</b></span><span><i class="legend-rent"></i>Аренда <b id="mix-y1-rent">$0,69 млн</b></span></div>
+          </article>
+          <article>
+            <div class="mix-title"><strong>Год 5</strong><span id="mix-y5-total">$3,02 млн</span></div>
+            <div class="mix-bar" id="mix-y5-bar" role="img" aria-label="Год 5: номера и аренда"></div>
+            <div class="mix-legend"><span><i class="legend-room"></i>Номера <b id="mix-y5-room">$2,33 млн</b></span><span><i class="legend-rent"></i>Аренда <b id="mix-y5-rent">$0,69 млн</b></span></div>
+          </article>
+        </div>
+
+        <div class="hotel-kpis">
+          <article><span>Средний ADR</span><strong id="kpi-adr">$127</strong><p>Средний тариф с учётом двух типов номеров.</p></article>
+          <article><span>Загрузка</span><strong><span id="kpi-occ-start">55%</span> → <span id="kpi-occ-stable">70%</span></strong><p>Рост от первого года к стабильному сценарию.</p></article>
+          <article><span>RevPAR</span><strong><span id="kpi-revpar-start">$70</span> → <span id="kpi-revpar-stable">$89</span></strong><p>ADR × загрузка. Это связывает тариф и фактическое использование номерного фонда.<sup><a href="#source-1">[1]</a><a href="#source-2">[2]</a></sup></p></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section--years" aria-labelledby="years-title">
+      <div class="shell">
+        <div class="section-heading">
+          <p class="eyebrow">Десять лет</p>
+          <h2 id="years-title">Что остаётся после расходов и долга</h2>
+          <p>График разделяет три уровня: выручку без НДС, EBITDA и денежный поток после обслуживания кредита.</p>
+        </div>
+        <div class="chart-panel">
+          <div class="chart-legend" aria-hidden="true"><span><i class="legend-net"></i>Выручка без НДС</span><span><i class="legend-ebitda"></i>EBITDA</span><span><i class="legend-cash"></i>Поток после долга</span></div>
+          <svg id="annual-chart" class="chart chart--annual" viewBox="0 0 1120 460" role="img" aria-labelledby="annual-chart-title annual-chart-desc">
+            <title id="annual-chart-title">Финансовые показатели Qadria по годам</title>
+            <desc id="annual-chart-desc">Сравнение выручки без НДС, EBITDA и денежного потока после обслуживания долга за десять лет.</desc>
+          </svg>
+        </div>
+        <details class="data-table-disclosure">
+          <summary>Показать таблицу по годам</summary>
+          <div class="table-wrap"><table id="annual-table"><thead><tr><th>Год</th><th>Загрузка</th><th>Выручка без НДС</th><th>EBITDA</th><th>Обслуживание долга</th><th>Поток после долга</th><th>DSCR</th></tr></thead><tbody></tbody></table></div>
+        </details>
+      </div>
+    </section>
+
+    <section class="section section--dark" id="debt" aria-labelledby="debt-title">
+      <div class="shell">
+        <div class="section-heading section-heading--split">
+          <div>
+            <p class="eyebrow">Кредит</p>
+            <h2 id="debt-title">Как уменьшается долг</h2>
+          </div>
+          <p>В базовом сценарии проценты платятся ежемесячно, тело кредита начинает погашаться после 24 месяцев и далее уменьшается равными частями.</p>
+        </div>
+        <div class="debt-layout">
+          <div class="chart-panel chart-panel--dark">
+            <svg id="debt-chart" class="chart chart--debt" viewBox="0 0 820 410" role="img" aria-labelledby="debt-chart-title debt-chart-desc">
+              <title id="debt-chart-title">Остаток кредита Qadria по годам</title>
+              <desc id="debt-chart-desc">Снижение долга с четырёх миллионов долларов до нуля за десять лет.</desc>
+            </svg>
+          </div>
+          <dl class="debt-facts">
+            <div><dt>Минимальный DSCR</dt><dd id="debt-min-dscr">1,67×</dd><small>в первый год погашения тела</small></div>
+            <div><dt>Проценты за 10 лет</dt><dd id="debt-interest">$3,05 млн</dd><small>при сохранении текущего графика</small></div>
+            <div><dt>Остаток после 10 лет</dt><dd id="debt-ending">$0</dd><small>без рефинансирования и досрочного погашения</small></div>
+          </dl>
+        </div>
+        <div id="dscr-strip" class="dscr-strip" aria-label="DSCR по годам"></div>
+        <p class="microcopy">DSCR показывает, во сколько раз денежный поток покрывает проценты и погашение тела кредита. Уровень 1,25× показан только как наглядный ориентир из примера калькулятора; требование конкретного банка нужно подтвердить.<sup><a href="#source-4">[4]</a></sup></p>
+      </div>
+    </section>
+
+    <section class="section section--calculators" id="calculators" aria-labelledby="calculators-title">
+      <div class="shell">
+        <div class="section-heading">
+          <p class="eyebrow">Проверка сценариев</p>
+          <h2 id="calculators-title">Два вопроса, которые можно проверить сразу</h2>
+          <p>Калькуляторы используют те же формулы и допущения, что основная модель. Рыночные прогнозы в расчёт не добавляются.</p>
+        </div>
+
+        <div class="calculator-grid">
+          <article class="calculator" aria-labelledby="operating-calc-title">
+            <header><span>Калькулятор 1</span><h3 id="operating-calc-title">Хватает ли денежного потока на выплаты банку</h3><p>Базовый сценарий — третий год модели, когда начинается погашение тела кредита: загрузка 65%, тарифы $120 / $140 и аренда заполнена на 100%.</p></header>
+            <form id="operating-form">
+              <label><span>ADR стандартного номера</span><output id="op-standard-output" for="op-standard">$120</output><input id="op-standard" name="standardAdr" type="range" min="80" max="180" step="5" value="120"></label>
+              <label><span>ADR улучшенного номера</span><output id="op-improved-output" for="op-improved">$140</output><input id="op-improved" name="improvedAdr" type="range" min="100" max="220" step="5" value="140"></label>
+              <label><span>Средняя загрузка номеров</span><output id="op-occupancy-output" for="op-occupancy">65%</output><input id="op-occupancy" name="occupancy" type="range" min="40" max="85" step="1" value="65"></label>
+              <label><span>Заполняемость аренды</span><output id="op-rent-output" for="op-rent">100%</output><input id="op-rent" name="rentOccupancy" type="range" min="70" max="100" step="1" value="100"></label>
+              <button type="reset">Вернуть базовый сценарий</button>
+            </form>
+            <div class="calculator-result" id="operating-result" aria-live="polite">
+              <div class="primary-result"><span>DSCR</span><strong id="op-dscr">1,67×</strong><small id="op-dscr-note">денежный поток покрывает выплаты банку в 1,67 раза</small></div>
+              <dl><div><dt>RevPAR</dt><dd id="op-revpar">$83</dd></div><div><dt>Выручка без НДС</dt><dd id="op-net-revenue">$2,85 млн</dd></div><div><dt>EBITDA</dt><dd id="op-ebitda">$1,96 млн</dd></div><div><dt>Поток после долга</dt><dd id="op-cash-after">$0,65 млн</dd></div></dl>
+              <div id="op-bars" class="result-bars" role="img" aria-label="Сравнение EBITDA, CFADS и обслуживания долга"></div>
+            </div>
+            <details><summary>Как считается</summary><p>Доход номеров = количество номеров × 365 × загрузка × ADR. Аренда = 2 221 м² × $30 × 12 × заполняемость. Из выручки без НДС вычитаются те же расходы и налоги, что в XLSX. DSCR сравнивает CFADS с полным обслуживанием долга в году 3.</p></details>
+          </article>
+
+          <article class="calculator" aria-labelledby="loan-calc-title">
+            <header><span>Калькулятор 2</span><h3 id="loan-calc-title">Сколько стоит кредит при этих условиях</h3><p>Метод погашения зафиксирован: проценты начисляются на остаток долга, а тело после льготного периода погашается равными частями.</p></header>
+            <form id="loan-form">
+              <label><span>Сумма кредита, долл.</span><input id="loan-amount" name="amount" type="number" min="1000000" max="10000000" step="100000" value="4000000" inputmode="decimal"></label>
+              <label><span>Ставка, % годовых</span><input id="loan-rate" name="rate" type="number" min="5" max="20" step="0.1" value="12.6" inputmode="decimal"></label>
+              <label><span>Общий срок, месяцев</span><input id="loan-term" name="term" type="number" min="60" max="180" step="12" value="120" inputmode="numeric"></label>
+              <label><span>Льготный период по телу, месяцев</span><input id="loan-grace" name="grace" type="number" min="0" max="48" step="6" value="24" inputmode="numeric"></label>
+              <button type="reset">Вернуть базовый сценарий</button>
+            </form>
+            <div class="calculator-result" id="loan-result" aria-live="polite">
+              <div class="primary-result"><span>Проценты за весь срок</span><strong id="loan-total-interest">$3,05 млн</strong><small>без капитализации процентов</small></div>
+              <dl><div><dt>Проценты в месяц льготного периода</dt><dd id="loan-grace-interest">$42 000</dd></div><div><dt>Тело кредита в месяц после отсрочки</dt><dd id="loan-monthly-principal">$41 667</dd></div><div><dt>Всего выплат банку</dt><dd id="loan-total-service">$7,05 млн</dd></div><div><dt>Остаток в конце</dt><dd id="loan-ending">$0</dd></div></dl>
+              <svg id="loan-sparkline" class="loan-sparkline" viewBox="0 0 560 150" role="img" aria-labelledby="loan-sparkline-title"><title id="loan-sparkline-title">График остатка кредита для выбранного сценария</title></svg>
+            </div>
+            <details><summary>Как считается</summary><p>В льготный период оплачиваются только проценты. После него тело кредита делится поровну на оставшиеся месяцы. Если банк предлагает аннуитет или капитализацию процентов, этот калькулятор к такому договору не подходит.</p></details>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section--assumptions" id="assumptions" aria-labelledby="assumptions-title">
+      <div class="shell assumptions-layout">
+        <div class="section-heading"><p class="eyebrow">Граница модели</p><h2 id="assumptions-title">Что пока нельзя считать подтверждённым</h2></div>
+        <ol class="assumptions-list">
+          <li><strong>Расходы номерного фонда.</strong><span>Расходники, бельё, прачечная и гостиничные принадлежности сейчас равны нулю. Старые $8,37 удалены, потому что они дублировали коммунальные услуги, интернет и охрану.</span></li>
+          <li><strong>Штат.</strong><span>ФОТ взят из прежней модели на 120 номеров и включает сотрудников ресторана и кухни, хотя рестораны сейчас считаются арендой.</span></li>
+          <li><strong>Условия кредита.</strong><span>Отсрочка по телу 24 месяца взята из старой таблицы. Нужно подтвердить дату выдачи, период строительства и способ погашения.</span></li>
+          <li><strong>Налог на имущество.</strong><span>Ставка 1% взята из сообщения Гаухар. Бухгалтер должен подтвердить правовое основание и среднегодовую балансовую стоимость.</span></li>
+          <li><strong>Аренда.</strong><span>Все 2 221 м² считаются занятыми с первого года, без арендных каникул, просрочки и индексации.</span></li>
+          <li><strong>Стоимость проекта.</strong><span>В модели нет стоимости существующего здания и земли, оборотного капитала, резерва непредвиденных затрат и стоимости объекта в конце расчётного периода. Поэтому IRR относится только к $1 млн новых собственных средств.</span></li>
+        </ol>
+      </div>
+    </section>
+
+    <section class="section section--sources" id="method">
+      <div class="shell">
+        <details class="research-note">
+          <summary>На какие примеры опирается подача</summary>
+          <p>Гостиничные показатели показаны одной связкой: загрузка, ADR и RevPAR.<sup><a href="#source-1">[1]</a><a href="#source-2">[2]</a></sup> Порядок страницы повторяет логику гостиничной финансовой модели: доходы, расходы, денежный поток и долг.<sup><a href="#source-3">[3]</a></sup> Калькуляторы меняют только параметры, которые уже есть в модели, и одновременно обновляют результат и график.<sup><a href="#source-4">[4]</a><a href="#source-5">[5]</a></sup></p>
+          <ol id="sources-list" class="sources-list" aria-label="Источники референсов"></ol>
+        </details>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="shell footer-inner"><p>Рабочая финансовая модель для обсуждения с собственником. Не банковская модель, не оценка объекта и не налоговое заключение.</p><a href="/qadria-final/">Архитектурная презентация Qadria</a></div>
+  </footer>
+
+  <noscript><p class="noscript">Для графиков и калькуляторов нужен JavaScript. Основные исходные данные остаются видимыми выше.</p></noscript>
+</body>
+</html>
