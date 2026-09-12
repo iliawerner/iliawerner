@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <base href="/hotel-concept/">
+  <meta name="robots" content="noindex,nofollow,noarchive,nosnippet">
+  <meta name="description" content="Отель · 6/6/6. Концептуальные образы, входы, интерьеры и нативные ракурсы модели для обсуждения.">
+  <meta name="theme-color" content="#f2efe9">
+  <title>Отель · текущие материалы</title>
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="gallery.css">
+  <script type="module" src="app.mjs"></script>
+</head>
+<body>
+  <a class="skip" href="#gallery">К изображениям</a>
+  <div id="page">
+    <header class="page masthead" id="top">
+      <h1>Отель · текущие материалы</h1>
+      <p id="subtitle">Одна страница для новых изображений, вариантов фасада и интерьерных образов.</p>
+    </header>
+    <nav id="sections-nav" class="section-nav" aria-label="Разделы галереи"></nav>
+    <main id="gallery" tabindex="-1">
+      <p class="page empty" id="catalog-status" role="status">Загрузка галереи…</p>
+    </main>
+    <footer class="page">
+      <p>Рабочая подборка для обсуждения. Новые результаты будут появляться на этой же странице.</p>
+      <p>Генерации показывают образ, нативные рендеры — визуальную модель, интерьеры — атмосферу. Не рабочая документация и не подтверждение технической реализуемости.</p>
+      <a href="#top">Наверх ↑</a>
+    </footer>
+  </div>
+  <dialog id="viewer" aria-labelledby="view-title" aria-describedby="viewer-keys">
+    <header class="viewer-head"><div><p id="view-count"></p><h2 id="view-title"></h2></div><button id="close" class="button" type="button" aria-label="Закрыть просмотр" autofocus>×</button></header>
+    <div id="stage" tabindex="0" aria-label="Изображение; в масштабе 1:1 — прокрутка, перетаскивание или стрелки для перемещения">
+      <div id="image-plane"><img id="full" alt="" draggable="false" style="visibility:hidden"></div>
+      <p id="image-status" role="status" aria-live="polite" hidden></p>
+    </div>
+    <nav class="viewer-tools" aria-label="Управление изображением">
+      <button id="previous" class="button" type="button" aria-label="Предыдущее изображение">←</button>
+      <div class="viewer-links"><button id="zoom" class="button" type="button" aria-pressed="false">1:1</button><a id="original" class="button" target="_blank" rel="noopener" aria-label="Открыть полный PNG в новой вкладке">PNG ↗</a><a id="download" class="button" download aria-label="Скачать полный PNG">Скачать</a></div>
+      <button id="next" class="button" type="button" aria-label="Следующее изображение">→</button>
+    </nav>
+    <p id="viewer-keys" class="sr-only">Стрелки — предыдущий и следующий кадр. Escape — закрыть. Tab — управление. В масштабе 1:1 при фокусе на изображении стрелки перемещают его; также доступны прокрутка и перетаскивание. PNG открывает оригинал отдельно.</p>
+  </dialog>
+  <noscript><p class="page empty">Для просмотра каталога включите JavaScript.</p></noscript>
+</body>
+</html>

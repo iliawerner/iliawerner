@@ -1,0 +1,19 @@
+/* Simple collection, using the existing project's paper and type. */
+html{scroll-padding-top:76px;scroll-behavior:auto}
+.masthead{padding-block:30px 26px;align-items:flex-end}.masthead h1{font-size:clamp(32px,4.4vw,62px)}
+.page{width:min(calc(100% - 72px),1320px)}
+.section-nav{justify-content:flex-start;padding-inline:max(36px,calc((100vw - 1320px)/2));gap:0 30px;flex-wrap:nowrap;overflow-x:auto}
+.section-nav a{white-space:nowrap;min-height:44px;font-size:14px}
+.review-section{padding-block:66px 24px;scroll-margin-top:0}.section-head h2{font-size:clamp(30px,4vw,50px)}
+.section--latest{padding-top:30px}.section--latest .section-head{position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(50%)}
+.section--latest .section-gallery figure:first-child{grid-column:1/-1}
+.section-gallery{gap:38px 24px}
+.section--materials .section-gallery,.section--model .section-gallery{grid-template-columns:repeat(3,minmax(0,1fr))}
+.section--interiors{background:transparent;color:var(--ink);margin-top:0;padding-bottom:24px}
+.section--interiors .section-head p,.section--interiors .image-kind,.section--interiors .image-note{color:var(--muted)}
+.section--interiors .section-gallery figure:first-child{width:100%;grid-column:auto;justify-self:stretch}
+.image-kind{font-size:12px}.image-note{max-width:760px}.image-link{overflow:hidden}.image-link img{transition:filter .16s}.image-link:hover img{filter:brightness(1.035)}
+.viewer-tools .button{min-width:44px;min-height:44px}.viewer-head #close{min-width:44px;min-height:44px}
+@media(max-width:900px){.page{width:calc(100% - 40px)}.masthead{display:block}.section-nav{padding-inline:20px;gap:24px}.section--materials .section-gallery,.section--model .section-gallery{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:580px){html{scroll-padding-top:61px}.page{width:calc(100% - 28px)}.masthead{padding-block:24px 18px}.section-nav{padding-inline:14px;gap:24px}.section-nav a{font-size:13px;min-height:44px}.review-section{padding-top:48px}.section--latest{padding-top:18px}.section--latest .section-gallery,.section--interiors .section-gallery{grid-template-columns:1fr}.section--materials .section-gallery,.section--model .section-gallery{gap:26px 12px}.section-head p{margin-top:14px}.section-head{margin-bottom:24px}.image-kind{font-size:11px}.viewer-head h2{font-size:13px}}
+@media(prefers-reduced-motion:reduce){.image-link img{transition:none}}

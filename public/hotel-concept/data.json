@@ -1,0 +1,620 @@
+{
+  "version": 1,
+  "title": "Отель · текущие материалы",
+  "subtitle": "Одна страница для новых изображений, вариантов фасада и интерьерных образов.",
+  "sections": [
+    {
+      "id": "latest",
+      "title": "Новая подача",
+      "note": "Свет, материалы и интерьеры. Экстерьеры основаны на видах одной мастер-модели.",
+      "images": [
+        {
+          "id": "hero",
+          "title": "Общий вид",
+          "kind": "concept",
+          "note": "Новая фотоподача. Окружение пока условное.",
+          "alt": "Общий вид — Новая фотоподача. Окружение пока условное.",
+          "original": {
+            "src": "images/hero.png",
+            "width": 1448,
+            "height": 1086
+          },
+          "preview": {
+            "src": "previews/hero.webp",
+            "width": 1200,
+            "height": 900
+          }
+        },
+        {
+          "id": "hotel",
+          "title": "Вход HOTEL",
+          "kind": "concept",
+          "alt": "Вход HOTEL",
+          "original": {
+            "src": "images/hotel.png",
+            "width": 1448,
+            "height": 1086
+          },
+          "preview": {
+            "src": "previews/hotel.webp",
+            "width": 1200,
+            "height": 900
+          }
+        },
+        {
+          "id": "cafe",
+          "title": "Вход CAFÉ",
+          "kind": "concept",
+          "alt": "Вход CAFÉ",
+          "original": {
+            "src": "images/cafe.png",
+            "width": 1448,
+            "height": 1086
+          },
+          "preview": {
+            "src": "previews/cafe.webp",
+            "width": 1200,
+            "height": 900
+          }
+        },
+        {
+          "id": "greenleaf",
+          "title": "Вход Greenleaf",
+          "kind": "concept",
+          "note": "Написание без эмблемы.",
+          "alt": "Вход Greenleaf — Написание без эмблемы.",
+          "original": {
+            "src": "images/greenleaf.png",
+            "width": 1448,
+            "height": 1086
+          },
+          "preview": {
+            "src": "previews/greenleaf.webp",
+            "width": 1200,
+            "height": 900
+          }
+        },
+        {
+          "id": "lobby-new",
+          "title": "Главный холл",
+          "kind": "atmosphere",
+          "note": "Новая подача прежнего интерьерного образа; не рендер планировки из текущей 3D-модели.",
+          "alt": "Главный холл — Новая подача прежнего интерьерного образа; не рендер планировки из текущей 3D-модели.",
+          "original": {
+            "src": "images/lobby-new.png",
+            "width": 1536,
+            "height": 1024
+          },
+          "preview": {
+            "src": "previews/lobby-new.webp",
+            "width": 1200,
+            "height": 800
+          }
+        }
+      ]
+    },
+    {
+      "id": "materials",
+      "title": "Материалы фасада",
+      "note": "15 независимых образов на одной основе. Это поиск отделки, не выбор материала. Мелкие детали и вывески местами интерпретированы генерацией.",
+      "images": [
+        {
+          "id": "material-01",
+          "title": "01 · Кобальтовая керамика",
+          "kind": "material",
+          "alt": "01 · Кобальтовая керамика",
+          "original": {
+            "src": "images/material-01.png",
+            "width": 1448,
+            "height": 1086
+          },
+          "preview": {
+            "src": "previews/material-01.webp",
+            "width": 1200,
+            "height": 900
+          }
+        },
+        {
+          "id": "material-02",
+          "title": "02 · Красная терракота",
+          "kind": "material",
+          "alt": "02 · Красная терракота",
+          "original": {
+            "src": "images/material-02.png",
+            "width": 1448,
+            "height": 1086
+          },
+          "preview": {
+            "src": "previews/material-02.webp",
+            "width": 1200,
+            "height": 900
+          }
+        },
+        {
+          "id": "material-03",
+          "title": "03 · Бутылочно-зелёная глазурь",
+          "kind": "material",
+          "alt": "03 · Бутылочно-зелёная глазурь",
+          "original": {
+            "src": "images/material-03.png",
+            "width": 1448,
+            "height": 1086
+          },
+          "preview": {
+            "src": "previews/material-03.webp",
+            "width": 1200,
+            "height": 900
+          }
+        },
+        {
+          "id": "material-04",
+          "title": "04 · Лимонная эмаль",
+          "kind": "material",
+          "alt": "04 · Лимонная эмаль",
+          "original": {
+            "src": "images/material-04.png",
+            "width": 1448,
+            "height": 1086
+          },
+          "preview": {
+            "src": "previews/material-04.webp",
+            "width": 1200,
+            "height": 900
+          }
+        },
+        {
+          "id": "material-05",
+          "title": "05 · Розовый камень",
+          "kind": "material",
+          "alt": "05 · Розовый камень",
+          "original": {
+            "src": "images/material-05.png",
+            "width": 1448,
+            "height": 1086
+          },
+          "preview": {
+            "src": "previews/material-05.webp",
+            "width": 1200,
+            "height": 900
+          }
+        },
+        {
+          "id": "material-06",
+          "title": "06 · Патинированная медь",
+          "kind": "material",
+          "alt": "06 · Патинированная медь",
+          "original": {
+            "src": "images/material-06.png",
+            "width": 1448,
+            "height": 1086
+          },
+          "preview": {
+            "src": "previews/material-06.webp",
+            "width": 1200,
+            "height": 900
+          }
+        },
+        {
+          "id": "material-07",
+          "title": "07 · Серебристая сталь",
+          "kind": "material",
+          "alt": "07 · Серебристая сталь",
+          "original": {
+            "src": "images/material-07.png",
+            "width": 1448,
+            "height": 1086
+          },
+          "preview": {
+            "src": "previews/material-07.webp",
+            "width": 1200,
+            "height": 900
+          }
+        },
+        {
+          "id": "material-08",
+          "title": "08 · Винно-красный металл",
+          "kind": "material",
+          "alt": "08 · Винно-красный металл",
+          "original": {
+            "src": "images/material-08.png",
+            "width": 1448,
+            "height": 1086
+          },
+          "preview": {
+            "src": "previews/material-08.webp",
+            "width": 1200,
+            "height": 900
+          }
+        },
+        {
+          "id": "material-09",
+          "title": "09 · Золотистая сетка",
+          "kind": "material",
+          "alt": "09 · Золотистая сетка",
+          "original": {
+            "src": "images/material-09.png",
+            "width": 1448,
+            "height": 1086
+          },
+          "preview": {
+            "src": "previews/material-09.webp",
+            "width": 1200,
+            "height": 900
+          }
+        },
+        {
+          "id": "material-10",
+          "title": "10 · Перламутровая керамика",
+          "kind": "material",
+          "alt": "10 · Перламутровая керамика",
+          "original": {
+            "src": "images/material-10.png",
+            "width": 1448,
+            "height": 1086
+          },
+          "preview": {
+            "src": "previews/material-10.webp",
+            "width": 1200,
+            "height": 900
+          }
+        },
+        {
+          "id": "material-11",
+          "title": "11 · Светлое дерево",
+          "kind": "material",
+          "note": "В генерации появился глухой фрагмент на углу остеклённого основания.",
+          "alt": "11 · Светлое дерево — В генерации появился глухой фрагмент на углу остеклённого основания.",
+          "original": {
+            "src": "images/material-11.png",
+            "width": 1448,
+            "height": 1086
+          },
+          "preview": {
+            "src": "previews/material-11.webp",
+            "width": 1200,
+            "height": 900
+          }
+        },
+        {
+          "id": "material-12",
+          "title": "12 · Чёрный рельеф",
+          "kind": "material",
+          "alt": "12 · Чёрный рельеф",
+          "original": {
+            "src": "images/material-12.png",
+            "width": 1448,
+            "height": 1086
+          },
+          "preview": {
+            "src": "previews/material-12.webp",
+            "width": 1200,
+            "height": 900
+          }
+        },
+        {
+          "id": "material-13",
+          "title": "13 · Бетон и оранжевые акценты",
+          "kind": "material",
+          "note": "Окружение добавлено генерацией и не является решением участка.",
+          "alt": "13 · Бетон и оранжевые акценты — Окружение добавлено генерацией и не является решением участка.",
+          "original": {
+            "src": "images/material-13.png",
+            "width": 1448,
+            "height": 1086
+          },
+          "preview": {
+            "src": "previews/material-13.webp",
+            "width": 1200,
+            "height": 900
+          }
+        },
+        {
+          "id": "material-14",
+          "title": "14 · Чёрно-белая графика",
+          "kind": "material",
+          "alt": "14 · Чёрно-белая графика",
+          "original": {
+            "src": "images/material-14.png",
+            "width": 1448,
+            "height": 1086
+          },
+          "preview": {
+            "src": "previews/material-14.webp",
+            "width": 1200,
+            "height": 900
+          }
+        },
+        {
+          "id": "material-15",
+          "title": "15 · Крупные цветовые поля",
+          "kind": "material",
+          "alt": "15 · Крупные цветовые поля",
+          "original": {
+            "src": "images/material-15.png",
+            "width": 1448,
+            "height": 1086
+          },
+          "preview": {
+            "src": "previews/material-15.webp",
+            "width": 1200,
+            "height": 900
+          }
+        }
+      ]
+    },
+    {
+      "id": "interiors",
+      "title": "Интерьерные образы",
+      "note": "Ранее подготовленные образы номеров, коридоров и кафе. Сохраняем их как ориентир по атмосфере.",
+      "images": [
+        {
+          "id": "room-compact",
+          "title": "Компактный номер",
+          "kind": "atmosphere",
+          "alt": "Компактный номер",
+          "original": {
+            "src": "images/room-compact.png",
+            "width": 1536,
+            "height": 1024
+          },
+          "preview": {
+            "src": "previews/room-compact.webp",
+            "width": 1200,
+            "height": 800
+          }
+        },
+        {
+          "id": "room-large",
+          "title": "Большой номер",
+          "kind": "atmosphere",
+          "alt": "Большой номер",
+          "original": {
+            "src": "images/room-large.png",
+            "width": 1484,
+            "height": 1060
+          },
+          "preview": {
+            "src": "previews/room-large.webp",
+            "width": 1200,
+            "height": 857
+          }
+        },
+        {
+          "id": "corridor-long",
+          "title": "Коридор длинного крыла",
+          "kind": "atmosphere",
+          "alt": "Коридор длинного крыла",
+          "original": {
+            "src": "images/corridor-long.png",
+            "width": 1536,
+            "height": 1024
+          },
+          "preview": {
+            "src": "previews/corridor-long.webp",
+            "width": 1200,
+            "height": 800
+          }
+        },
+        {
+          "id": "corridor-hinge",
+          "title": "Поворот у лифтов",
+          "kind": "atmosphere",
+          "alt": "Поворот у лифтов",
+          "original": {
+            "src": "images/corridor-hinge.png",
+            "width": 1535,
+            "height": 1024
+          },
+          "preview": {
+            "src": "previews/corridor-hinge.webp",
+            "width": 1200,
+            "height": 801
+          }
+        },
+        {
+          "id": "cafe-atmosphere",
+          "title": "Кафе · атмосфера",
+          "kind": "atmosphere",
+          "note": "Прежний стилевой референс. Изображённая конструкция не заменяет нынешнюю модель.",
+          "alt": "Кафе · атмосфера — Прежний стилевой референс. Изображённая конструкция не заменяет нынешнюю модель.",
+          "original": {
+            "src": "images/cafe-atmosphere.png",
+            "width": 1486,
+            "height": 1058
+          },
+          "preview": {
+            "src": "previews/cafe-atmosphere.webp",
+            "width": 1200,
+            "height": 854
+          }
+        }
+      ]
+    },
+    {
+      "id": "model",
+      "title": "Мастер-модель",
+      "note": "Нативные виды Blender: геометрия 6/6/6, входы, границы и кровля. Не обмер и не рабочая документация. 3D-окружение будет добавлено отдельным обновлением.",
+      "images": [
+        {
+          "id": "native-master-daylight",
+          "title": "Модель · дневной вид",
+          "kind": "native",
+          "note": "В этой версии модели ещё сохранена эмблема Greenleaf. Для новой версии принято написание без эмблемы.",
+          "alt": "Модель · дневной вид — В этой версии модели ещё сохранена эмблема Greenleaf. Для новой версии принято написание без эмблемы.",
+          "original": {
+            "src": "images/native-master-daylight.png",
+            "width": 1440,
+            "height": 1080
+          },
+          "preview": {
+            "src": "previews/native-master-daylight.webp",
+            "width": 1200,
+            "height": 900
+          }
+        },
+        {
+          "id": "native-master-blue-hour",
+          "title": "Модель · вечерний свет",
+          "kind": "native",
+          "note": "В этой версии модели ещё сохранена эмблема Greenleaf. Для новой версии принято написание без эмблемы.",
+          "alt": "Модель · вечерний свет — В этой версии модели ещё сохранена эмблема Greenleaf. Для новой версии принято написание без эмблемы.",
+          "original": {
+            "src": "images/native-master-blue-hour.png",
+            "width": 1440,
+            "height": 1080
+          },
+          "preview": {
+            "src": "previews/native-master-blue-hour.webp",
+            "width": 1200,
+            "height": 900
+          }
+        },
+        {
+          "id": "native-entrance-hotel",
+          "title": "Модель · вход HOTEL",
+          "kind": "native",
+          "alt": "Модель · вход HOTEL",
+          "original": {
+            "src": "images/native-entrance-hotel.png",
+            "width": 1280,
+            "height": 960
+          },
+          "preview": {
+            "src": "previews/native-entrance-hotel.webp",
+            "width": 1200,
+            "height": 900
+          }
+        },
+        {
+          "id": "native-entrance-cafe",
+          "title": "Модель · вход CAFÉ",
+          "kind": "native",
+          "alt": "Модель · вход CAFÉ",
+          "original": {
+            "src": "images/native-entrance-cafe.png",
+            "width": 1280,
+            "height": 960
+          },
+          "preview": {
+            "src": "previews/native-entrance-cafe.webp",
+            "width": 1200,
+            "height": 900
+          }
+        },
+        {
+          "id": "native-entrance-greenleaf",
+          "title": "Модель · вход Greenleaf",
+          "kind": "native",
+          "note": "В этой версии модели ещё сохранена эмблема Greenleaf. Для новой версии принято написание без эмблемы.",
+          "alt": "Модель · вход Greenleaf — В этой версии модели ещё сохранена эмблема Greenleaf. Для новой версии принято написание без эмблемы.",
+          "original": {
+            "src": "images/native-entrance-greenleaf.png",
+            "width": 1280,
+            "height": 960
+          },
+          "preview": {
+            "src": "previews/native-entrance-greenleaf.webp",
+            "width": 1200,
+            "height": 900
+          }
+        },
+        {
+          "id": "native-detail-office-partition",
+          "title": "Граница офиса и кафе",
+          "kind": "native",
+          "alt": "Граница офиса и кафе",
+          "original": {
+            "src": "images/native-detail-office-partition.png",
+            "width": 1280,
+            "height": 960
+          },
+          "preview": {
+            "src": "previews/native-detail-office-partition.webp",
+            "width": 1200,
+            "height": 900
+          }
+        },
+        {
+          "id": "native-detail-roof-crown",
+          "title": "Кровля и оборудование",
+          "kind": "native",
+          "alt": "Кровля и оборудование",
+          "original": {
+            "src": "images/native-detail-roof-crown.png",
+            "width": 1280,
+            "height": 960
+          },
+          "preview": {
+            "src": "previews/native-detail-roof-crown.webp",
+            "width": 1200,
+            "height": 900
+          }
+        },
+        {
+          "id": "native-model-front",
+          "title": "Фронтальный вид",
+          "kind": "native",
+          "alt": "Фронтальный вид",
+          "original": {
+            "src": "images/native-model-front.png",
+            "width": 1440,
+            "height": 720
+          },
+          "preview": {
+            "src": "previews/native-model-front.webp",
+            "width": 1200,
+            "height": 600
+          }
+        },
+        {
+          "id": "native-model-left",
+          "title": "Левый ракурс",
+          "kind": "native",
+          "alt": "Левый ракурс",
+          "original": {
+            "src": "images/native-model-left.png",
+            "width": 1280,
+            "height": 960
+          },
+          "preview": {
+            "src": "previews/native-model-left.webp",
+            "width": 1200,
+            "height": 900
+          }
+        },
+        {
+          "id": "native-model-right",
+          "title": "Правый ракурс",
+          "kind": "native",
+          "alt": "Правый ракурс",
+          "original": {
+            "src": "images/native-model-right.png",
+            "width": 1280,
+            "height": 960
+          },
+          "preview": {
+            "src": "previews/native-model-right.webp",
+            "width": 1200,
+            "height": 900
+          }
+        },
+        {
+          "id": "native-model-top",
+          "title": "Вид сверху",
+          "kind": "native",
+          "alt": "Вид сверху",
+          "original": {
+            "src": "images/native-model-top.png",
+            "width": 1280,
+            "height": 960
+          },
+          "preview": {
+            "src": "previews/native-model-top.webp",
+            "width": 1200,
+            "height": 900
+          }
+        }
+      ]
+    }
+  ]
+}
