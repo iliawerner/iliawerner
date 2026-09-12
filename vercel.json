@@ -1,10 +1,13 @@
 {
   "$schema": "https://openapi.vercel.sh/vercel.json",
-  "framework": null,
-  "outputDirectory": "public",
   "redirects": [
     {
       "source": "/hotel-concept",
+      "destination": "https://almatyhotel.me/hotel-concept/",
+      "permanent": true
+    },
+    {
+      "source": "/hotel-concept/",
       "destination": "https://almatyhotel.me/hotel-concept/",
       "permanent": true
     },
