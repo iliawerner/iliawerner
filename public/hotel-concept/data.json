@@ -12,17 +12,17 @@
           "id": "hero",
           "title": "Общий вид",
           "kind": "concept",
-          "note": "Новая фотоподача. Окружение пока условное.",
-          "alt": "Общий вид — Новая фотоподача. Окружение пока условное.",
+          "note": "Городское окружение по фотореференсам; концептуальная схема участка.",
+          "alt": "Общий вид — Городское окружение по фотореференсам; концептуальная схема участка.",
           "original": {
-            "src": "images/hero.png",
-            "width": 1448,
-            "height": 1086
+            "src": "images/hero-city-greenery.png",
+            "width": 1659,
+            "height": 948
           },
           "preview": {
-            "src": "previews/hero.webp",
+            "src": "previews/hero-city-greenery.webp",
             "width": 1200,
-            "height": 900
+            "height": 686
           }
         },
         {
